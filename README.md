@@ -1,41 +1,39 @@
-# SeftonLinks.com
+# HikeTheLakes.com
 
-**Championship links golf on the Sefton Coast — the most concentrated stretch of links courses in the world.**
+**The definitive guide to Lake District fells. 214 Wainwright fells with route guides, heights, grid references and walking circuits.**
 
-Live site: [seftonlinks.com](https://www.seftonlinks.com)
+Live site: [hikethelakes.com](https://www.hikethelakes.com)
 
 ---
 
 ## What This Is
 
-SeftonLinks covers the seven championship links courses of the Sefton Coast: Royal Birkdale, Royal Liverpool (Hoylake), Hillside, Southport & Ainsdale, West Lancashire, Formby, and Formby Ladies. Built for golfers travelling to the region — especially for The Open Championship 2026 at Royal Birkdale.
+HikeTheLakes covers all 214 Wainwright fells in the Lake District with route guides, OS grid references, heights, difficulty ratings and walking circuits. Built for fell walkers and Wainwright completionists, with particular focus on the international audience — Japanese, German, Scandinavian, American and Australian fell walkers who travel specifically to complete the Wainwrights.
 
-Built in 18 languages to capture international golf travel search traffic. The Open 2026 is the primary commercial hook.
-
-Part of the [Sefton Coast Network](https://www.churchtownmedia.co.uk/about) — built and operated by Churchtown Media.
+Part of the [Lakes Network](https://thelakes.network) — built and operated by Churchtown Media.
 
 ## Stack
 
-- **Framework**: Next.js (App Router)
+- **Framework**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
-- **i18n**: next-intl (18 languages)
+- **i18n**: next-intl (English only at launch; 18 languages prepared)
 - **Deployment**: Vercel
-- **Analytics**: Plausible
+- **Analytics**: Microsoft Clarity
 
 ## Key Features
 
-- 18-language internationalisation — English, German, Spanish, French, Japanese, Korean, and more
-- Individual course pages with full details, ratings, visitor info, and booking links
-- The Open 2026 hub — travel guide for international visitors to Royal Birkdale
-- Blog (English only) — golf travel content by Damian Roche
-- Full Schema.org JSON-LD (SportsClub, Article, Person, WebSite)
-- E-E-A-T signals with transparent author attribution
-- Sitemap covering all locales and routes
+- 214 Wainwright fell pages with route guides, postcodes, nearby dining
+- Fell Log — reference table sorted by height with OS grid references
+- Conditions tracker — daily fell conditions and weather
+- Walking Circuits — 2, 3 and 4-day itineraries with accommodation
+- Blog — fell walking content by Damian Roche
+- RSS feed at `/feed`
+- Schema.org JSON-LD (TouristAttraction, Article, Dataset, BreadcrumbList)
 
 ## SEO Targets
 
-Primary keywords: `sefton coast golf`, `royal birkdale`, `links golf england`, `the open 2026`, `golf courses southport`, `championship links courses uk`
+Primary keywords: `lake district fells`, `wainwright fells`, `scafell pike route`, `helvellyn walk`, `fell walking lake district`, `214 wainwrights`
 
 ## Developer
 

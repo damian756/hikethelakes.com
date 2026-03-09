@@ -1,0 +1,81 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+}
+
+:root {
+  /* SeftonLinks brand palette — premium links golf */
+  --navy:    #0D1B2A;   /* deep ocean / primary bg */
+  --fairway: #1A4A30;   /* fairway green */
+  --gold:    #B8912A;   /* championship gold */
+  --straw:   #D4AE7A;   /* links turf / sand */
+  --coastal: #4A7D9A;   /* Sefton Coast sky */
+  --cream:   #F8F5EE;   /* morning mist */
+  --slate:   #2C3E50;   /* stone rough */
+  --fog:     #E8E3D8;   /* links fog */
+
+  --background: var(--cream);
+  --foreground:  var(--navy);
+  --font-inter: "Inter", sans-serif;
+  --font-playfair: "Playfair Display", serif;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
+}
+
+body {
+  background: var(--cream);
+  color: var(--navy);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, serif;
+}
+
+/* RTL support for Arabic */
+[dir="rtl"] .rtl-flip {
+  transform: scaleX(-1);
+}
+
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(13, 27, 42, 0.12);
+}
+
+.gold-border {
+  border-top: 2px solid var(--gold);
+}
+
+/* Championship gold gradient bar */
+.gold-bar {
+  background: linear-gradient(90deg, transparent, #B8912A, #D4AE7A, #B8912A, transparent);
+  height: 2px;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #f1f1f1; }
+::-webkit-scrollbar-thumb { background: #b8912a44; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}

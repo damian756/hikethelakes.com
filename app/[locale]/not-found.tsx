@@ -2,13 +2,12 @@
 
 import Link from 'next/link';
 import { Trophy } from 'lucide-react';
-import { usePathname } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 
 export default function NotFound() {
   const pathname = usePathname();
-  const localeMatch = pathname.match(/^\/(de|ja|sv|no|nl|ko|fr|es|da|fi|pl|zh|pt|it|ca|ar|cy)\//);
-  const prefix = localeMatch ? `/${localeMatch[1]}` : '';
+  // Non-en locales are blocked until launch. Always link to English site.
+  const prefix = '';
   const t = useTranslations('notFound');
 
   return (

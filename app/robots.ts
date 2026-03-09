@@ -9,7 +9,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/api/'],
       },
     ],
-    sitemap: 'https://www.seftonlinks.com/sitemap.xml',
-    host: 'https://www.seftonlinks.com',
+    sitemap: 'https://www.hikethelakes.com/sitemap.xml',
+    host: 'https://www.hikethelakes.com',
   };
 }

@@ -83,7 +83,7 @@ export default async function HomePage({
       ═══════════════════════════════════════════ */}
       <section className="relative bg-[#0D1B2A] overflow-hidden">
         <Image
-          src="/hero-golf.jpg"
+          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85"
           alt={th('heroImageAlt')}
           fill
           priority

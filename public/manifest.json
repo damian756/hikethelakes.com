@@ -1,7 +1,7 @@
 {
-  "name": "SeftonLinks.com",
-  "short_name": "SeftonLinks",
-  "description": "The definitive links golf guide to Royal Birkdale and the Sefton Coast",
+  "name": "HikeTheLakes.com",
+  "short_name": "HikeTheLakes",
+  "description": "Lake District fell walking. Wainwrights, Scafell Pike, Helvellyn and more.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0D1B2A",
@@ -21,7 +21,7 @@
       "purpose": "any maskable"
     }
   ],
-  "categories": ["sports", "travel", "golf"],
+  "categories": ["sports", "travel", "outdoors"],
   "lang": "en-GB",
   "dir": "ltr"
 }

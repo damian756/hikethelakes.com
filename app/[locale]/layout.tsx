@@ -7,7 +7,6 @@ import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import NavMenu from '@/components/NavMenu';
-import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
 
@@ -228,7 +227,7 @@ async function Footer({ locale }: { locale: string }) {
       <div className="h-0.5 bg-gradient-to-r from-transparent via-[#B8912A] to-transparent" />
 
       <div className="container mx-auto px-4 py-14 max-w-7xl">
-        <div className="grid md:grid-cols-4 gap-10 mb-12">
+        <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div className="md:col-span-1">
             <div className="font-display text-2xl font-bold text-white mb-3">
               Hike The<span className="text-[#B8912A]">Lakes</span>
@@ -303,10 +302,6 @@ async function Footer({ locale }: { locale: string }) {
             </ul>
           </div>
 
-          <div>
-            <h3 className="text-white font-semibold mb-3 text-sm uppercase tracking-wider">{tf('languagesHeading')}</h3>
-            <LanguageSwitcher />
-          </div>
         </div>
 
         <div className="border-t border-white/10 pt-6 pb-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">

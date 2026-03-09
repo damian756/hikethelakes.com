@@ -1,13 +1,7 @@
 import { defineRouting } from 'next-intl/routing';
 
-// en-US, en-AU, en-GB all resolve to default 'en' locale (no URL prefix).
-// This keeps all English domain authority consolidated at the root.
-export const locales = [
-  'en', 'de', 'ja',
-  'sv', 'no', 'nl', 'ko',
-  'fr', 'es', 'da', 'fi', 'pl', 'zh',
-  'pt', 'it', 'ca', 'ar', 'cy',
-] as const;
+// English only. Non-English routes 404. No hreflang tags.
+export const locales = ['en'] as const;
 
 export type Locale = (typeof locales)[number];
 

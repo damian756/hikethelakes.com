@@ -37,6 +37,3 @@ export async function getLakesWeather(): Promise<WeatherData | null> {
     return null;
   }
 }
-
-/** @deprecated Use getLakesWeather */
-export const getSouthportWeather = getLakesWeather;

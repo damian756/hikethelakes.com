@@ -6,16 +6,16 @@ import { BLOG_POSTS, BLOG_CATEGORIES, DAMIAN } from '@/lib/blog';
 import BlogSearch from './BlogSearch';
 
 export const metadata: Metadata = {
-  title: 'Links Golf Blog — Course Reviews, Tips & The Open 2026 | SeftonLinks',
+  title: 'Lake District Fell Walking Blog — Routes, Conditions & Tips | HikeTheLakes',
   description:
-    'First-hand course reviews, links golf tips, and everything you need to know about The Open Championship 2026 at Royal Birkdale — written by a local off 24.',
-  alternates: { canonical: 'https://www.seftonlinks.com/blog' },
+    'Fell walking guides, route tips, and practical advice for the Lake District. Scafell Pike, Helvellyn, Skiddaw and more. Written by Damian Roche.',
+  alternates: { canonical: 'https://www.hikethelakes.com/blog' },
   openGraph: {
-    title: 'Links Golf Blog | SeftonLinks.com',
-    description: 'Course reviews, links golf tips and Open 2026 guides — written by a local.',
-    url: 'https://www.seftonlinks.com/blog',
+    title: 'Lake District Fell Blog | HikeTheLakes.com',
+    description: 'Fell walking guides, route tips and practical advice for the Lake District.',
+    url: 'https://www.hikethelakes.com/blog',
     type: 'website',
-    siteName: 'SeftonLinks.com',
+    siteName: 'HikeTheLakes.com',
   },
 };
 
@@ -37,14 +37,14 @@ export default async function BlogPage({
       <div className="bg-[#0D1B2A] text-white py-14">
         <div className="container mx-auto px-4 max-w-5xl">
           <p className="text-[#B8912A] text-xs font-bold uppercase tracking-widest mb-3">
-            The SeftonLinks Blog
+            The HikeTheLakes Blog
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Links Golf — Written From the Inside
+            Lake District Fell Walking — Written From the Inside
           </h1>
           <p className="text-white/65 text-lg leading-relaxed max-w-2xl">
-            Course reviews, practical tips, and Open 2026 guides — written by Damian Roche, founder
-            of SeftonLinks and a 24-handicapper who lives three miles from Royal Birkdale.
+            Route guides, practical tips, and fell walking advice. Written by Damian Roche, founder
+            of HikeTheLakes and a regular Lake District visitor for decades.
           </p>
         </div>
       </div>

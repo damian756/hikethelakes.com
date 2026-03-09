@@ -4,7 +4,7 @@ import { buildAlternates } from '@/lib/metadata';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   return {
-    title: 'Terms of Use | SeftonLinks',
+    title: 'Terms of Use | HikeTheLakes',
     robots: { index: false, follow: false },
     alternates: buildAlternates('/terms'),
   };

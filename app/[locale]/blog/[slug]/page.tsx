@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { ChevronRight, Clock, ArrowLeft } from 'lucide-react';
 import { BLOG_POSTS, DAMIAN, getPostBySlug, getCategoryBySlug, getIsoDate, type ContentBlock } from '@/lib/blog';
 
-const BASE_URL = 'https://www.seftonlinks.com';
+const BASE_URL = 'https://www.hikethelakes.com';
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ locale: 'en', slug: p.slug }));
@@ -30,7 +30,7 @@ export async function generateMetadata({
       description: post.excerpt,
       url: `${BASE_URL}/blog/${slug}`,
       type: 'article',
-      siteName: 'SeftonLinks.com',
+      siteName: 'HikeTheLakes.com',
       publishedTime: getIsoDate(post),
       authors: [DAMIAN.name],
       section: cat?.label,

@@ -62,7 +62,6 @@ export const FELLS: Fell[] = [
     nearbySummits: ["Scafell", "Great End", "Broad Crag"],
     nearbyDining: [{ name: "Wasdale Head Inn", type: "Pub", distance: "0.5 miles" }],
     featured: true,
-    image: "/images/fells/scafell-pike.jpg",
   },
   {
     slug: "helvellyn",
@@ -86,7 +85,6 @@ export const FELLS: Fell[] = [
     nearbySummits: ["Catstycam", "Nethermost Pike", "Dollywagon Pike"],
     nearbyDining: [{ name: "Travellers Rest", type: "Pub", distance: "1 mile" }],
     featured: true,
-    image: "/images/fells/helvellyn.jpg",
   },
   {
     slug: "skiddaw",

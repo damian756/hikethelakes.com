@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
-import { MapPin, ChevronRight, Mountain } from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 import { FELLS } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
@@ -84,19 +84,13 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
               className="group bg-white rounded-xl border border-[#D2D8CF] overflow-hidden hover:shadow-lg hover:border-[#9E762A]/40 transition-all"
             >
               <div className="relative h-44 bg-[#0E1C14]">
-                {fell.image ? (
-                  <Image
-                    src={fell.image}
-                    alt={fell.name}
-                    fill
-                    className="object-cover opacity-60 group-hover:opacity-70 transition-opacity"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  />
-                ) : (
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Mountain className="w-16 h-16 text-white/30" />
-                  </div>
-                )}
+                <Image
+                  src={fell.image || HERO_IMAGE_URL}
+                  alt={fell.name}
+                  fill
+                  className="object-cover opacity-60 group-hover:opacity-70 transition-opacity"
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                />
                 <div className="absolute bottom-3 left-4 right-4">
                   <span className="inline-block bg-[#9E762A] text-white text-xs font-bold px-2.5 py-1 rounded">
                     {fell.height}m

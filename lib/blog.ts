@@ -126,7 +126,7 @@ export const BLOG_POSTS: BlogPost[] = [
     categorySlug: 'fell-guides',
     date: '24 Feb 2026',
     readingTime: '8 min read',
-    image: 'https://images.unsplash.com/photo-1486910303620-3a18cf1ddd6e?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=800&q=80',
     content: [
       { type: 'p', text: "Scafell Pike has three main ascent routes: Wasdale, Seathwaite in Borrowdale, and Langdale via Rossett Gill. Most people default to Wasdale because it is the shortest. At around 5 miles return with 900 metres of ascent, it looks manageable on paper." },
       { type: 'p', text: "It is manageable. But the Wasdale route is steep and relentlessly rocky. The upper section from Lingmell Col to the summit is more boulder field than path. People who have only walked on lowland paths are sometimes shocked by how rough it is. That is not a reason to avoid it. It is just useful to know." },

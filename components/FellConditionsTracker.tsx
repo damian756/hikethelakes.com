@@ -79,7 +79,7 @@ export default function FellConditionsTracker({ conditions, weather, updatedDate
       {weather && (
         <div className="bg-[#4A7D9A]/8 border border-[#4A7D9A]/20 rounded-xl px-5 py-4 flex flex-wrap gap-6">
           <div>
-            <div className="text-[#4A7D9A] text-xs uppercase tracking-wider mb-1 font-semibold">Live Wind — Lake District</div>
+            <div className="text-[#4A7D9A] text-xs uppercase tracking-wider mb-1 font-semibold">Live Wind | Lake District</div>
             <div className="flex items-center gap-2">
               <Wind size={18} className="text-[#4A7D9A]" />
               <span className="font-display text-2xl font-bold text-[#0E1C14]">{weather.windSpeed}</span>
@@ -88,7 +88,7 @@ export default function FellConditionsTracker({ conditions, weather, updatedDate
           </div>
           <div className="border-l border-[#4A7D9A]/20 pl-6">
             <div className="text-[#4A7D9A] text-xs uppercase tracking-wider mb-1 font-semibold">Updated</div>
-            <div className="text-sm text-[#3C4E42]/70">Every 30 minutes — Open-Meteo</div>
+            <div className="text-sm text-[#3C4E42]/70">Every 30 minutes. Open-Meteo</div>
           </div>
         </div>
       )}

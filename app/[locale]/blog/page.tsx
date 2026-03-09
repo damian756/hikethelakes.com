@@ -8,7 +8,7 @@ import { BLOG_POSTS, BLOG_CATEGORIES, DAMIAN } from '@/lib/blog';
 import BlogSearch from './BlogSearch';
 
 export const metadata: Metadata = {
-  title: 'Lake District Fell Walking Blog — Routes, Conditions & Tips | HikeTheLakes',
+  title: 'Lake District Fell Walking Blog | Routes, Conditions & Tips | HikeTheLakes',
   description:
     'Fell walking guides, route tips, and practical advice for the Lake District. Scafell Pike, Helvellyn, Skiddaw and more. Written by Damian Roche.',
   alternates: { canonical: 'https://www.hikethelakes.com/blog' },
@@ -46,7 +46,7 @@ export default async function BlogPage({
             The HikeTheLakes Blog
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 leading-tight">
-            Lake District Fell Walking — Written From the Inside
+            Lake District Fell Walking: Written From the Inside
           </h1>
           <p className="text-white/65 text-lg leading-relaxed max-w-2xl">
             Route guides, practical tips, and fell walking advice. Written by Damian Roche, founder

@@ -23,7 +23,7 @@ export async function generateMetadata({
   if (!post) return {};
   const cat = getCategoryBySlug(post.categorySlug);
   return {
-    title: `${post.title} | SeftonLinks`,
+    title: `${post.title} | Hike The Lakes`,
     description: post.excerpt,
     alternates: { canonical: `${BASE_URL}/blog/${slug}` },
     openGraph: {

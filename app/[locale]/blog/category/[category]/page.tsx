@@ -19,7 +19,7 @@ export async function generateMetadata({
   const cat = getCategoryBySlug(category);
   if (!cat) return {};
   return {
-    title: `${cat.label} — HikeTheLakes Blog`,
+    title: `${cat.label} | HikeTheLakes Blog`,
     description: cat.description,
     alternates: { canonical: `https://www.hikethelakes.com/blog/category/${category}` },
   };

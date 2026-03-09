@@ -48,7 +48,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
   {
     slug: 'fell-guides',
     label: 'Fell Guides',
-    description: 'Route notes, conditions, and honest accounts of walking the Wainwright fells — what to expect, what to bring, and what the books do not tell you.',
+    description: 'Route notes, conditions, and honest accounts of walking the Wainwright fells: what to expect, what to bring, and what the books do not tell you.',
   },
   {
     slug: 'wainwrights',
@@ -63,7 +63,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
   {
     slug: 'fishing',
     label: 'Fishing',
-    description: 'Tarn and lake fishing in the Lake District — where to go, what to expect, and how still water fishing differs from the coast.',
+    description: 'Tarn and lake fishing in the Lake District: where to go, what to expect, and how still water fishing differs from the coast.',
   },
   {
     slug: 'practical',

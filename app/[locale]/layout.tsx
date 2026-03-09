@@ -38,7 +38,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   return {
     metadataBase: new URL(BASE_URL),
     title: {
-      default: 'Hike The Lakes — Lake District Fell Guides',
+      default: 'Hike The Lakes | Lake District Fell Guides',
       template: '%s | Hike The Lakes',
     },
     description:
@@ -59,7 +59,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       locale: ogLocale,
       url: BASE_URL,
       siteName: 'Hike The Lakes',
-      title: 'Hike The Lakes — Lake District Fell Guides',
+      title: 'Hike The Lakes | Lake District Fell Guides',
       description:
         'Lake District fells. Scafell Pike, Helvellyn, Skiddaw and more. Route guides and walking circuits.',
       images: [
@@ -67,13 +67,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
           url: `${BASE_URL}/og-default.jpg`,
           width: 1200,
           height: 630,
-          alt: 'Hike The Lakes — Lake District fells',
+          alt: 'Hike The Lakes. Lake District fells',
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: 'Hike The Lakes — Lake District Fell Guides',
+      title: 'Hike The Lakes | Lake District Fell Guides',
       description: 'Scafell Pike, Helvellyn, Skiddaw and Lake District fell walking.',
       images: [`${BASE_URL}/og-default.jpg`],
     },

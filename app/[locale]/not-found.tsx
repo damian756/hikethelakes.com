@@ -23,7 +23,7 @@ export default function NotFound() {
           <Link href={`${prefix}/`} className="inline-flex items-center gap-2 bg-[#1A4A30] text-white font-semibold px-6 py-3 rounded-lg hover:bg-[#2A6A45] transition-colors">
             {t('backHomeBtn')}
           </Link>
-          <Link href={`${prefix}/courses`} className="inline-flex items-center gap-2 border border-[#0E1C14] text-[#0E1C14] font-semibold px-6 py-3 rounded-lg hover:bg-[#0E1C14] hover:text-white transition-colors">
+          <Link href={`${prefix}/fells`} className="inline-flex items-center gap-2 border border-[#0E1C14] text-[#0E1C14] font-semibold px-6 py-3 rounded-lg hover:bg-[#0E1C14] hover:text-white transition-colors">
             <Trophy size={16} /> {t('courseGuidesBtn')}
           </Link>
         </div>

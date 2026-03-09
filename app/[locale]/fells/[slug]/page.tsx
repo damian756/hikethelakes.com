@@ -59,16 +59,25 @@ export default async function FellPage({
             '@context': 'https://schema.org',
             '@graph': [
               {
-                '@type': 'TouristAttraction',
+                '@type': ['TouristAttraction', 'Mountain'],
                 '@id': `${BASE_URL}/fells/${slug}`,
                 name: fell.name,
                 description: fell.summitDescription,
                 url: `${BASE_URL}/fells/${slug}`,
+                elevation: `${fell.height}m`,
                 geo: {
                   '@type': 'GeoCoordinates',
                   latitude: fell.latitude,
                   longitude: fell.longitude,
+                  elevation: fell.height,
                 },
+                ...(fell.image && {
+                  image: {
+                    '@type': 'ImageObject',
+                    url: fell.image,
+                    width: 1200,
+                  },
+                }),
               },
               {
                 '@type': 'BreadcrumbList',

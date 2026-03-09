@@ -57,7 +57,37 @@ export default async function ItineraryDetailPage({
 
   const otherItineraries = WALKING_ITINERARIES.filter((it) => it.id !== slug);
 
+  const pageUrl = `${BASE_URL}/itineraries/${slug}`;
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Article',
+        '@id': pageUrl + '#article',
+        headline: itinerary.title,
+        description: itinerary.description,
+        url: pageUrl,
+        mainEntityOfPage: pageUrl,
+        datePublished: '2024-06-01',
+        dateModified: '2025-03-01',
+        author: { '@id': 'https://www.churchtownmedia.co.uk/about#founder' },
+        publisher: { '@id': `${BASE_URL}/#organization` },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+          { '@type': 'ListItem', position: 2, name: 'Walking Circuits', item: `${BASE_URL}/itineraries` },
+          { '@type': 'ListItem', position: 3, name: itinerary.title, item: pageUrl },
+        ],
+      },
+    ],
+  };
+
   return (
+    <>
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
     <div className="min-h-screen bg-[#EAEDE8]">
       {/* Breadcrumb */}
       <div className="bg-white border-b border-[#D2D8CF]">
@@ -199,5 +229,6 @@ export default async function ItineraryDetailPage({
         </div>
       </div>
     </div>
+    </>
   );
 }

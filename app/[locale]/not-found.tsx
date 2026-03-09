@@ -5,7 +5,6 @@ import { Trophy } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
 export default function NotFound() {
-  const pathname = usePathname();
   // Non-en locales are blocked until launch. Always link to English site.
   const prefix = '';
   const t = useTranslations('notFound');

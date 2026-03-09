@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { MapPin, ChevronRight, Mountain } from 'lucide-react';
 import { FELLS } from '@/lib/fells';
 import type { Metadata } from 'next';
@@ -53,7 +54,7 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
 
       <div className="bg-[#0D1B2A] py-16 relative overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85"
+          src={HERO_IMAGE_URL}
           alt="Lake District fells"
           fill
           priority

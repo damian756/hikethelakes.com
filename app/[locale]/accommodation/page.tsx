@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Bed, MapPin, ExternalLink, CheckCircle2, Clock } from 'lucide-react';
+import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
 import { buildAlternates } from '@/lib/metadata';
 import { getTranslations } from 'next-intl/server';
@@ -111,7 +112,7 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
     <div className="min-h-screen bg-[#F8F5EE]">
       <div className="bg-[#0D1B2A] py-14 relative overflow-hidden">
         <Image
-          src="/images/accommodation.jpg"
+          src={HERO_IMAGE_URL}
           alt="Lake District accommodation with mountain view"
           fill
           priority

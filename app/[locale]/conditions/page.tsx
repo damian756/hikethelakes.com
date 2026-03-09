@@ -1,5 +1,7 @@
+import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import FellConditionsTracker from '@/components/FellConditionsTracker';
+import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
 import { buildAlternates } from '@/lib/metadata';
 import { getLakesWeather } from '@/lib/weather';
@@ -28,8 +30,12 @@ export default async function ConditionsPage({ params }: { params: Promise<{ loc
 
   return (
     <div className="min-h-screen bg-[#F8F5EE]">
-      <div className="bg-[#0D1B2A] py-14">
-        <div className="container mx-auto px-4 max-w-7xl">
+      <div className="bg-[#0D1B2A] py-14 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src={HERO_IMAGE_URL} alt="" fill sizes="100vw" quality={70} className="object-cover object-center opacity-40" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0D1B2A]/55 via-[#0D1B2A]/35 to-[#0D1B2A]/70" />
+        <div className="relative container mx-auto px-4 max-w-7xl">
           <div className="text-[#B8912A] text-sm uppercase tracking-widest font-semibold mb-3">{t('headerBadge')}</div>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
             {t('pageTitle')}

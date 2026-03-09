@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
 import { ChevronRight, Clock, ArrowLeft } from 'lucide-react';
 import { BLOG_POSTS, DAMIAN, getPostBySlug, getCategoryBySlug, getIsoDate, type ContentBlock } from '@/lib/blog';
@@ -159,15 +160,13 @@ export default async function BlogPostPage({
 
       {/* Article hero */}
       <div className="bg-[#0D1B2A] text-white py-12 relative overflow-hidden">
-        {post.image && (
-          <Image
-            src={post.image}
-            alt={post.title}
-            fill
-            className="object-cover opacity-20"
-            priority
-          />
-        )}
+        <Image
+          src={post.image || HERO_IMAGE_URL}
+          alt={post.title}
+          fill
+          className="object-cover opacity-20"
+          priority
+        />
         <div className="relative z-10 container mx-auto px-4 max-w-3xl">
           {cat && (
             <p className="text-[#B8912A] text-xs font-bold uppercase tracking-widest mb-3">

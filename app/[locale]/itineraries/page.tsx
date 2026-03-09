@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
+import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { MapPin, Bed, Utensils, Mountain } from 'lucide-react';
 import WalkingPlanner from '@/components/WalkingPlanner';
 import { WALKING_ITINERARIES } from '@/lib/walking-itineraries';
@@ -31,7 +32,7 @@ export default async function ItinerariesPage({ params }: { params: Promise<{ lo
     <div className="min-h-screen bg-[#F8F5EE]">
       <div className="bg-[#0D1B2A] py-14 relative overflow-hidden">
         <Image
-          src="/images/itineraries.jpg"
+          src={HERO_IMAGE_URL}
           alt="Walker on a Lake District fell"
           fill
           priority

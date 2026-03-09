@@ -1,7 +1,9 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { ChevronRight } from 'lucide-react';
+import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { BLOG_POSTS, BLOG_CATEGORIES, DAMIAN } from '@/lib/blog';
 import BlogSearch from './BlogSearch';
 
@@ -34,8 +36,12 @@ export default async function BlogPage({
   return (
     <div className="min-h-screen bg-[#F8F5EE]">
       {/* Hero */}
-      <div className="bg-[#0D1B2A] text-white py-14">
-        <div className="container mx-auto px-4 max-w-5xl">
+      <div className="bg-[#0D1B2A] text-white py-14 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image src={HERO_IMAGE_URL} alt="" fill sizes="100vw" quality={70} className="object-cover object-center opacity-40" />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0D1B2A]/55 via-[#0D1B2A]/35 to-[#0D1B2A]/70" />
+        <div className="relative container mx-auto px-4 max-w-5xl">
           <p className="text-[#B8912A] text-xs font-bold uppercase tracking-widest mb-3">
             The HikeTheLakes Blog
           </p>

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { Mountain, Wind, MapPin, Calendar, ChevronRight, Star, Flag, Trophy, Clock, Users } from 'lucide-react';
@@ -83,7 +84,7 @@ export default async function HomePage({
       ═══════════════════════════════════════════ */}
       <section className="relative bg-[#0D1B2A] overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920&q=85"
+          src={HERO_IMAGE_URL}
           alt={th('heroImageAlt')}
           fill
           priority

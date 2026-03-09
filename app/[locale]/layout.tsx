@@ -250,16 +250,18 @@ async function Footer({ locale }: { locale: string }) {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/60 hover:text-[#9E762A] transition"
+                  title="Lake District restaurants, accommodation and walks"
                 >
-                  The Lakes Guide ↗
+                  The Lakes Guide — restaurants & accommodation ↗
                 </a>
                 <a
                   href="https://www.thelakeswildlife.co.uk"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/60 hover:text-[#9E762A] transition"
+                  title="Lake District wildlife, species and reserves"
                 >
-                  The Lakes Wildlife ↗
+                  The Lakes Wildlife — species & reserves ↗
                 </a>
                 <a
                   href="https://thelakes.network"
@@ -307,8 +309,8 @@ async function Footer({ locale }: { locale: string }) {
         <div className="border-t border-white/10 pt-6 pb-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">
           <span>Part of the <a href="https://thelakes.network" target="_blank" rel="noopener" className="hover:text-white/60 transition">Lakes Network</a></span>
           <div className="flex flex-wrap gap-5">
-            <a href="https://www.thelakesguide.co.uk" target="_blank" rel="noopener" className="hover:text-white/60 transition">The Lakes Guide</a>
-            <a href="https://www.thelakeswildlife.co.uk" target="_blank" rel="noopener" className="hover:text-white/60 transition">The Lakes Wildlife</a>
+            <a href="https://www.thelakesguide.co.uk" target="_blank" rel="noopener" className="hover:text-white/60 transition">The Lakes Guide — restaurants & accommodation</a>
+            <a href="https://www.thelakeswildlife.co.uk" target="_blank" rel="noopener" className="hover:text-white/60 transition">The Lakes Wildlife — species & reserves</a>
             <a href="https://thelakes.network" target="_blank" rel="noopener" className="hover:text-white/60 transition">TheLakes.network</a>
           </div>
         </div>

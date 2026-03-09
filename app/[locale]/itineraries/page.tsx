@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
-import { MapPin, Bed, Utensils, Mountain } from 'lucide-react';
+import { MapPin, Bed, Utensils, Mountain, ChevronRight } from 'lucide-react';
 import WalkingPlanner from '@/components/WalkingPlanner';
 import { WALKING_ITINERARIES } from '@/lib/walking-itineraries';
 import { FELLS } from '@/lib/fells';
@@ -118,15 +118,23 @@ export default async function ItinerariesPage({ params }: { params: Promise<{ lo
                       <div className="text-xs text-[#3C4E42]/50 uppercase tracking-wider mb-0.5">{t('estimatedCostLabel')}</div>
                       <div className="font-bold text-[#0E1C14]">{it.estimatedCost}</div>
                     </div>
-                    <a
-                      href="https://www.booking.com/searchresults.html?ss=Lake+District"
-                      target="_blank"
-                      rel="noopener noreferrer sponsored"
-                      className="flex items-center gap-2 bg-[#1A4A30] text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-[#2A6A45] transition-colors text-sm shrink-0"
-                    >
-                      <Bed size={14} />
-                      {t('bookAccommodationBtn')}
-                    </a>
+                    <div className="flex gap-2 shrink-0">
+                      <Link
+                        href={`${prefix}/itineraries/${it.id}`}
+                        className="flex items-center gap-2 bg-white border border-[#1A4A30] text-[#1A4A30] font-semibold px-5 py-2.5 rounded-lg hover:bg-[#1A4A30]/5 transition-colors text-sm"
+                      >
+                        View details <ChevronRight size={14} />
+                      </Link>
+                      <a
+                        href="https://www.booking.com/searchresults.html?ss=Lake+District"
+                        target="_blank"
+                        rel="noopener noreferrer sponsored"
+                        className="flex items-center gap-2 bg-[#1A4A30] text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-[#2A6A45] transition-colors text-sm"
+                      >
+                        <Bed size={14} />
+                        {t('bookAccommodationBtn')}
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

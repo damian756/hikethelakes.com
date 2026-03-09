@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { FELLS } from '@/lib/fells';
+import { WALKING_ITINERARIES } from '@/lib/walking-itineraries';
 import { BLOG_POSTS, BLOG_CATEGORIES } from '@/lib/blog';
 import { locales } from '@/i18n/routing';
 
@@ -18,8 +19,9 @@ const STATIC_PAGES = [
 ];
 
 const FELL_PAGES = FELLS.map((f) => `/fells/${f.slug}`);
+const ITINERARY_PAGES = WALKING_ITINERARIES.map((it) => `/itineraries/${it.id}`);
 
-const ALL_PAGES = [...STATIC_PAGES, ...FELL_PAGES];
+const ALL_PAGES = [...STATIC_PAGES, ...FELL_PAGES, ...ITINERARY_PAGES];
 
 function buildLanguages(page: string): Record<string, string> {
   const path = page || '';

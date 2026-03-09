@@ -74,6 +74,17 @@ export default async function HomePage({
                   'https://churchtownmedia.co.uk',
                 ],
               },
+              {
+                '@type': 'Person',
+                '@id': 'https://www.churchtownmedia.co.uk/about#founder',
+                name: 'Damian Roche',
+                jobTitle: 'Founder, Churchtown Media',
+                url: 'https://www.churchtownmedia.co.uk/about',
+                sameAs: [
+                  'https://www.linkedin.com/in/damian-roche-7ba8293a5/',
+                  'https://find-and-update.company-information.service.gov.uk/company/16960442',
+                ],
+              },
             ],
           }),
         }}

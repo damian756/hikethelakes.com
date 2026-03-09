@@ -123,37 +123,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'}>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              '@id': `${BASE_URL}/#website`,
-              name: 'Hike The Lakes',
-              url: BASE_URL,
-              description:
-                'The definitive guide to Lake District fells. Scafell Pike, Helvellyn, Skiddaw and more.',
-              publisher: {
-                '@type': 'Organization',
-                '@id': 'https://www.churchtownmedia.co.uk/#organization',
-                name: 'Churchtown Media',
-                url: 'https://www.churchtownmedia.co.uk',
-              },
-              author: {
-                '@type': 'Person',
-                '@id': 'https://www.churchtownmedia.co.uk/about#founder',
-                name: 'Damian Roche',
-                jobTitle: 'Founder, Churchtown Media',
-                url: 'https://www.churchtownmedia.co.uk/about',
-                sameAs: [
-                  'https://www.linkedin.com/in/damian-roche-7ba8293a5/',
-                  'https://find-and-update.company-information.service.gov.uk/company/16960442',
-                ],
-              },
-            }),
-          }}
-        />
         {/* Microsoft Clarity */}
         <Script id="clarity-init" strategy="afterInteractive">{`
           (function(c,l,a,r,i,t,y){

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Playfair_Display, Inter } from 'next/font/google';
+import { Lora, Inter } from 'next/font/google';
 import Script from 'next/script';
 import { Analytics } from '@vercel/analytics/next';
 import { NextIntlClientProvider } from 'next-intl';
@@ -10,11 +10,11 @@ import NavMenu from '@/components/NavMenu';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
 
-const playfair = Playfair_Display({
+const lora = Lora({
   subsets: ['latin'],
-  variable: '--font-playfair',
+  variable: '--font-lora',
   display: 'swap',
-  weight: ['400', '500', '600', '700', '800', '900'],
+  weight: ['400', '600', '700'],
 });
 
 const inter = Inter({
@@ -163,7 +163,7 @@ export default async function LocaleLayout({
           })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");
         `}</Script>
       </head>
-      <body className={`${playfair.variable} ${inter.variable} font-sans antialiased bg-[#F8F5EE]`}>
+      <body className={`${lora.variable} ${inter.variable} font-sans antialiased bg-[#EAEDE8]`}>
         <NextIntlClientProvider messages={messages}>
           <Navigation locale={locale} />
           <main className="overflow-x-hidden">{children}</main>
@@ -179,16 +179,16 @@ function Navigation({ locale }: { locale: string }) {
   const prefix = locale === 'en' ? '' : `/${locale}`;
 
   return (
-    <nav className="relative bg-white/97 backdrop-blur-sm border-b border-[#E8E3D8] sticky top-0 z-50 shadow-sm">
-      {/* Top gold accent strip */}
-      <div className="h-0.5 bg-gradient-to-r from-transparent via-[#B8912A] to-transparent" />
+    <nav className="relative bg-[#1A4A30] border-b border-white/10 sticky top-0 z-50 shadow-sm">
+      {/* Top amber accent strip */}
+      <div className="h-0.5 bg-gradient-to-r from-transparent via-[#9E762A] to-transparent" />
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex items-center justify-between h-16">
           <Link href={prefix || '/'} className="flex items-center gap-2 flex-shrink-0 group">
-            <span className="font-display text-xl font-bold text-[#0D1B2A] group-hover:text-[#1A4A30] transition-colors">
-              Hike The<span className="text-[#B8912A]">Lakes</span>
+            <span className="font-display text-xl font-bold text-white group-hover:text-[#9E762A] transition-colors">
+              Hike The<span className="text-[#9E762A]">Lakes</span>
             </span>
-            <span className="hidden sm:block text-xs text-[#9BA8B0] font-light tracking-widest uppercase mt-0.5">
+            <span className="hidden sm:block text-xs text-white/60 font-light tracking-widest uppercase mt-0.5">
               .com
             </span>
           </Link>
@@ -223,14 +223,14 @@ async function Footer({ locale }: { locale: string }) {
   ];
 
   return (
-    <footer className="bg-[#0D1B2A] text-white/80">
-      <div className="h-0.5 bg-gradient-to-r from-transparent via-[#B8912A] to-transparent" />
+    <footer className="bg-[#0A1510] text-white/80">
+      <div className="h-0.5 bg-gradient-to-r from-transparent via-[#9E762A] to-transparent" />
 
       <div className="container mx-auto px-4 py-14 max-w-7xl">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div className="md:col-span-1">
             <div className="font-display text-2xl font-bold text-white mb-3">
-              Hike The<span className="text-[#B8912A]">Lakes</span>
+              Hike The<span className="text-[#9E762A]">Lakes</span>
               <span className="text-white/30 text-sm font-normal ml-1">.com</span>
             </div>
             <p className="text-sm leading-relaxed text-white/55 mb-5 max-w-xs">
@@ -238,7 +238,7 @@ async function Footer({ locale }: { locale: string }) {
             </p>
             <a
               href="https://churchtownmedia.co.uk"
-              className="text-xs text-[#B8912A] hover:text-[#D4AE7A] transition"
+              className="text-xs text-[#9E762A] hover:text-[#D4AE7A] transition"
             >
               {tf('builtByLink')}
             </a>
@@ -249,7 +249,7 @@ async function Footer({ locale }: { locale: string }) {
                   href="https://www.thelakesguide.co.uk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 hover:text-[#B8912A] transition"
+                  className="text-sm text-white/60 hover:text-[#9E762A] transition"
                 >
                   The Lakes Guide ↗
                 </a>
@@ -257,7 +257,7 @@ async function Footer({ locale }: { locale: string }) {
                   href="https://www.thelakeswildlife.co.uk"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 hover:text-[#B8912A] transition"
+                  className="text-sm text-white/60 hover:text-[#9E762A] transition"
                 >
                   The Lakes Wildlife ↗
                 </a>
@@ -265,11 +265,11 @@ async function Footer({ locale }: { locale: string }) {
                   href="https://thelakes.network"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-white/60 hover:text-[#B8912A] transition"
+                  className="text-sm text-white/60 hover:text-[#9E762A] transition"
                 >
                   TheLakes.network ↗
                 </a>
-                <span className="text-sm text-[#B8912A] font-medium">
+                <span className="text-sm text-[#9E762A] font-medium">
                   HikeTheLakes.com
                 </span>
               </div>
@@ -281,7 +281,7 @@ async function Footer({ locale }: { locale: string }) {
             <ul className="space-y-2.5 text-sm">
               {exploreLinks.map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="text-white/55 hover:text-[#B8912A] transition">
+                  <Link href={href} className="text-white/55 hover:text-[#9E762A] transition">
                     {label}
                   </Link>
                 </li>
@@ -294,7 +294,7 @@ async function Footer({ locale }: { locale: string }) {
             <ul className="space-y-2.5 text-sm">
               {fellLinks.map(([label, href]) => (
                 <li key={href}>
-                  <Link href={href} className="text-white/55 hover:text-[#B8912A] transition">
+                  <Link href={href} className="text-white/55 hover:text-[#9E762A] transition">
                     {label}
                   </Link>
                 </li>
@@ -316,9 +316,9 @@ async function Footer({ locale }: { locale: string }) {
         <div className="border-t border-white/10 pt-5 pb-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
           <p className="text-white/50">
             Accommodation or activity provider?{" "}
-            <span className="text-[#B8912A] font-semibold">Partner with the Lakes Network</span>
+            <span className="text-[#9E762A] font-semibold">Partner with the Lakes Network</span>
           </p>
-          <a href="mailto:hello@thelakes.network" className="text-[#B8912A] hover:text-white transition font-medium text-sm">
+          <a href="mailto:hello@thelakes.network" className="text-[#9E762A] hover:text-white transition font-medium text-sm">
             hello@thelakes.network →
           </a>
         </div>

@@ -25,7 +25,7 @@ export default async function FellLogPage({ params }: { params: Promise<{ locale
   const sortedFells = [...FELLS].sort((a, b) => b.height - a.height);
 
   return (
-    <div className="min-h-screen bg-[#F8F5EE]">
+    <div className="min-h-screen bg-[#EAEDE8]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -39,13 +39,13 @@ export default async function FellLogPage({ params }: { params: Promise<{ locale
         }}
       />
 
-      <div className="bg-[#0D1B2A] py-14 relative overflow-hidden">
+      <div className="bg-[#0E1C14] py-14 relative overflow-hidden">
         <div className="absolute inset-0">
           <Image src={HERO_IMAGE_URL} alt="" fill sizes="100vw" quality={70} className="object-cover object-center opacity-40" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D1B2A]/55 via-[#0D1B2A]/35 to-[#0D1B2A]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0E1C14]/55 via-[#0E1C14]/35 to-[#0E1C14]/70" />
         <div className="relative container mx-auto px-4 max-w-7xl">
-          <div className="text-[#B8912A] text-sm uppercase tracking-widest font-semibold mb-3">{t('headerBadge')}</div>
+          <div className="text-[#9E762A] text-sm uppercase tracking-widest font-semibold mb-3">{t('headerBadge')}</div>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">{t('pageTitle')}</h1>
           <p className="text-white/65 text-lg max-w-2xl">
             {t('pageDesc')}
@@ -55,21 +55,21 @@ export default async function FellLogPage({ params }: { params: Promise<{ locale
 
       <div className="container mx-auto px-4 max-w-7xl py-12 space-y-6">
         {sortedFells.map((fell) => (
-          <div key={fell.slug} className="bg-white rounded-2xl border border-[#E8E3D8] overflow-hidden shadow-sm">
+          <div key={fell.slug} className="bg-white rounded-2xl border border-[#D2D8CF] overflow-hidden shadow-sm">
             <div className="h-1.5 bg-[#1A4A30]" />
             <div className="p-6 md:p-8">
               <div className="flex items-start justify-between gap-4">
                 <div>
-                  <h2 className="font-display text-2xl font-bold text-[#0D1B2A] flex items-center gap-2">
+                  <h2 className="font-display text-2xl font-bold text-[#0E1C14] flex items-center gap-2">
                     {fell.name}
                   </h2>
-                  <p className="text-[#2C3E50]/55 text-sm mt-1">
+                  <p className="text-[#3C4E42]/55 text-sm mt-1">
                     {fell.height}m · {fell.osGridRef} · {fell.wainwrightVolume} · {fell.difficulty}
                   </p>
                 </div>
                 <Link
                   href={`${prefix}/fells/${fell.slug}`}
-                  className="hidden sm:flex items-center gap-1 text-[#1A4A30] text-sm font-semibold hover:text-[#B8912A] transition-colors shrink-0"
+                  className="hidden sm:flex items-center gap-1 text-[#1A4A30] text-sm font-semibold hover:text-[#9E762A] transition-colors shrink-0"
                 >
                   {t('fullGuideLink')} <ChevronRight size={13} />
                 </Link>

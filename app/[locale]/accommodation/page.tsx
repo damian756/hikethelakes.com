@@ -109,8 +109,8 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
   ];
 
   return (
-    <div className="min-h-screen bg-[#F8F5EE]">
-      <div className="bg-[#0D1B2A] py-14 relative overflow-hidden">
+    <div className="min-h-screen bg-[#EAEDE8]">
+      <div className="bg-[#0E1C14] py-14 relative overflow-hidden">
         <Image
           src={HERO_IMAGE_URL}
           alt="Lake District accommodation with mountain view"
@@ -119,9 +119,9 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
           className="object-cover object-center opacity-45"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D1B2A]/55 via-[#0D1B2A]/35 to-[#0D1B2A]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0E1C14]/55 via-[#0E1C14]/35 to-[#0E1C14]/70" />
         <div className="relative container mx-auto px-4 max-w-7xl">
-          <div className="text-[#B8912A] text-sm uppercase tracking-widest font-semibold mb-3">{t('headerBadge')}</div>
+          <div className="text-[#9E762A] text-sm uppercase tracking-widest font-semibold mb-3">{t('headerBadge')}</div>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">{t('pageTitle')}</h1>
           <p className="text-white/65 text-lg max-w-2xl leading-relaxed">
             {t('pageDesc')}
@@ -135,37 +135,37 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
         {ACCOMMODATION.map((area) => (
           <div key={area.area}>
             <div className="flex items-baseline gap-4 mb-6">
-              <h2 className="font-display text-2xl font-bold text-[#0D1B2A]">{area.area}</h2>
-              <span className="text-[#2C3E50]/50 text-sm flex items-center gap-1.5">
+              <h2 className="font-display text-2xl font-bold text-[#0E1C14]">{area.area}</h2>
+              <span className="text-[#3C4E42]/50 text-sm flex items-center gap-1.5">
                 <MapPin size={12} /> {area.distanceFromCentre}
               </span>
             </div>
 
             <div className="grid md:grid-cols-2 gap-6">
               {area.options.map((opt) => (
-                <div key={opt.name} className="bg-white border border-[#E8E3D8] rounded-xl overflow-hidden shadow-sm">
+                <div key={opt.name} className="bg-white border border-[#D2D8CF] rounded-xl overflow-hidden shadow-sm">
                   <div className="p-6">
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <div>
-                        <h3 className="font-display text-xl font-bold text-[#0D1B2A]">{opt.name}</h3>
-                        <div className="flex items-center gap-2 text-xs text-[#2C3E50]/50 mt-1">
+                        <h3 className="font-display text-xl font-bold text-[#0E1C14]">{opt.name}</h3>
+                        <div className="flex items-center gap-2 text-xs text-[#3C4E42]/50 mt-1">
                           <span className="bg-[#1A4A30]/10 text-[#1A4A30] px-2 py-0.5 rounded-full font-medium">{opt.type}</span>
                           <span>{opt.address}</span>
                         </div>
                       </div>
                       <div className="text-right shrink-0">
                         <div className="text-[#1A4A30] font-semibold text-sm">{opt.approxRate}</div>
-                        <div className="text-[#2C3E50]/40 text-xs">{t('approxLabel')}</div>
+                        <div className="text-[#3C4E42]/40 text-xs">{t('approxLabel')}</div>
                       </div>
                     </div>
 
-                    <p className="text-[#2C3E50]/70 text-sm leading-relaxed mb-4">{opt.desc}</p>
+                    <p className="text-[#3C4E42]/70 text-sm leading-relaxed mb-4">{opt.desc}</p>
 
                     <div className="mb-4">
-                      <div className="text-xs text-[#2C3E50]/50 uppercase tracking-wider mb-2">{t('walkerFeaturesLabel')}</div>
+                      <div className="text-xs text-[#3C4E42]/50 uppercase tracking-wider mb-2">{t('walkerFeaturesLabel')}</div>
                       <ul className="space-y-1">
                         {opt.walkerFriendly.map((f) => (
-                          <li key={f} className="flex items-center gap-2 text-sm text-[#2C3E50]/70">
+                          <li key={f} className="flex items-center gap-2 text-sm text-[#3C4E42]/70">
                             <CheckCircle2 size={12} className="text-[#1A4A30] shrink-0" />
                             {f}
                           </li>
@@ -195,7 +195,7 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
           <div className="grid sm:grid-cols-2 gap-5">
             {tips.map(({ icon: Icon, tip }, i) => (
               <div key={i} className="flex items-start gap-3">
-                <div className="w-8 h-8 bg-[#B8912A]/20 rounded-lg flex items-center justify-center shrink-0">
+                <div className="w-8 h-8 bg-[#9E762A]/20 rounded-lg flex items-center justify-center shrink-0">
                   <Icon size={15} className="text-[#D4AE7A]" />
                 </div>
                 <p className="text-white/70 text-sm leading-relaxed">{tip}</p>
@@ -206,21 +206,21 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
 
         {/* Network links */}
         <div className="grid sm:grid-cols-2 gap-6">
-          <a href="https://www.thelakesguide.co.uk/accommodation" target="_blank" rel="noopener noreferrer" className="group bg-white border border-[#E8E3D8] rounded-xl p-5 flex items-center gap-4 hover:border-[#1A4A30]/30 transition-all card-hover">
+          <a href="https://www.thelakesguide.co.uk/accommodation" target="_blank" rel="noopener noreferrer" className="group bg-white border border-[#D2D8CF] rounded-xl p-5 flex items-center gap-4 hover:border-[#1A4A30]/30 transition-all card-hover">
             <Bed size={20} className="text-[#1A4A30] shrink-0" />
             <div>
-              <div className="font-semibold text-[#0D1B2A] group-hover:text-[#1A4A30] transition-colors">{t('lakesGuideLinkTitle')}</div>
-              <div className="text-[#2C3E50]/55 text-sm">{t('lakesGuideLinkDesc')}</div>
+              <div className="font-semibold text-[#0E1C14] group-hover:text-[#1A4A30] transition-colors">{t('lakesGuideLinkTitle')}</div>
+              <div className="text-[#3C4E42]/55 text-sm">{t('lakesGuideLinkDesc')}</div>
             </div>
-            <ExternalLink size={14} className="text-[#2C3E50]/30 ml-auto shrink-0" />
+            <ExternalLink size={14} className="text-[#3C4E42]/30 ml-auto shrink-0" />
           </a>
-          <a href="https://www.thelakeswildlife.co.uk" target="_blank" rel="noopener noreferrer" className="group bg-white border border-[#E8E3D8] rounded-xl p-5 flex items-center gap-4 hover:border-[#2E6B3E]/30 transition-all card-hover">
+          <a href="https://www.thelakeswildlife.co.uk" target="_blank" rel="noopener noreferrer" className="group bg-white border border-[#D2D8CF] rounded-xl p-5 flex items-center gap-4 hover:border-[#2E6B3E]/30 transition-all card-hover">
             <Bed size={20} className="text-[#2E6B3E] shrink-0" />
             <div>
-              <div className="font-semibold text-[#0D1B2A] group-hover:text-[#1A4A30] transition-colors">{t('lakesWildlifeLinkTitle')}</div>
-              <div className="text-[#2C3E50]/55 text-sm">{t('lakesWildlifeLinkDesc')}</div>
+              <div className="font-semibold text-[#0E1C14] group-hover:text-[#1A4A30] transition-colors">{t('lakesWildlifeLinkTitle')}</div>
+              <div className="text-[#3C4E42]/55 text-sm">{t('lakesWildlifeLinkDesc')}</div>
             </div>
-            <ExternalLink size={14} className="text-[#2C3E50]/30 ml-auto shrink-0" />
+            <ExternalLink size={14} className="text-[#3C4E42]/30 ml-auto shrink-0" />
           </a>
         </div>
       </div>

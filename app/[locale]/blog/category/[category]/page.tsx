@@ -39,11 +39,11 @@ export default async function CategoryPage({
   const posts = getPostsByCategory(category);
 
   return (
-    <div className="min-h-screen bg-[#F8F5EE]">
+    <div className="min-h-screen bg-[#EAEDE8]">
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-[#E8E3D8]">
+      <div className="bg-white border-b border-[#D2D8CF]">
         <div className="container mx-auto px-4 max-w-5xl py-3">
-          <nav className="flex items-center gap-2 text-sm text-[#2C3E50]/55">
+          <nav className="flex items-center gap-2 text-sm text-[#3C4E42]/55">
             <Link href="/" className="hover:text-[#1A4A30] transition-colors">Home</Link>
             <ChevronRight size={13} />
             <Link href="/blog" className="hover:text-[#1A4A30] transition-colors">Blog</Link>
@@ -60,7 +60,7 @@ export default async function CategoryPage({
         </div>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0D1B2A]/55 via-[#0D1B2A]/35 to-[#0D1B2A]/70" />
         <div className="relative container mx-auto px-4 max-w-5xl">
-          <p className="text-[#B8912A] text-xs font-bold uppercase tracking-widest mb-3">
+          <p className="text-[#9E762A] text-xs font-bold uppercase tracking-widest mb-3">
             Category
           </p>
           <h1 className="font-display text-3xl md:text-4xl font-bold mb-3">{cat.label}</h1>
@@ -81,8 +81,8 @@ export default async function CategoryPage({
                 href={`/blog/category/${c.slug}`}
                 className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-semibold transition-colors ${
                   isActive
-                    ? 'bg-[#B8912A] text-white border border-[#B8912A]'
-                    : 'border border-[#B8912A]/40 text-[#B8912A] hover:bg-[#B8912A] hover:text-white'
+                    ? 'bg-[#9E762A] text-white border border-[#9E762A]'
+                    : 'border border-[#9E762A]/40 text-[#9E762A] hover:bg-[#9E762A] hover:text-white'
                 }`}
               >
                 {c.label}
@@ -93,29 +93,29 @@ export default async function CategoryPage({
         </div>
 
         {posts.length === 0 ? (
-          <p className="text-[#2C3E50]/60 text-center py-12">No posts in this category yet.</p>
+          <p className="text-[#3C4E42]/60 text-center py-12">No posts in this category yet.</p>
         ) : (
           <div className="grid md:grid-cols-2 gap-6">
             {posts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group bg-white rounded-2xl border border-[#E8E3D8] p-7 hover:border-[#B8912A]/40 hover:shadow-md transition-all flex flex-col"
+                className="group bg-white rounded-2xl border border-[#D2D8CF] p-7 hover:border-[#9E762A]/40 hover:shadow-md transition-all flex flex-col"
               >
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="text-xs text-[#2C3E50]/50 flex items-center gap-1">
+                  <span className="text-xs text-[#3C4E42]/50 flex items-center gap-1">
                     <Clock size={11} /> {post.readingTime}
                   </span>
                 </div>
                 <h2 className="font-display text-xl font-bold text-[#0D1B2A] mb-3 leading-snug group-hover:text-[#1A4A30] transition-colors">
                   {post.title}
                 </h2>
-                <p className="text-[#2C3E50]/65 text-sm leading-relaxed mb-5 flex-1">
+                <p className="text-[#3C4E42]/65 text-sm leading-relaxed mb-5 flex-1">
                   {post.excerpt}
                 </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-[#2C3E50]/40">{post.date}</span>
-                  <span className="text-[#B8912A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                  <span className="text-xs text-[#3C4E42]/40">{post.date}</span>
+                  <span className="text-[#9E762A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                     Read <ArrowRight size={13} />
                   </span>
                 </div>
@@ -127,7 +127,7 @@ export default async function CategoryPage({
         <div className="mt-10">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#1A4A30] font-semibold hover:text-[#B8912A] transition-colors text-sm"
+            className="inline-flex items-center gap-2 text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors text-sm"
           >
             ← All posts
           </Link>

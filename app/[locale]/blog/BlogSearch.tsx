@@ -28,18 +28,18 @@ export default function BlogSearch({ posts, categories, postCountByCategory }: P
       <div className="flex flex-col sm:flex-row gap-3 mb-8">
         {/* Search input */}
         <div className="relative flex-1 max-w-sm">
-          <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#2C3E50]/35 pointer-events-none" />
+          <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3C4E42]/35 pointer-events-none" />
           <input
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search posts…"
-            className="w-full pl-9 pr-8 py-2 text-sm rounded-full border border-[#E8E3D8] bg-white text-[#0D1B2A] placeholder-[#2C3E50]/35 focus:outline-none focus:border-[#B8912A] transition-colors"
+            className="w-full pl-9 pr-8 py-2 text-sm rounded-full border border-[#D2D8CF] bg-white text-[#0E1C14] placeholder-[#3C4E42]/35 focus:outline-none focus:border-[#9E762A] transition-colors"
           />
           {query && (
             <button
               onClick={() => setQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#2C3E50]/40 hover:text-[#0D1B2A] transition-colors"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-[#3C4E42]/40 hover:text-[#0E1C14] transition-colors"
               aria-label="Clear search"
             >
               <X size={13} />
@@ -55,7 +55,7 @@ export default function BlogSearch({ posts, categories, postCountByCategory }: P
               <Link
                 key={cat.slug}
                 href={`/blog/category/${cat.slug}`}
-                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-semibold border border-[#B8912A]/40 text-[#B8912A] hover:bg-[#B8912A] hover:text-white transition-colors"
+                className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-sm font-semibold border border-[#9E762A]/40 text-[#9E762A] hover:bg-[#9E762A] hover:text-white transition-colors"
               >
                 {cat.label}
                 <span className="text-xs opacity-70">({count})</span>
@@ -67,9 +67,9 @@ export default function BlogSearch({ posts, categories, postCountByCategory }: P
 
       {/* Results */}
       {filtered.length === 0 ? (
-        <div className="text-center py-16 text-[#2C3E50]/50">
+        <div className="text-center py-16 text-[#3C4E42]/50">
           <p className="text-lg mb-2">No posts found for &ldquo;{query}&rdquo;</p>
-          <button onClick={() => setQuery('')} className="text-[#B8912A] text-sm font-semibold hover:underline">
+          <button onClick={() => setQuery('')} className="text-[#9E762A] text-sm font-semibold hover:underline">
             Clear search
           </button>
         </div>
@@ -81,7 +81,7 @@ export default function BlogSearch({ posts, categories, postCountByCategory }: P
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="group bg-white rounded-2xl border border-[#E8E3D8] hover:border-[#B8912A]/40 hover:shadow-md transition-all flex flex-col overflow-hidden"
+                className="group bg-white rounded-2xl border border-[#D2D8CF] hover:border-[#9E762A]/40 hover:shadow-md transition-all flex flex-col overflow-hidden"
               >
                 {post.image && (
                   <div className="aspect-[16/9] overflow-hidden">
@@ -96,24 +96,24 @@ export default function BlogSearch({ posts, categories, postCountByCategory }: P
                 <div className="p-7 flex flex-col flex-1">
                   <div className="flex items-center gap-2 mb-3">
                     {cat && (
-                      <span className="text-xs font-semibold text-[#B8912A] uppercase tracking-wider">
+                      <span className="text-xs font-semibold text-[#9E762A] uppercase tracking-wider">
                         {cat.label}
                       </span>
                     )}
-                    <span className="text-[#2C3E50]/30 text-xs">·</span>
-                    <span className="text-xs text-[#2C3E50]/50 flex items-center gap-1">
+                    <span className="text-[#3C4E42]/30 text-xs">·</span>
+                    <span className="text-xs text-[#3C4E42]/50 flex items-center gap-1">
                       <Clock size={11} /> {post.readingTime}
                     </span>
                   </div>
-                  <h2 className="font-display text-xl font-bold text-[#0D1B2A] mb-3 leading-snug group-hover:text-[#1A4A30] transition-colors">
+                  <h2 className="font-display text-xl font-bold text-[#0E1C14] mb-3 leading-snug group-hover:text-[#1A4A30] transition-colors">
                     {post.title}
                   </h2>
-                  <p className="text-[#2C3E50]/70 text-sm leading-relaxed mb-5 flex-1">
+                  <p className="text-[#3C4E42]/70 text-sm leading-relaxed mb-5 flex-1">
                     {post.excerpt}
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="text-xs text-[#2C3E50]/45">{post.date}</span>
-                    <span className="text-[#B8912A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+                    <span className="text-xs text-[#3C4E42]/45">{post.date}</span>
+                    <span className="text-[#9E762A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                       Read <ArrowRight size={13} />
                     </span>
                   </div>

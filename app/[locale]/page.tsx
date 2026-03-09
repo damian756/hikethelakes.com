@@ -82,7 +82,7 @@ export default async function HomePage({
       {/* ═══════════════════════════════════════════
           HERO — NAVY LINKS LANDSCAPE
       ═══════════════════════════════════════════ */}
-      <section className="relative bg-[#0D1B2A] overflow-hidden">
+      <section className="relative bg-[#0E1C14] overflow-hidden">
         <Image
           src={HERO_IMAGE_URL}
           alt={th('heroImageAlt')}
@@ -92,19 +92,19 @@ export default async function HomePage({
           sizes="100vw"
           quality={85}
         />
-        <div className="absolute inset-0 bg-[#0D1B2A]/50" />
+        <div className="absolute inset-0 bg-[#0E1C14]/50" />
         <div
           className="absolute inset-0 opacity-20"
           style={{
-            backgroundImage: `radial-gradient(circle at 25% 60%, #1A4A30 0%, transparent 50%), radial-gradient(circle at 75% 30%, #B8912A 0%, transparent 45%)`,
+            backgroundImage: `radial-gradient(circle at 25% 60%, #1A4A30 0%, transparent 50%), radial-gradient(circle at 75% 30%, #9E762A 0%, transparent 45%)`,
           }}
         />
 
         <div className="relative container mx-auto px-4 max-w-7xl py-20 md:py-28">
           <div className="max-w-4xl mx-auto text-center">
             {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#B8912A]/20 border border-[#B8912A]/40 rounded-full px-4 py-1.5 mb-8">
-              <Flag size={12} className="text-[#B8912A]" />
+            <div className="inline-flex items-center gap-2 bg-[#9E762A]/20 border border-[#9E762A]/40 rounded-full px-4 py-1.5 mb-8">
+              <Flag size={12} className="text-[#9E762A]" />
               <span className="text-[#D4AE7A] text-xs font-semibold uppercase tracking-widest">
                 {th('heroBadge')}
               </span>
@@ -129,7 +129,7 @@ export default async function HomePage({
               </Link>
               <Link
                 href={`${prefix}/fell-log`}
-                className="inline-flex items-center justify-center gap-2 bg-[#B8912A] text-white font-semibold px-8 py-4 rounded-lg hover:bg-[#D4AE7A] transition-colors text-base"
+                className="inline-flex items-center justify-center gap-2 bg-[#9E762A] text-white font-semibold px-8 py-4 rounded-lg hover:bg-[#D4AE7A] transition-colors text-base"
               >
                 <Mountain size={18} />
                 {t('heroCtaOpen')}
@@ -143,19 +143,19 @@ export default async function HomePage({
           <div className="container mx-auto px-4 max-w-7xl py-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="px-4 py-2">
-                <div className="font-display text-2xl md:text-3xl font-bold text-[#B8912A]">20</div>
+                <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">20</div>
                 <div className="text-white/50 text-xs mt-1">Fells Featured</div>
               </div>
               <div className="px-4 py-2">
-                <div className="font-display text-2xl md:text-3xl font-bold text-[#B8912A]">214</div>
+                <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">214</div>
                 <div className="text-white/50 text-xs mt-1">Wainwrights</div>
               </div>
               <div className="px-4 py-2">
-                <div className="font-display text-2xl md:text-3xl font-bold text-[#B8912A]">978m</div>
+                <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">978m</div>
                 <div className="text-white/50 text-xs mt-1">Scafell Pike</div>
               </div>
               <div className="px-4 py-2">
-                <div className="font-display text-2xl md:text-3xl font-bold text-[#B8912A]">16</div>
+                <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">16</div>
                 <div className="text-white/50 text-xs mt-1">Lakes</div>
               </div>
             </div>
@@ -166,13 +166,13 @@ export default async function HomePage({
       {/* ═══════════════════════════════════════════
           FELLS SECTION
       ═══════════════════════════════════════════ */}
-      <section className="py-20 bg-[#F8F5EE]">
+      <section className="py-20 bg-[#EAEDE8]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-14">
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-4">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-[#0E1C14] mb-4">
               {t('coursesTitle')}
             </h2>
-            <p className="text-[#2C3E50]/70 text-lg max-w-2xl mx-auto">
+            <p className="text-[#3C4E42]/70 text-lg max-w-2xl mx-auto">
               {t('coursesSubtitle')}
             </p>
           </div>
@@ -182,34 +182,34 @@ export default async function HomePage({
               <Link
                 key={fell.slug}
                 href={`${prefix}/fells/${fell.slug}`}
-                className="group bg-white rounded-xl overflow-hidden border border-[#E8E3D8] hover:border-[#B8912A]/40 card-hover"
+                className="group bg-white rounded-xl overflow-hidden border border-[#D2D8CF] hover:border-[#9E762A]/40 card-hover"
               >
                 <div className="h-2 bg-[#1A4A30]" />
 
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <h3 className="font-display text-lg font-bold text-[#0D1B2A] group-hover:text-[#1A4A30] transition-colors leading-tight">
+                      <h3 className="font-display text-lg font-bold text-[#0E1C14] group-hover:text-[#1A4A30] transition-colors leading-tight">
                         {fell.name}
                       </h3>
-                      <p className="text-[#B8912A] text-xs font-semibold uppercase tracking-wider mt-1">
+                      <p className="text-[#9E762A] text-xs font-semibold uppercase tracking-wider mt-1">
                         {fell.height}m · {fell.wainwrightVolume}
                       </p>
                     </div>
                   </div>
 
-                  <p className="text-[#2C3E50]/70 text-sm leading-relaxed mb-5 line-clamp-2">
+                  <p className="text-[#3C4E42]/70 text-sm leading-relaxed mb-5 line-clamp-2">
                     {fell.summitDescription}
                   </p>
 
                   <div className="grid grid-cols-2 gap-3 mb-5">
-                    <div className="text-center bg-[#F8F5EE] rounded-lg p-2">
-                      <div className="text-[#0D1B2A] font-bold text-lg leading-none">{fell.height}m</div>
-                      <div className="text-[#2C3E50]/50 text-xs mt-1">Height</div>
+                    <div className="text-center bg-[#EAEDE8] rounded-lg p-2">
+                      <div className="text-[#0E1C14] font-bold text-lg leading-none">{fell.height}m</div>
+                      <div className="text-[#3C4E42]/50 text-xs mt-1">Height</div>
                     </div>
-                    <div className="text-center bg-[#F8F5EE] rounded-lg p-2">
-                      <div className="text-[#0D1B2A] font-bold text-sm leading-none capitalize">{fell.difficulty}</div>
-                      <div className="text-[#2C3E50]/50 text-xs mt-1">Difficulty</div>
+                    <div className="text-center bg-[#EAEDE8] rounded-lg p-2">
+                      <div className="text-[#0E1C14] font-bold text-sm leading-none capitalize">{fell.difficulty}</div>
+                      <div className="text-[#3C4E42]/50 text-xs mt-1">Difficulty</div>
                     </div>
                   </div>
 
@@ -222,7 +222,7 @@ export default async function HomePage({
                     }`}>
                       {fell.difficulty}
                     </div>
-                    <div className="ml-auto text-[#1A4A30] text-sm font-semibold group-hover:text-[#B8912A] transition-colors flex items-center gap-1">
+                    <div className="ml-auto text-[#1A4A30] text-sm font-semibold group-hover:text-[#9E762A] transition-colors flex items-center gap-1">
                       View guide <ChevronRight size={14} />
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export default async function HomePage({
           <div className="text-center">
             <Link
               href={`${prefix}/fells`}
-              className="inline-flex items-center gap-2 border-2 border-[#0D1B2A] text-[#0D1B2A] font-semibold px-8 py-3 rounded-lg hover:bg-[#0D1B2A] hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 border-2 border-[#0E1C14] text-[#0E1C14] font-semibold px-8 py-3 rounded-lg hover:bg-[#0E1C14] hover:text-white transition-colors"
             >
               View All Fells <ChevronRight size={16} />
             </Link>
@@ -245,7 +245,7 @@ export default async function HomePage({
       {/* ═══════════════════════════════════════════
           INTERACTIVE TOOLS SECTION
       ═══════════════════════════════════════════ */}
-      <section className="py-20 bg-[#0D1B2A]">
+      <section className="py-20 bg-[#0E1C14]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="text-center mb-14">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
@@ -260,7 +260,7 @@ export default async function HomePage({
             {/* Tool 1 — Course Conditions */}
             <Link
               href={`${prefix}/conditions`}
-              className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#B8912A]/40 hover:bg-white/10 transition-all card-hover"
+              className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#9E762A]/40 hover:bg-white/10 transition-all card-hover"
             >
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
@@ -272,7 +272,7 @@ export default async function HomePage({
                 {th('tool1Title')}
               </h3>
               <p className="text-white/55 text-sm leading-relaxed mb-5">{th('tool1Desc')}</p>
-              <span className="text-[#B8912A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span className="text-[#9E762A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                 {th('tool1Cta')} <ChevronRight size={14} />
               </span>
             </Link>
@@ -280,7 +280,7 @@ export default async function HomePage({
             {/* Tool 2 — Golf Break Planner */}
             <Link
               href={`${prefix}/itineraries`}
-              className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#B8912A]/40 hover:bg-white/10 transition-all card-hover"
+              className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#9E762A]/40 hover:bg-white/10 transition-all card-hover"
             >
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
@@ -292,7 +292,7 @@ export default async function HomePage({
                 {th('tool2Title')}
               </h3>
               <p className="text-white/55 text-sm leading-relaxed mb-5">{th('tool2Desc')}</p>
-              <span className="text-[#B8912A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span className="text-[#9E762A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                 {th('tool2Cta')} <ChevronRight size={14} />
               </span>
             </Link>
@@ -300,19 +300,19 @@ export default async function HomePage({
             {/* Tool 3 — Fell Log */}
             <Link
               href={`${prefix}/fell-log`}
-              className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#B8912A]/40 hover:bg-white/10 transition-all card-hover"
+              className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#9E762A]/40 hover:bg-white/10 transition-all card-hover"
             >
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                style={{ backgroundColor: '#B8912A25', border: '1px solid #B8912A40' }}
+                style={{ backgroundColor: '#9E762A25', border: '1px solid #9E762A40' }}
               >
-                <Flag size={20} style={{ color: '#B8912A' }} />
+                <Flag size={20} style={{ color: '#9E762A' }} />
               </div>
               <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-[#D4AE7A] transition-colors">
                 {th('tool3Title')}
               </h3>
               <p className="text-white/55 text-sm leading-relaxed mb-5">{th('tool3Desc')}</p>
-              <span className="text-[#B8912A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span className="text-[#9E762A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                 {th('tool3Cta')} <ChevronRight size={14} />
               </span>
             </Link>
@@ -320,19 +320,19 @@ export default async function HomePage({
             {/* Tool 4 — Accommodation */}
             <Link
               href={`${prefix}/accommodation`}
-              className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#B8912A]/40 hover:bg-white/10 transition-all card-hover"
+              className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#9E762A]/40 hover:bg-white/10 transition-all card-hover"
             >
               <div
                 className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                style={{ backgroundColor: '#B8912A25', border: '1px solid #B8912A40' }}
+                style={{ backgroundColor: '#9E762A25', border: '1px solid #9E762A40' }}
               >
-                <Trophy size={20} style={{ color: '#B8912A' }} />
+                <Trophy size={20} style={{ color: '#9E762A' }} />
               </div>
               <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-[#D4AE7A] transition-colors">
                 {th('tool4Title')}
               </h3>
               <p className="text-white/55 text-sm leading-relaxed mb-5">{th('tool4Desc')}</p>
-              <span className="text-[#B8912A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
+              <span className="text-[#9E762A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                 {th('tool4Cta')} <ChevronRight size={14} />
               </span>
             </Link>
@@ -343,12 +343,12 @@ export default async function HomePage({
       {/* ═══════════════════════════════════════════
           GOLF BREAK AFFILIATE CTA
       ═══════════════════════════════════════════ */}
-      <section className="py-16 bg-[#F8F5EE] border-t border-[#E8E3D8]">
+      <section className="py-16 bg-[#EAEDE8] border-t border-[#D2D8CF]">
         <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-4">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#0E1C14] mb-4">
             {th('affiliateCtaTitle')}
           </h2>
-          <p className="text-[#2C3E50]/70 text-lg mb-8 max-w-2xl mx-auto">
+          <p className="text-[#3C4E42]/70 text-lg mb-8 max-w-2xl mx-auto">
             {th('affiliateCtaDesc')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -363,13 +363,13 @@ export default async function HomePage({
             </a>
             <Link
               href={`${prefix}/itineraries`}
-              className="inline-flex items-center justify-center gap-2 border-2 border-[#0D1B2A] text-[#0D1B2A] font-semibold px-8 py-4 rounded-lg hover:bg-[#0D1B2A] hover:text-white transition-colors text-base"
+              className="inline-flex items-center justify-center gap-2 border-2 border-[#0E1C14] text-[#0E1C14] font-semibold px-8 py-4 rounded-lg hover:bg-[#0E1C14] hover:text-white transition-colors text-base"
             >
               <Calendar size={18} />
               {th('affiliateCtaBtn2')}
             </Link>
           </div>
-          <p className="text-[#2C3E50]/40 text-xs mt-5">
+          <p className="text-[#3C4E42]/40 text-xs mt-5">
             {th('affiliateCtaDisclaimer')}
           </p>
         </div>
@@ -380,10 +380,10 @@ export default async function HomePage({
       ═══════════════════════════════════════════ */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#0D1B2A] mb-8 text-center">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#0E1C14] mb-8 text-center">
             {th('editorialTitle')}
           </h2>
-          <div className="prose prose-lg max-w-none text-[#2C3E50]/80">
+          <div className="prose prose-lg max-w-none text-[#3C4E42]/80">
             <p>{th('editorialPara1')}</p>
             <p>{th('editorialPara2')}</p>
             <p>{th('editorialPara3')}</p>
@@ -391,26 +391,26 @@ export default async function HomePage({
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 mt-12">
-            <div className="bg-[#F8F5EE] rounded-xl p-6">
+            <div className="bg-[#EAEDE8] rounded-xl p-6">
               <div className="w-10 h-10 bg-[#1A4A30]/10 rounded-lg flex items-center justify-center mb-4">
                 <MapPin size={20} className="text-[#1A4A30]" />
               </div>
-              <h3 className="font-semibold text-[#0D1B2A] mb-2">{th('featureCard1Title')}</h3>
-              <p className="text-[#2C3E50]/70 text-sm leading-relaxed">{th('featureCard1Text')}</p>
+              <h3 className="font-semibold text-[#0E1C14] mb-2">{th('featureCard1Title')}</h3>
+              <p className="text-[#3C4E42]/70 text-sm leading-relaxed">{th('featureCard1Text')}</p>
             </div>
-            <div className="bg-[#F8F5EE] rounded-xl p-6">
+            <div className="bg-[#EAEDE8] rounded-xl p-6">
               <div className="w-10 h-10 bg-[#1A4A30]/10 rounded-lg flex items-center justify-center mb-4">
                 <Users size={20} className="text-[#1A4A30]" />
               </div>
-              <h3 className="font-semibold text-[#0D1B2A] mb-2">{th('featureCard2Title')}</h3>
-              <p className="text-[#2C3E50]/70 text-sm leading-relaxed">{th('featureCard2Text')}</p>
+              <h3 className="font-semibold text-[#0E1C14] mb-2">{th('featureCard2Title')}</h3>
+              <p className="text-[#3C4E42]/70 text-sm leading-relaxed">{th('featureCard2Text')}</p>
             </div>
-            <div className="bg-[#F8F5EE] rounded-xl p-6">
+            <div className="bg-[#EAEDE8] rounded-xl p-6">
               <div className="w-10 h-10 bg-[#1A4A30]/10 rounded-lg flex items-center justify-center mb-4">
                 <Star size={20} className="text-[#1A4A30]" />
               </div>
-              <h3 className="font-semibold text-[#0D1B2A] mb-2">{th('featureCard3Title')}</h3>
-              <p className="text-[#2C3E50]/70 text-sm leading-relaxed">{th('featureCard3Text')}</p>
+              <h3 className="font-semibold text-[#0E1C14] mb-2">{th('featureCard3Title')}</h3>
+              <p className="text-[#3C4E42]/70 text-sm leading-relaxed">{th('featureCard3Text')}</p>
             </div>
           </div>
         </div>
@@ -419,46 +419,46 @@ export default async function HomePage({
       {/* ═══════════════════════════════════════════
           NETWORK CROSS-LINKS
       ═══════════════════════════════════════════ */}
-      <section className="py-12 bg-[#F8F5EE] border-t border-[#E8E3D8]">
+      <section className="py-12 bg-[#EAEDE8] border-t border-[#D2D8CF]">
         <div className="container mx-auto px-4 max-w-7xl">
           <div className="grid md:grid-cols-2 gap-6">
             <a
               href="https://www.thelakesguide.co.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white rounded-xl p-6 border border-[#E8E3D8] hover:border-[#1A4A30]/30 transition-all card-hover flex items-center gap-5"
+              className="group bg-white rounded-xl p-6 border border-[#D2D8CF] hover:border-[#1A4A30]/30 transition-all card-hover flex items-center gap-5"
             >
               <div className="w-14 h-14 bg-[#1A4A30]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#1A4A30]/20 transition-colors">
                 <MapPin size={24} className="text-[#1A4A30]" />
               </div>
               <div>
-                <div className="font-display font-bold text-[#0D1B2A] group-hover:text-[#1A4A30] transition-colors">
+                <div className="font-display font-bold text-[#0E1C14] group-hover:text-[#1A4A30] transition-colors">
                   TheLakesGuide.co.uk
                 </div>
-                <div className="text-[#2C3E50]/60 text-sm mt-1">
+                <div className="text-[#3C4E42]/60 text-sm mt-1">
                   {th('lakesGuideDesc')}
                 </div>
               </div>
-              <ChevronRight size={18} className="text-[#2C3E50]/30 group-hover:text-[#1A4A30] shrink-0 ml-auto transition-colors" />
+              <ChevronRight size={18} className="text-[#3C4E42]/30 group-hover:text-[#1A4A30] shrink-0 ml-auto transition-colors" />
             </a>
             <a
               href="https://www.thelakeswildlife.co.uk"
               target="_blank"
               rel="noopener noreferrer"
-              className="group bg-white rounded-xl p-6 border border-[#E8E3D8] hover:border-[#1A4A30]/30 transition-all card-hover flex items-center gap-5"
+              className="group bg-white rounded-xl p-6 border border-[#D2D8CF] hover:border-[#1A4A30]/30 transition-all card-hover flex items-center gap-5"
             >
               <div className="w-14 h-14 bg-[#2E6B3E]/10 rounded-xl flex items-center justify-center shrink-0 group-hover:bg-[#2E6B3E]/20 transition-colors">
                 <MapPin size={24} className="text-[#2E6B3E]" />
               </div>
               <div>
-                <div className="font-display font-bold text-[#0D1B2A] group-hover:text-[#1A4A30] transition-colors">
+                <div className="font-display font-bold text-[#0E1C14] group-hover:text-[#1A4A30] transition-colors">
                   TheLakesWildlife.co.uk
                 </div>
-                <div className="text-[#2C3E50]/60 text-sm mt-1">
+                <div className="text-[#3C4E42]/60 text-sm mt-1">
                   {th('lakesWildlifeDesc')}
                 </div>
               </div>
-              <ChevronRight size={18} className="text-[#2C3E50]/30 group-hover:text-[#1A4A30] shrink-0 ml-auto transition-colors" />
+              <ChevronRight size={18} className="text-[#3C4E42]/30 group-hover:text-[#1A4A30] shrink-0 ml-auto transition-colors" />
             </a>
           </div>
         </div>

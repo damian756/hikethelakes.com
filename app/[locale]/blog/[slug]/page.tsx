@@ -43,19 +43,19 @@ function renderBlock(block: ContentBlock, i: number) {
   switch (block.type) {
     case 'h2':
       return (
-        <h2 key={i} className="font-display text-2xl font-bold text-[#0D1B2A] mt-10 mb-4 leading-snug">
+        <h2 key={i} className="font-display text-2xl font-bold text-[#0E1C14] mt-10 mb-4 leading-snug">
           {block.text}
         </h2>
       );
     case 'h3':
       return (
-        <h3 key={i} className="font-display text-xl font-bold text-[#0D1B2A] mt-8 mb-3">
+        <h3 key={i} className="font-display text-xl font-bold text-[#0E1C14] mt-8 mb-3">
           {block.text}
         </h3>
       );
     case 'p':
       return (
-        <p key={i} className="text-[#2C3E50]/80 leading-relaxed mb-5 text-[1.0625rem]">
+        <p key={i} className="text-[#3C4E42]/80 leading-relaxed mb-5 text-[1.0625rem]">
           {block.text}
         </p>
       );
@@ -63,8 +63,8 @@ function renderBlock(block: ContentBlock, i: number) {
       return (
         <ul key={i} className="mb-6 space-y-2.5">
           {block.items.map((item, j) => (
-            <li key={j} className="flex gap-3 text-[#2C3E50]/80 text-[1.0625rem]">
-              <span className="text-[#B8912A] font-bold flex-none mt-0.5">→</span>
+            <li key={j} className="flex gap-3 text-[#3C4E42]/80 text-[1.0625rem]">
+              <span className="text-[#9E762A] font-bold flex-none mt-0.5">→</span>
               <span>{item}</span>
             </li>
           ))}
@@ -72,12 +72,12 @@ function renderBlock(block: ContentBlock, i: number) {
       );
     case 'callout':
       return (
-        <div key={i} className="my-8 rounded-xl border border-[#B8912A]/30 bg-[#0D1B2A] px-6 py-5">
+        <div key={i} className="my-8 rounded-xl border border-[#9E762A]/30 bg-[#0E1C14] px-6 py-5">
           <p className="text-white/80 text-sm leading-relaxed">{block.text}</p>
         </div>
       );
     case 'hr':
-      return <hr key={i} className="my-8 border-[#E8E3D8]" />;
+      return <hr key={i} className="my-8 border-[#D2D8CF]" />;
     default:
       return null;
   }
@@ -131,16 +131,16 @@ export default async function BlogPostPage({
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F5EE]">
+    <div className="min-h-screen bg-[#EAEDE8]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
       />
 
       {/* Breadcrumb */}
-      <div className="bg-white border-b border-[#E8E3D8]">
+      <div className="bg-white border-b border-[#D2D8CF]">
         <div className="container mx-auto px-4 max-w-3xl py-3">
-          <nav className="flex items-center gap-2 text-sm text-[#2C3E50]/55 flex-wrap">
+          <nav className="flex items-center gap-2 text-sm text-[#3C4E42]/55 flex-wrap">
             <Link href="/" className="hover:text-[#1A4A30] transition-colors">Home</Link>
             <ChevronRight size={13} />
             <Link href="/blog" className="hover:text-[#1A4A30] transition-colors">Blog</Link>
@@ -153,13 +153,13 @@ export default async function BlogPostPage({
               </>
             )}
             <ChevronRight size={13} />
-            <span className="text-[#0D1B2A] font-medium truncate max-w-[200px]">{post.title}</span>
+            <span className="text-[#0E1C14] font-medium truncate max-w-[200px]">{post.title}</span>
           </nav>
         </div>
       </div>
 
       {/* Article hero */}
-      <div className="bg-[#0D1B2A] text-white py-12 relative overflow-hidden">
+      <div className="bg-[#0E1C14] text-white py-12 relative overflow-hidden">
         <Image
           src={post.image || HERO_IMAGE_URL}
           alt={post.title}
@@ -169,7 +169,7 @@ export default async function BlogPostPage({
         />
         <div className="relative z-10 container mx-auto px-4 max-w-3xl">
           {cat && (
-            <p className="text-[#B8912A] text-xs font-bold uppercase tracking-widest mb-3">
+            <p className="text-[#9E762A] text-xs font-bold uppercase tracking-widest mb-3">
               {cat.label}
             </p>
           )}
@@ -188,7 +188,7 @@ export default async function BlogPostPage({
       <div className="container mx-auto px-4 max-w-3xl py-12">
 
         {/* Excerpt */}
-        <p className="text-lg text-[#2C3E50]/70 leading-relaxed mb-8 pb-8 border-b border-[#E8E3D8] font-medium">
+        <p className="text-lg text-[#3C4E42]/70 leading-relaxed mb-8 pb-8 border-b border-[#D2D8CF] font-medium">
           {post.excerpt}
         </p>
 
@@ -198,20 +198,20 @@ export default async function BlogPostPage({
         </div>
 
         {/* Author box */}
-        <div className="mt-14 pt-10 border-t border-[#E8E3D8]">
-          <div className="bg-white rounded-2xl border border-[#E8E3D8] p-7 flex flex-col sm:flex-row gap-5 items-start">
-            <div className="w-14 h-14 rounded-full bg-[#0D1B2A] flex items-center justify-center flex-shrink-0">
-              <span className="text-[#B8912A] font-display font-bold text-lg">D</span>
+        <div className="mt-14 pt-10 border-t border-[#D2D8CF]">
+          <div className="bg-white rounded-2xl border border-[#D2D8CF] p-7 flex flex-col sm:flex-row gap-5 items-start">
+            <div className="w-14 h-14 rounded-full bg-[#0E1C14] flex items-center justify-center flex-shrink-0">
+              <span className="text-[#9E762A] font-display font-bold text-lg">D</span>
             </div>
             <div>
-              <p className="font-semibold text-[#0D1B2A] text-base">{DAMIAN.name}</p>
-              <p className="text-[#2C3E50]/50 text-sm mb-3">{DAMIAN.jobTitle}</p>
-              <p className="text-[#2C3E50]/70 text-sm leading-relaxed">{DAMIAN.bio}</p>
+              <p className="font-semibold text-[#0E1C14] text-base">{DAMIAN.name}</p>
+              <p className="text-[#3C4E42]/50 text-sm mb-3">{DAMIAN.jobTitle}</p>
+              <p className="text-[#3C4E42]/70 text-sm leading-relaxed">{DAMIAN.bio}</p>
               <a
                 href={DAMIAN.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-[#B8912A] hover:text-[#0D1B2A] transition-colors"
+                className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-[#9E762A] hover:text-[#0E1C14] transition-colors"
               >
                 About Damian <ChevronRight size={13} />
               </a>
@@ -223,7 +223,7 @@ export default async function BlogPostPage({
         <div className="mt-8">
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 text-[#1A4A30] font-semibold hover:text-[#B8912A] transition-colors text-sm"
+            className="inline-flex items-center gap-2 text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors text-sm"
           >
             <ArrowLeft size={14} /> Back to blog
           </Link>

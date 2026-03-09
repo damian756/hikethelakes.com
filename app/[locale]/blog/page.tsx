@@ -34,15 +34,15 @@ export default async function BlogPage({
   if (locale !== 'en') notFound();
 
   return (
-    <div className="min-h-screen bg-[#F8F5EE]">
+    <div className="min-h-screen bg-[#EAEDE8]">
       {/* Hero */}
-      <div className="bg-[#0D1B2A] text-white py-14 relative overflow-hidden">
+      <div className="bg-[#0E1C14] text-white py-14 relative overflow-hidden">
         <div className="absolute inset-0">
           <Image src={HERO_IMAGE_URL} alt="" fill sizes="100vw" quality={70} className="object-cover object-center opacity-40" />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D1B2A]/55 via-[#0D1B2A]/35 to-[#0D1B2A]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0E1C14]/55 via-[#0E1C14]/35 to-[#0E1C14]/70" />
         <div className="relative container mx-auto px-4 max-w-5xl">
-          <p className="text-[#B8912A] text-xs font-bold uppercase tracking-widest mb-3">
+          <p className="text-[#9E762A] text-xs font-bold uppercase tracking-widest mb-3">
             The HikeTheLakes Blog
           </p>
           <h1 className="font-display text-4xl md:text-5xl font-bold mb-4 leading-tight">
@@ -66,19 +66,19 @@ export default async function BlogPage({
         />
 
         {/* Author box */}
-        <div className="mt-14 bg-white rounded-2xl border border-[#E8E3D8] p-8 flex flex-col sm:flex-row gap-6 items-start">
-          <div className="w-14 h-14 rounded-full bg-[#0D1B2A] flex items-center justify-center flex-shrink-0">
-            <span className="text-[#B8912A] font-display font-bold text-lg">D</span>
+        <div className="mt-14 bg-white rounded-2xl border border-[#D2D8CF] p-8 flex flex-col sm:flex-row gap-6 items-start">
+          <div className="w-14 h-14 rounded-full bg-[#0E1C14] flex items-center justify-center flex-shrink-0">
+            <span className="text-[#9E762A] font-display font-bold text-lg">D</span>
           </div>
           <div>
-            <p className="font-semibold text-[#0D1B2A] text-lg">{DAMIAN.name}</p>
-            <p className="text-[#2C3E50]/55 text-sm mb-3">{DAMIAN.jobTitle}</p>
-            <p className="text-[#2C3E50]/75 text-sm leading-relaxed">{DAMIAN.bio}</p>
+            <p className="font-semibold text-[#0E1C14] text-lg">{DAMIAN.name}</p>
+            <p className="text-[#3C4E42]/55 text-sm mb-3">{DAMIAN.jobTitle}</p>
+            <p className="text-[#3C4E42]/75 text-sm leading-relaxed">{DAMIAN.bio}</p>
             <a
               href={DAMIAN.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-[#B8912A] hover:text-[#0D1B2A] transition-colors"
+              className="inline-flex items-center gap-1 mt-3 text-sm font-semibold text-[#9E762A] hover:text-[#0E1C14] transition-colors"
             >
               About Damian <ChevronRight size={13} />
             </a>

@@ -49,8 +49,8 @@ export default function LanguageSwitcher() {
             href={buildHref(locale)}
             className={`flex items-center gap-1.5 px-2 py-1 rounded transition ${
               locale === currentLocale
-                ? 'bg-[#B8912A]/40 text-white font-semibold'
-                : 'bg-white/10 text-white/60 hover:bg-[#B8912A]/30 hover:text-white'
+                ? 'bg-[#9E762A]/40 text-white font-semibold'
+                : 'bg-white/10 text-white/60 hover:bg-[#9E762A]/30 hover:text-white'
             }`}
           >
             {FlagComponent && <FlagComponent />}

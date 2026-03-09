@@ -9,39 +9,38 @@ body {
 }
 
 :root {
-  /* HikeTheLakes brand palette */
-  --navy:    #0D1B2A;   /* deep ocean / primary bg */
-  --fairway: #1A4A30;   /* fairway green */
-  --gold:    #B8912A;   /* championship gold */
-  --straw:   #D4AE7A;   /* links turf / sand */
-  --coastal: #4A7D9A;   /* Sefton Coast sky */
-  --cream:   #F8F5EE;   /* morning mist */
-  --slate:   #2C3E50;   /* stone rough */
-  --fog:     #E8E3D8;   /* links fog */
+  /* Fell & Tarn — Hike The Lakes palette */
+  --summit:   #0E1C14;
+  --forest:   #1A4A30;
+  --highland: #2E7A50;
+  --amber:    #9E762A;
+  --snowline: #EAEDE8;
+  --scree:    #D2D8CF;
+  --stone:    #3C4E42;
 
-  --background: var(--cream);
-  --foreground:  var(--navy);
+  --background: var(--snowline);
+  --foreground:  var(--summit);
   --font-inter: "Inter", sans-serif;
-  --font-playfair: "Playfair Display", serif;
+  --font-lora: "Lora", serif;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-inter);
-  --font-display: var(--font-playfair);
+  --font-display: var(--font-lora);
 }
 
 body {
-  background: var(--cream);
-  color: var(--navy);
+  background: var(--snowline);
+  color: var(--summit);
   font-family: var(--font-inter), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 .font-display {
-  font-family: var(--font-playfair), Georgia, serif;
+  font-family: var(--font-lora), Georgia, serif;
 }
 
 /* RTL support for Arabic */
@@ -54,23 +53,23 @@ body {
 }
 .card-hover:hover {
   transform: translateY(-3px);
-  box-shadow: 0 16px 40px rgba(13, 27, 42, 0.12);
+  box-shadow: 0 16px 40px rgba(20, 35, 28, 0.10);
 }
 
-.gold-border {
-  border-top: 2px solid var(--gold);
+.amber-border {
+  border-top: 2px solid var(--amber);
 }
 
-/* Championship gold gradient bar */
+/* Amber gradient bar */
 .gold-bar {
-  background: linear-gradient(90deg, transparent, #B8912A, #D4AE7A, #B8912A, transparent);
+  background: linear-gradient(90deg, transparent, #9E762A, #D4AE7A, #9E762A, transparent);
   height: 2px;
 }
 
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #f1f1f1; }
-::-webkit-scrollbar-thumb { background: #b8912a44; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+::-webkit-scrollbar-thumb { background: #1A4A3044; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--amber); }
 
 .scrollbar-hide {
   -ms-overflow-style: none;

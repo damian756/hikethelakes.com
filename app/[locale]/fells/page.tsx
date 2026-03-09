@@ -23,7 +23,7 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
   const prefix = locale === 'en' ? '' : `/${locale}`;
 
   return (
-    <div className="min-h-screen bg-[#F8F5EE]">
+    <div className="min-h-screen bg-[#EAEDE8]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -52,7 +52,7 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
         }}
       />
 
-      <div className="bg-[#0D1B2A] py-16 relative overflow-hidden">
+      <div className="bg-[#0E1C14] py-16 relative overflow-hidden">
         <Image
           src={HERO_IMAGE_URL}
           alt="Lake District fells"
@@ -61,9 +61,9 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
           className="object-cover object-center opacity-40"
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0D1B2A]/55 via-[#0D1B2A]/35 to-[#0D1B2A]/70" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0E1C14]/55 via-[#0E1C14]/35 to-[#0E1C14]/70" />
         <div className="relative container mx-auto px-4 max-w-7xl">
-          <div className="text-[#B8912A] text-sm uppercase tracking-widest font-semibold mb-3">
+          <div className="text-[#9E762A] text-sm uppercase tracking-widest font-semibold mb-3">
             {t('headerBadge')}
           </div>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">
@@ -81,9 +81,9 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
             <Link
               key={fell.slug}
               href={`${prefix}/fells/${fell.slug}`}
-              className="group bg-white rounded-xl border border-[#E8E3D8] overflow-hidden hover:shadow-lg hover:border-[#B8912A]/40 transition-all"
+              className="group bg-white rounded-xl border border-[#D2D8CF] overflow-hidden hover:shadow-lg hover:border-[#9E762A]/40 transition-all"
             >
-              <div className="relative h-44 bg-[#0D1B2A]">
+              <div className="relative h-44 bg-[#0E1C14]">
                 {fell.image ? (
                   <Image
                     src={fell.image}
@@ -98,16 +98,16 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
                   </div>
                 )}
                 <div className="absolute bottom-3 left-4 right-4">
-                  <span className="inline-block bg-[#B8912A] text-white text-xs font-bold px-2.5 py-1 rounded">
+                  <span className="inline-block bg-[#9E762A] text-white text-xs font-bold px-2.5 py-1 rounded">
                     {fell.height}m
                   </span>
                 </div>
               </div>
               <div className="p-5">
-                <h2 className="font-display text-xl font-bold text-[#0D1B2A] mb-1 group-hover:text-[#1A4A30] transition-colors">
+                <h2 className="font-display text-xl font-bold text-[#0E1C14] mb-1 group-hover:text-[#1A4A30] transition-colors">
                   {fell.name}
                 </h2>
-                <p className="text-sm text-[#2C3E50]/70 mb-3">{fell.wainwrightVolume}</p>
+                <p className="text-sm text-[#3C4E42]/70 mb-3">{fell.wainwrightVolume}</p>
                 <span className="inline-flex items-center gap-1.5 text-[#1A4A30] font-semibold text-sm">
                   {t('viewGuide')} <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                 </span>

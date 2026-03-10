@@ -19,8 +19,7 @@ export default function proxy(request: NextRequest) {
   const ua = request.headers.get("user-agent") ?? "";
 
   const accept = request.headers.get("accept") ?? "";
-  const isPageRequest =
-    accept.includes("text/html") || request.headers.has("next-router-state-tree");
+  const isPageRequest = accept.includes("text/html");
 
   const skip =
     !isPageRequest ||

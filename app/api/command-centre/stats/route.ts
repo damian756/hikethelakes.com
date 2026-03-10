@@ -64,3 +64,12 @@ export async function GET(req: NextRequest) {
     outreach: { emailsSentThisWeek: 0, responsesThisWeek: 0, pendingFollowUps: 0 },
   });
 }
+
+export async function DELETE(req: NextRequest) {
+  const key = req.headers.get("x-api-key");
+  if (!key || key !== process.env.COMMAND_CENTRE_API_KEY) {
+    return NextResponse.json({ error: "Unauthorised" }, { status: 401 });
+  }
+  await prisma.pageView.deleteMany();
+  return NextResponse.json({ ok: true, deleted: true });
+}

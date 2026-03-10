@@ -19,7 +19,12 @@ export default function proxy(request: NextRequest) {
   const ua = request.headers.get("user-agent") ?? "";
 
   const accept = request.headers.get("accept") ?? "";
-  const isPageRequest = accept.includes("text/html");
+  const secFetchMode = request.headers.get("sec-fetch-mode");
+  const secFetchDest = request.headers.get("sec-fetch-dest");
+  const isPageRequest =
+    accept.includes("text/html") &&
+    secFetchMode === "navigate" &&
+    secFetchDest === "document";
 
   const skip =
     !isPageRequest ||

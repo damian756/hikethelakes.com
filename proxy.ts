@@ -18,8 +18,14 @@ export default function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const ua = request.headers.get("user-agent") ?? "";
 
+  const accept = request.headers.get("accept") ?? "";
+  const isPageRequest =
+    accept.includes("text/html") || request.headers.has("next-router-state-tree");
+
   const skip =
+    !isPageRequest ||
     pathname.startsWith("/_next") ||
+    pathname.startsWith("/_vercel") ||
     pathname.startsWith("/api") ||
     pathname.startsWith("/admin") ||
     /\.(ico|png|jpg|jpeg|gif|svg|css|js|woff|woff2|txt|xml|json|webp|map)$/.test(pathname) ||

@@ -32,6 +32,14 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // non-www → www
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'hikethelakes.com' }],
+        destination: 'https://www.hikethelakes.com/:path*',
+        permanent: true,
+      },
+      // Vercel preview → canonical domain
       {
         source: '/(.*)',
         has: [{ type: 'host', value: 'hike-the-lakes.vercel.app' }],

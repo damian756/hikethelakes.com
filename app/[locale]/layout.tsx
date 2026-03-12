@@ -139,6 +139,7 @@ export default async function LocaleLayout({
           <Footer locale={locale} />
         </NextIntlClientProvider>
         <Analytics />
+        <Script src="https://analytics.ahrefs.com/analytics.js" data-key="XdS2WoLlzpb1p5PqyWrRtw" strategy="afterInteractive" />
       </body>
     </html>
   );

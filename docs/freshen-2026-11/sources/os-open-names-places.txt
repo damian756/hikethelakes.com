@@ -1,0 +1,8 @@
+Keswick| Keswick | Town | 326545 523526 | Cumberland | osgb4000000074546080
+Ambleside| Ambleside | Town | 337621 504558 | Westmorland and Furness | osgb4000000074547827
+Grasmere| Grasmere | Village | 333645 507578 | Westmorland and Furness | osgb4000000074547832
+Coniston| Coniston | Village | 330204 497624 | Westmorland and Furness | osgb4000000074562809
+Windermere| Windermere | Town | 341225 498623 | Westmorland and Furness | osgb4000000074562020
+Windermere| Bowness-on-Windermere | Town | 340344 496961 | Westmorland and Furness | osgb4000000074562021
+Burnbanks| Burnbanks | Hamlet | 351051 516238 | Westmorland and Furness | osgb4000000074546303
+Howtown Hamlet 344331 519731 Westmorland and Furness osgb4000000074546066

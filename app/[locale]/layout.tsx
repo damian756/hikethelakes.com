@@ -276,11 +276,11 @@ async function Footer({ locale }: { locale: string }) {
         </div>
 
         <div className="border-t border-white/10 pt-6 pb-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/60">
-          <span>Part of the <a href="https://thelakes.network" target="_blank" rel="noopener" className="hover:text-white/60 transition">Lakes Network</a></span>
+          <span>Part of the <a href="https://thelakes.network" target="_blank" rel="noopener" className="hover:text-white transition">Lakes Network</a></span>
           <div className="flex flex-wrap gap-5">
-            <a href="https://www.thelakesguide.co.uk" target="_blank" rel="noopener" className="hover:text-white/60 transition">The Lakes Guide: restaurants & accommodation</a>
-            <a href="https://www.thelakeswildlife.co.uk" target="_blank" rel="noopener" className="hover:text-white/60 transition">The Lakes Wildlife: species & reserves</a>
-            <a href="https://thelakes.network" target="_blank" rel="noopener" className="hover:text-white/60 transition">TheLakes.network</a>
+            <a href="https://www.thelakesguide.co.uk" target="_blank" rel="noopener" className="hover:text-white transition">The Lakes Guide: restaurants & accommodation</a>
+            <a href="https://www.thelakeswildlife.co.uk" target="_blank" rel="noopener" className="hover:text-white transition">The Lakes Wildlife: species & reserves</a>
+            <a href="https://thelakes.network" target="_blank" rel="noopener" className="hover:text-white transition">TheLakes.network</a>
           </div>
         </div>
 
@@ -297,13 +297,13 @@ async function Footer({ locale }: { locale: string }) {
         <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
           <p>{tf('copyright')}</p>
           <div className="flex flex-wrap gap-5">
-            <Link href={`${prefix}/privacy`} className="hover:text-white/60 transition">
+            <Link href={`${prefix}/privacy`} className="hover:text-white transition">
               {tf('privacyLink')}
             </Link>
-            <Link href={`${prefix}/terms`} className="hover:text-white/60 transition">
+            <Link href={`${prefix}/terms`} className="hover:text-white transition">
               {tf('termsLink')}
             </Link>
-            <Link href={`${prefix}/contact`} className="hover:text-white/60 transition">
+            <Link href={`${prefix}/contact`} className="hover:text-white transition">
               {tf('contactLink')}
             </Link>
           </div>

@@ -28,7 +28,7 @@ export default function BlogSearch({ posts, categories, postCountByCategory }: P
       {/* Search + category pills row */}
       <div className="flex flex-col sm:flex-row gap-3 mb-8">
         {/* Search input */}
-        <div className="relative flex-1 max-w-sm">
+        <div className="relative w-full sm:w-72 sm:flex-none">
           <Search size={15} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#3C4E42]/35 pointer-events-none" />
           <input
             type="search"

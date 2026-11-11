@@ -232,7 +232,7 @@
     "lastUpdated": "Last updated: November 2026",
     "privacyIntro": "HikeTheLakes.com is operated by Churchtown Media Ltd. We take your privacy seriously.",
     "analyticsTitle": "Analytics",
-    "analyticsDesc": "Ahrefs Web Analytics: page view statistics without cookies. It records the page, referrer, browser, device, language, screen size and approximate location (city level), and counts visitors with a daily pseudonymous identifier that is not kept across days.",
+    "analyticsDesc": "Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored.",
     "pageCountDesc": "Our own page count: each time a page is viewed, the site adds one to that page's total for the day. It stores the page address, the date and the number, and nothing about you.",
     "cookiesTitle": "Cookies",
     "cookiesDesc": "The site may set one cookie, NEXT_LOCALE, which records that you are using the English version of the site. It is deleted when you close your browser. Ahrefs Web Analytics and our page count set no cookies.",

@@ -115,7 +115,8 @@
     "gridRef": "Grid Ref",
     "area": "Area",
     "osMaps": "OS Maps",
-    "otherFells": "Other Fells",
+    "otherFells": "Other Fells in This Area",
+    "relatedPosts": "From the Blog",
     "noGuideTitle": "Route guide",
     "noGuideText": "We have not written a route guide for {name} yet. Plan your route on an OS map, and check the MWIS or Met Office mountain forecast before you set out.",
     "noGuideLink": "All 214 fells"

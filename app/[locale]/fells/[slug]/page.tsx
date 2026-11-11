@@ -6,6 +6,7 @@ import { MapPin, ChevronRight, Mountain, Clock, TrendingUp, Utensils } from 'luc
 import { FELLS, getFell, hasCheckedGeo, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
+import { BLOG_POSTS } from '@/lib/blog';
 
 export async function generateStaticParams() {
   return FELLS.map((fell) => ({ slug: fell.slug }));
@@ -47,7 +48,14 @@ export default async function FellPage({
   if (!fell) notFound();
 
   const prefix = locale === 'en' ? '' : `/${locale}`;
-  const otherFells = FELLS.filter((f) => f.slug !== slug);
+  // Same area first, written guides before placeholders, then by height.
+  const otherFells = FELLS.filter((f) => f.slug !== slug).sort(
+    (a, b) =>
+      Number(b.area === fell.area) - Number(a.area === fell.area) ||
+      Number(hasRouteGuide(b)) - Number(hasRouteGuide(a)) ||
+      b.height - a.height,
+  );
+  const relatedPosts = locale === 'en' ? BLOG_POSTS.filter((p) => p.relatedFells?.includes(fell.slug)) : [];
   const t = await getTranslations({ locale, namespace: 'fellDetail' });
   // 193 fells have only a generated placeholder entry: no route, time or difficulty is shown for them.
   const hasGuide = hasRouteGuide(fell);
@@ -199,6 +207,21 @@ export default async function FellPage({
                 </Link>
               </section>
             )}
+
+            {relatedPosts.length > 0 && (
+              <section>
+                <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('relatedPosts')}</h2>
+                <ul className="space-y-2">
+                  {relatedPosts.map((p) => (
+                    <li key={p.slug}>
+                      <Link href={`/blog/${p.slug}`} className="inline-flex items-center gap-1 text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors">
+                        {p.title} <ChevronRight size={14} />
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
           </div>
 
           <div className="space-y-20">
@@ -219,7 +242,7 @@ export default async function FellPage({
                 </div>
               </div>
               <a
-                href="https://www.ordnancesurvey.co.uk/shop/os-maps-subscription"
+                href="https://osmaps.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 flex items-center justify-center gap-2 text-[#1A4A30] hover:text-[#0E1C14] font-medium text-sm w-full"

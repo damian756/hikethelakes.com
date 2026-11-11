@@ -221,14 +221,6 @@ export default async function HomePage({
                   </div>
 
                   <div className="flex items-center gap-2">
-                    <div className={`text-xs font-semibold px-2 py-1 rounded-full capitalize ${
-                      fell.difficulty === 'strenuous' ? 'bg-red-50 text-red-700' :
-                      fell.difficulty === 'challenging' ? 'bg-orange-50 text-orange-700' :
-                      fell.difficulty === 'moderate' ? 'bg-blue-50 text-blue-700' :
-                      'bg-green-50 text-green-700'
-                    }`}>
-                      {fell.difficulty}
-                    </div>
                     <div className="ml-auto text-[#1A4A30] text-sm font-semibold group-hover:text-[#9E762A] transition-colors flex items-center gap-1">
                       View guide <ChevronRight size={14} />
                     </div>

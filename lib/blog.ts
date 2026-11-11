@@ -23,6 +23,8 @@ export interface BlogPost {
   image?: string;
   /** Describes what the photo shows (it is a stock photo, not always the Lake District). */
   imageAlt?: string;
+  /** Fell slugs (lib/fells.ts) this post is about; the fell page links back to it. */
+  relatedFells?: string[];
   content: ContentBlock[];
 }
 
@@ -84,6 +86,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // ── New posts, 11 Nov 2026 (sources listed in docs/freshen-2026-11/REPORT.md) ──
   {
     slug: 'helvellyn-fell-top-report-weatherline',
+    relatedFells: ['helvellyn'],
     title: 'The Helvellyn Fell Top Report: Reading Weatherline in Winter',
     excerpt: 'Each winter a National Park assessor walks up Helvellyn and reports what the summit is like that day. What the report covers, when it runs, and what its snow and wind words mean.',
     categorySlug: 'conditions',
@@ -137,6 +140,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'how-to-call-mountain-rescue-lake-district',
+    relatedFells: ['scafell-pike', 'helvellyn', 'blencathra'],
     title: 'How to Call Mountain Rescue in the Lake District',
     excerpt: 'Dial 999 or 112, ask for Police, then Mountain Rescue. What to note before you call, how to make your phone last, how text to 999 works, and the Lake District hotspots where walkers more often get into trouble.',
     categorySlug: 'practical',
@@ -192,6 +196,7 @@ export const BLOG_POSTS: BlogPost[] = [
   // ── Fell Guides ─────────────────────────────────────────────────────────────
   {
     slug: 'striding-edge-what-no-one-tells-you',
+    relatedFells: ['helvellyn'],
     title: 'Striding Edge: What No One Tells You Before You Go',
     excerpt: 'Striding Edge gets talked about like it is a near-death experience. It is not. But there are a few things the guidebooks gloss over that are worth knowing before you set off from Glenridding.',
     categorySlug: 'fell-guides',
@@ -231,6 +236,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'scafell-pike-wasdale-honest-account',
+    relatedFells: ['scafell-pike'],
     title: 'Scafell Pike via Wasdale: What the Route Is Like',
     excerpt: 'Three routes up England\'s highest mountain. Wasdale is the shortest. It is also the hardest. Here is what the distance figures do not tell you.',
     categorySlug: 'fell-guides',
@@ -267,6 +273,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'sharp-edge-blencathra-underrated-ridge',
+    relatedFells: ['blencathra'],
     title: 'Sharp Edge on Blencathra: The Most Underrated Ridge in the Lakes',
     excerpt: 'Striding Edge gets all the attention. Sharp Edge on Blencathra is narrower, more exposed, and better. Most people who have done both agree.',
     categorySlug: 'fell-guides',
@@ -337,6 +344,7 @@ export const BLOG_POSTS: BlogPost[] = [
   },
   {
     slug: 'far-eastern-fells-why-serious-baggers-go-there',
+    relatedFells: ['high-street', 'ill-bell'],
     title: 'The Far Eastern Fells: Why Serious Baggers End Up Here',
     excerpt: 'Book Two is the quietest corner of the Wainwrights. High Street, Ill Bell, and a Roman road running across the top of England. If you have not been, you are missing something.',
     categorySlug: 'wainwrights',

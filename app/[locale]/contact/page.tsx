@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { buildAlternates } from '@/lib/metadata';
+import ContactForm from '@/components/ContactForm';
 
 export async function generateMetadata({
   params,
@@ -35,17 +36,30 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
         </div>
       </div>
 
-      <div className="container mx-auto px-4 max-w-3xl py-14">
-        <div className="bg-white border border-[#D2D8CF] rounded-2xl p-8 space-y-8">
+      <div className="container mx-auto px-4 max-w-3xl py-14 space-y-6">
+        <div className="bg-white border border-[#D2D8CF] rounded-2xl p-6 sm:p-8">
+          <ContactForm
+            labels={{
+              formTitle: t('formTitle'),
+              nameLabel: t('nameLabel'),
+              emailLabel: t('emailLabel'),
+              typeLabel: t('typeLabel'),
+              messageLabel: t('messageLabel'),
+              messagePlaceholder: t('messagePlaceholder'),
+              sendButton: t('sendButton'),
+              sending: t('sending'),
+              sentTitle: t('sentTitle'),
+              sentText: t('sentText'),
+              sendAnother: t('sendAnother'),
+              errorNetwork: t('errorNetwork'),
+            }}
+          />
+        </div>
+
+        <div className="bg-white border border-[#D2D8CF] rounded-2xl p-6 sm:p-8 space-y-8">
           <div>
             <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('getInTouchTitle')}</h2>
             <div className="prose text-[#3C4E42]/70 text-sm leading-relaxed space-y-3">
-              <p>
-                <strong className="text-[#0E1C14]">{t('generalEnquiriesLabel')}</strong>{' '}
-                <a href="mailto:damian@churchtownmedia.co.uk" className="text-[#1A4A30] hover:text-[#9E762A] transition-colors">
-                  damian@churchtownmedia.co.uk
-                </a>
-              </p>
               <p>
                 <strong className="text-[#0E1C14]">{t('featuredListingsLabel')}</strong>{' '}
                 {t('featuredListingsText')}
@@ -72,18 +86,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             <h3 className="font-semibold text-[#0E1C14] mb-3">{t('beforeContactTitle')}</h3>
             <ul className="space-y-2 text-sm text-[#3C4E42]/70">
               <li>{t('beforeContactItem1')}</li>
-              <li>
-                {t('beforeContactItem2')}{' '}
-                <a
-                  href="https://www.theopen.com/tickets"
-                  className="text-[#1A4A30] hover:text-[#9E762A] transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  TheOpen.com
-                </a>
-                .
-              </li>
+              <li>{t('beforeContactItem2')}</li>
               <li>{t('beforeContactItem3')}</li>
             </ul>
           </div>

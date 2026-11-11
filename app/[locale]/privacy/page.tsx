@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
@@ -37,10 +38,14 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
           <p>{t('privacyAffiliateDesc')}</p>
           <h2 className="font-display text-xl font-bold text-[#0E1C14]">{t('privacyContactTitle')}</h2>
           <p>
-            {t('privacyContactText')}{' '}
-            <a href="mailto:damian@churchtownmedia.co.uk" className="text-[#1A4A30]">
-              damian@churchtownmedia.co.uk
-            </a>
+            {t.rich('privacyContactText', {
+              link: (chunks) => (
+                <Link href={`${locale === 'en' ? '' : `/${locale}`}/contact`} className="text-[#1A4A30]">
+                  {chunks}
+                </Link>
+              ),
+              nowrap: (chunks) => <span className="whitespace-nowrap">{chunks}</span>,
+            })}
           </p>
         </div>
       </div>

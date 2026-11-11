@@ -1,8 +1,8 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import { ChevronRight, Mountain } from 'lucide-react';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { FELLS, hasRouteGuide } from '@/lib/fells';
+import { gridToEN } from '@/lib/fell-context';
+import FellLogTable, { type FellLogRow } from '@/components/FellLogTable';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
 import { getTranslations } from 'next-intl/server';
@@ -19,10 +19,22 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 
 export default async function FellLogPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
-  const prefix = locale === 'en' ? '' : `/${locale}`;
   const t = await getTranslations({ locale, namespace: 'fellLogPage' });
 
-  const sortedFells = [...FELLS].sort((a, b) => b.height - a.height);
+  const rows: FellLogRow[] = FELLS.map((fell) => {
+    const { e, n } = gridToEN(fell.osGridRef);
+    return {
+      slug: fell.slug,
+      name: fell.name,
+      height: fell.height,
+      gridRef: fell.osGridRef,
+      easting: e,
+      northing: n,
+      area: fell.wainwrightVolume.replace(/^The /, ''),
+      book: fell.wainwrightBook,
+      hasGuide: hasRouteGuide(fell),
+    };
+  });
 
   return (
     <div className="min-h-screen bg-[#EAEDE8]">
@@ -53,31 +65,8 @@ export default async function FellLogPage({ params }: { params: Promise<{ locale
         </div>
       </div>
 
-      <div className="container mx-auto px-4 max-w-7xl py-12 space-y-6">
-        {sortedFells.map((fell) => (
-          <div key={fell.slug} className="bg-white rounded-2xl border border-[#D2D8CF] overflow-hidden shadow-sm">
-            <div className="h-1.5 bg-[#1A4A30]" />
-            <div className="p-6 md:p-8">
-              <div className="flex items-start justify-between gap-4">
-                <div>
-                  <h2 className="font-display text-2xl font-bold text-[#0E1C14] flex items-center gap-2">
-                    {fell.name}
-                  </h2>
-                  <p className="text-[#3C4E42]/55 text-sm mt-1">
-                    {fell.height}m · {fell.osGridRef} · {fell.wainwrightVolume}
-                    {hasRouteGuide(fell) ? ` · ${fell.difficulty}` : ''}
-                  </p>
-                </div>
-                <Link
-                  href={`${prefix}/fells/${fell.slug}`}
-                  className="hidden sm:flex items-center gap-1 text-[#1A4A30] text-sm font-semibold hover:text-[#9E762A] transition-colors shrink-0"
-                >
-                  {hasRouteGuide(fell) ? t('fullGuideLink') : t('fellPageLink')} <ChevronRight size={13} />
-                </Link>
-              </div>
-            </div>
-          </div>
-        ))}
+      <div className="container mx-auto px-4 max-w-7xl py-12">
+        <FellLogTable rows={rows} guideLabel={t('routeGuideLabel')} />
       </div>
     </div>
   );

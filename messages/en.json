@@ -133,9 +133,10 @@
   "fellLogPage": {
     "headerBadge": "Lake District · Cumbria",
     "pageTitle": "Fell Log",
-    "pageDesc": "Heights and OS grid references for all 214 Wainwright fells, highest first, with difficulty for the 21 that have route guides.",
+    "pageDesc": "Heights, OS grid references, areas and Wainwright book numbers for all 214 Wainwright fells. Select a column heading to sort.",
     "fullGuideLink": "Full guide",
-    "fellPageLink": "Fell page"
+    "fellPageLink": "Fell page",
+    "routeGuideLabel": "Route guide"
   },
   "accommodationPage": {
     "headerBadge": "Where to Stay",

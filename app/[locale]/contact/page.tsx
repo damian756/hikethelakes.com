@@ -42,8 +42,8 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             <div className="prose text-[#3C4E42]/70 text-sm leading-relaxed space-y-3">
               <p>
                 <strong className="text-[#0E1C14]">{t('generalEnquiriesLabel')}</strong>{' '}
-                <a href="mailto:hello@churchtownmedia.co.uk" className="text-[#1A4A30] hover:text-[#9E762A] transition-colors">
-                  hello@churchtownmedia.co.uk
+                <a href="mailto:damian@churchtownmedia.co.uk" className="text-[#1A4A30] hover:text-[#9E762A] transition-colors">
+                  damian@churchtownmedia.co.uk
                 </a>
               </p>
               <p>

@@ -38,8 +38,8 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
           <h2 className="font-display text-xl font-bold text-[#0E1C14]">{t('privacyContactTitle')}</h2>
           <p>
             {t('privacyContactText')}{' '}
-            <a href="mailto:hello@churchtownmedia.co.uk" className="text-[#1A4A30]">
-              hello@churchtownmedia.co.uk
+            <a href="mailto:damian@churchtownmedia.co.uk" className="text-[#1A4A30]">
+              damian@churchtownmedia.co.uk
             </a>
           </p>
         </div>

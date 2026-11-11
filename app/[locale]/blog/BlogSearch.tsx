@@ -35,6 +35,7 @@ export default function BlogSearch({ posts, categories, postCountByCategory }: P
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search posts…"
+            aria-label="Search posts"
             className="w-full pl-9 pr-8 py-2 text-sm rounded-full border border-[#D2D8CF] bg-white text-[#0E1C14] placeholder-[#3C4E42]/35 focus:outline-none focus:border-[#9E762A] transition-colors"
           />
           {query && (

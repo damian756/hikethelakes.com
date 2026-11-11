@@ -120,7 +120,7 @@ export default async function LocaleLayout({
   const isRTL = locale === 'ar';
 
   return (
-    <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'}>
+    <html lang={locale === 'en' ? 'en-GB' : locale} dir={isRTL ? 'rtl' : 'ltr'}>
       <head>
         {/* Ahrefs Web Analytics is the only analytics script (Damian, 11 Nov 2026). It sets no cookies. */}
         {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
@@ -128,8 +128,14 @@ export default async function LocaleLayout({
       </head>
       <body className={`${lora.variable} ${inter.variable} font-sans antialiased bg-[#EAEDE8]`}>
         <NextIntlClientProvider messages={messages}>
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-white focus:text-[#0E1C14] focus:px-4 focus:py-2 focus:rounded focus:font-semibold"
+          >
+            Skip to content
+          </a>
           <Navigation locale={locale} />
-          <main className="overflow-x-hidden">{children}</main>
+          <main id="main" className="overflow-x-hidden">{children}</main>
           <Footer locale={locale} />
         </NextIntlClientProvider>
         <PageCountBeacon />
@@ -206,7 +212,7 @@ async function Footer({ locale }: { locale: string }) {
               {tf('builtByLink')}
             </a>
             <div className="mt-5 pt-5 border-t border-white/10">
-              <p className="text-white/35 text-xs mb-3 uppercase tracking-wider">Lakes Network</p>
+              <p className="text-white/60 text-xs mb-3 uppercase tracking-wider">Lakes Network</p>
               <div className="flex flex-col gap-2">
                 <a
                   href="https://www.thelakesguide.co.uk"
@@ -269,7 +275,7 @@ async function Footer({ locale }: { locale: string }) {
 
         </div>
 
-        <div className="border-t border-white/10 pt-6 pb-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/35">
+        <div className="border-t border-white/10 pt-6 pb-5 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-white/60">
           <span>Part of the <a href="https://thelakes.network" target="_blank" rel="noopener" className="hover:text-white/60 transition">Lakes Network</a></span>
           <div className="flex flex-wrap gap-5">
             <a href="https://www.thelakesguide.co.uk" target="_blank" rel="noopener" className="hover:text-white/60 transition">The Lakes Guide: restaurants & accommodation</a>
@@ -288,7 +294,7 @@ async function Footer({ locale }: { locale: string }) {
           </Link>
         </div>
 
-        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/35">
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/60">
           <p>{tf('copyright')}</p>
           <div className="flex flex-wrap gap-5">
             <Link href={`${prefix}/privacy`} className="hover:text-white/60 transition">

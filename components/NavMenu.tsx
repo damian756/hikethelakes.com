@@ -41,6 +41,8 @@ export default function NavMenu({ locale }: { locale: string }) {
           onClick={() => setOpen(!open)}
           className="p-2 rounded text-white hover:bg-white/10 transition-colors"
           aria-label="Toggle menu"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
         >
           {open ? <X size={22} /> : <Menu size={22} />}
         </button>
@@ -49,7 +51,7 @@ export default function NavMenu({ locale }: { locale: string }) {
       {/* Mobile nav drawer */}
       {open && (
         <div className="absolute top-full left-0 right-0 bg-[#1A4A30] border-b border-white/10 shadow-lg lg:hidden z-50">
-          <nav className="container mx-auto px-4 py-4 max-w-7xl flex flex-col gap-1">
+          <nav id="mobile-nav" aria-label="Main" className="container mx-auto px-4 py-4 max-w-7xl flex flex-col gap-1">
             {links.map((link) => (
               <Link
                 key={link.href}

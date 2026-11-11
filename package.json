@@ -12,27 +12,27 @@
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
-    "@prisma/adapter-neon": "^7.4.1",
-    "@prisma/client": "^7.4.0",
+    "@prisma/adapter-neon": "^7.10.1",
+    "@prisma/client": "^7.10.1",
     "@tailwindcss/typography": "^0.5.19",
     "@vercel/analytics": "^1.6.1",
     "clsx": "^2.1.1",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.575.0",
-    "next": "16.1.6",
+    "next": "16.4.6",
     "next-intl": "^4.8.3",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "prisma": "^7.4.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
-    "eslint-config-next": "16.1.6",
+    "eslint-config-next": "16.4.6",
+    "prisma": "^7.4.0",
     "tailwindcss": "^4",
     "typescript": "5.9.3"
   }

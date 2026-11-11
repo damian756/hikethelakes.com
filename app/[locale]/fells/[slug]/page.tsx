@@ -7,6 +7,7 @@ import { FELLS, getFell, hasCheckedGeo, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
 import { BLOG_POSTS } from '@/lib/blog';
+import { bookLabel, nearestFellsInGroup, nearestGuideTown, relatedWildlifePages } from '@/lib/fell-context';
 
 export async function generateStaticParams() {
   return FELLS.map((fell) => ({ slug: fell.slug }));
@@ -22,7 +23,11 @@ export async function generateMetadata({
   if (!fell) return {};
 
   const title = `${fell.name} | Hike The Lakes`;
-  const description = fell.summitDescription.slice(0, 160);
+  const description = hasRouteGuide(fell)
+    ? fell.summitDescription.slice(0, 160)
+    : `${fell.name} is a ${fell.height} m Wainwright fell in ${bookLabel(fell)}, at grid reference ${fell.osGridRef}. Nearest fells: ${nearestFellsInGroup(fell, FELLS, 2)
+        .map((o) => o.fell.name)
+        .join(', ')}.`;
 
   return {
     title,
@@ -48,13 +53,10 @@ export default async function FellPage({
   if (!fell) notFound();
 
   const prefix = locale === 'en' ? '' : `/${locale}`;
-  // Same area first, written guides before placeholders, then by height.
-  const otherFells = FELLS.filter((f) => f.slug !== slug).sort(
-    (a, b) =>
-      Number(b.area === fell.area) - Number(a.area === fell.area) ||
-      Number(hasRouteGuide(b)) - Number(hasRouteGuide(a)) ||
-      b.height - a.height,
-  );
+  // Nearest fells in the same Wainwright book, by straight-line distance from the grid references.
+  const otherFells = nearestFellsInGroup(fell, FELLS, 6);
+  const town = nearestGuideTown(fell);
+  const wildlifePages = relatedWildlifePages(fell);
   const relatedPosts = locale === 'en' ? BLOG_POSTS.filter((p) => p.relatedFells?.includes(fell.slug)) : [];
   const t = await getTranslations({ locale, namespace: 'fellDetail' });
   // 193 fells have only a generated placeholder entry: no route, time or difficulty is shown for them.
@@ -200,11 +202,49 @@ export default async function FellPage({
             </>
             ) : (
               <section>
-                <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('noGuideTitle')}</h2>
+                <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('aboutTitle', { name: fell.name })}</h2>
+                <p className="text-[#3C4E42]/80 leading-relaxed mb-4">
+                  {t('aboutText', { name: fell.name, book: bookLabel(fell), height: fell.height, grid: fell.osGridRef })}
+                </p>
+                {otherFells.length > 0 && (
+                  <p className="text-[#3C4E42]/80 leading-relaxed mb-4">
+                    {t('nearestText', {
+                      fells: otherFells
+                        .slice(0, 3)
+                        .map((o) => `${o.fell.name} at ${o.km} km`)
+                        .join(', ')
+                        .replace(/, ([^,]*)$/, ' and $1'),
+                    })}
+                  </p>
+                )}
                 <p className="text-[#3C4E42]/80 leading-relaxed mb-4">{t('noGuideText', { name: fell.name })}</p>
                 <Link href={`${prefix}/fells`} className="inline-flex items-center gap-1 text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors">
                   {t('noGuideLink')} <ChevronRight size={14} />
                 </Link>
+              </section>
+            )}
+
+            {(town || wildlifePages.length > 0) && (
+              <section>
+                <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('nearbyTitle')}</h2>
+                <ul className="space-y-2">
+                  {town && (
+                    <li className="text-[#3C4E42]/80">
+                      {t('nearbyTown', { town: town.name, km: town.km })}{' '}
+                      <a href={town.url} target="_blank" rel="noopener" className="inline-flex items-center gap-1 text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors">
+                        {t('nearbyTownLink', { town: town.name })} ↗
+                      </a>
+                    </li>
+                  )}
+                  {wildlifePages.map((w) => (
+                    <li key={w.url} className="text-[#3C4E42]/80">
+                      {t('nearbyWildlife')}{' '}
+                      <a href={w.url} target="_blank" rel="noopener" className="inline-flex items-center gap-1 text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors">
+                        {w.title} ↗
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </section>
             )}
 
@@ -236,9 +276,9 @@ export default async function FellPage({
                   <span className="text-[#3C4E42]/60">{t('gridRef')}</span>
                   <span className="font-mono text-xs">{fell.osGridRef}</span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-[#3C4E42]/60">{t('area')}</span>
-                  <span className="capitalize">{fell.area.replace('-', ' ')}</span>
+                <div className="flex justify-between gap-4">
+                  <span className="text-[#3C4E42]/60">{t('book')}</span>
+                  <span className="text-right">{bookLabel(fell)}</span>
                 </div>
               </div>
               <a
@@ -257,7 +297,7 @@ export default async function FellPage({
           <section className="mt-16 pt-8 border-t border-[#D2D8CF]">
             <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-6">{t('otherFells')}</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {otherFells.slice(0, 6).map((f) => (
+              {otherFells.map(({ fell: f, km }) => (
                 <Link
                   key={f.slug}
                   href={`${prefix}/fells/${f.slug}`}
@@ -266,7 +306,7 @@ export default async function FellPage({
                   <Mountain size={20} className="text-[#9E762A] shrink-0" />
                   <div>
                     <span className="font-semibold text-[#0E1C14]">{f.name}</span>
-                    <span className="text-[#3C4E42]/60 text-sm ml-2">{f.height}m</span>
+                    <span className="text-[#3C4E42]/60 text-sm ml-2">{f.height}m · {t('kmAway', { km })}</span>
                   </div>
                   <ChevronRight size={14} className="text-[#3C4E42]/40 ml-auto" />
                 </Link>

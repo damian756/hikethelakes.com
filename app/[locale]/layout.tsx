@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import { Lora, Inter } from 'next/font/google';
-import Script from 'next/script';
-import { Analytics } from '@vercel/analytics/next';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import NavMenu from '@/components/NavMenu';
+import PageCountBeacon from '@/components/PageCountBeacon';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
 
@@ -123,14 +122,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={isRTL ? 'rtl' : 'ltr'}>
       <head>
-        {/* Microsoft Clarity */}
-        <Script id="clarity-init" strategy="afterInteractive">{`
-          (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-          })(window, document, "clarity", "script", "${process.env.NEXT_PUBLIC_CLARITY_PROJECT_ID}");
-        `}</Script>
+        {/* Ahrefs Web Analytics is the only analytics script (Damian, 11 Nov 2026). It sets no cookies. */}
         {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
         <script src="https://analytics.ahrefs.com/analytics.js" data-key="XdS2WoLlzpb1p5PqyWrRtw" async></script>
       </head>
@@ -140,7 +132,7 @@ export default async function LocaleLayout({
           <main className="overflow-x-hidden">{children}</main>
           <Footer locale={locale} />
         </NextIntlClientProvider>
-        <Analytics />
+        <PageCountBeacon />
       </body>
     </html>
   );

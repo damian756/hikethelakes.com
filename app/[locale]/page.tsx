@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { Mountain, Wind, MapPin, Calendar, ChevronRight, Flag, Bed, Users } from 'lucide-react';
 import { getFeaturedFells } from '@/lib/fells';
 import type { Metadata } from 'next';
-import { BASE_URL, pageMetadata } from '@/lib/metadata';
+import { BASE_URL, SITE_ORGANIZATION, pageMetadata } from '@/lib/metadata';
 import AdSlot from '@/components/AdSlot';
 
 export async function generateMetadata({
@@ -56,36 +56,9 @@ export default async function HomePage({
                   target: `${BASE_URL}/fells`,
                 },
               },
-              {
-                '@type': 'Organization',
-                '@id': `${BASE_URL}/#organization`,
-                name: 'Hike The Lakes',
-                url: BASE_URL,
-                logo: {
-                  '@type': 'ImageObject',
-                  url: `${BASE_URL}/og-default.jpg`,
-                  width: 1200,
-                  height: 630,
-                },
-                sameAs: [
-                  'https://www.thelakesguide.co.uk',
-                  'https://www.thelakeswildlife.co.uk',
-                  'https://thelakes.network',
-                  'https://www.linkedin.com/company/churchtownmedia',
-                  'https://churchtownmedia.co.uk',
-                ],
-              },
-              {
-                '@type': 'Person',
-                '@id': 'https://www.churchtownmedia.co.uk/about#founder',
-                name: 'Damian Roche',
-                jobTitle: 'Founder, Churchtown Media',
-                url: 'https://www.churchtownmedia.co.uk/about',
-                sameAs: [
-                  'https://www.linkedin.com/in/damian-roche-7ba8293a5/',
-                  'https://find-and-update.company-information.service.gov.uk/company/16960442',
-                ],
-              },
+              // The logo is the site icon (was the 1376 x 768 share photo). No Person here:
+              // the home page shows no byline; posts carry their author.
+              SITE_ORGANIZATION,
             ],
           }),
         }}

@@ -4,9 +4,9 @@ import { notFound } from 'next/navigation';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
 import { ChevronRight, Clock, ArrowLeft } from 'lucide-react';
-import { BLOG_POSTS, DAMIAN, getPostBySlug, getCategoryBySlug, getIsoDate, type ContentBlock } from '@/lib/blog';
+import { BLOG_POSTS, DAMIAN, getPostBySlug, getCategoryBySlug, getIsoDate, getModifiedIsoDate, type ContentBlock } from '@/lib/blog';
 import AdSlot from '@/components/AdSlot';
-import { BASE_URL, pageMetadata } from '@/lib/metadata';
+import { BASE_URL, SITE_ORGANIZATION, pageMetadata } from '@/lib/metadata';
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ locale: 'en', slug: p.slug }));
@@ -30,7 +30,7 @@ export async function generateMetadata({
     image: post.image ? { url: post.image, alt: post.imageAlt ?? post.title } : undefined,
     article: {
       publishedTime: getIsoDate(post),
-      modifiedTime: getIsoDate(post),
+      modifiedTime: getModifiedIsoDate(post),
       authors: [post.sponsoredBy ? post.sponsoredBy.name : DAMIAN.name],
       section: cat?.label,
     },
@@ -123,13 +123,13 @@ export default async function BlogPostPage({
   const canonicalUrl = `${BASE_URL}/blog/${slug}`;
 
   const articleLd = {
-    '@context': 'https://schema.org',
     '@type': 'Article',
+    '@id': `${canonicalUrl}#article`,
     headline: post.title,
     description: post.excerpt,
     url: canonicalUrl,
     datePublished: isoDate,
-    dateModified: isoDate,
+    dateModified: getModifiedIsoDate(post),
     ...(post.image && { image: post.image }),
     inLanguage: 'en-GB',
     author: post.sponsoredBy
@@ -145,23 +145,31 @@ export default async function BlogPostPage({
             'https://find-and-update.company-information.service.gov.uk/company/16960442',
           ],
         },
-    publisher: {
-      '@type': 'Organization',
-      '@id': 'https://www.churchtownmedia.co.uk/#organization',
-      name: 'Churchtown Media',
-      url: 'https://www.churchtownmedia.co.uk',
-    },
+    publisher: SITE_ORGANIZATION,
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': canonicalUrl,
     },
   };
 
+  // The same trail as the visible breadcrumb above the post.
+  const breadcrumbLd = {
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+      ...(cat ? [{ '@type': 'ListItem', position: 3, name: cat.label, item: `${BASE_URL}/blog/category/${cat.slug}` }] : []),
+      { '@type': 'ListItem', position: cat ? 4 : 3, name: post.title, item: canonicalUrl },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#EAEDE8]">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({ '@context': 'https://schema.org', '@graph': [articleLd, breadcrumbLd] }),
+        }}
       />
 
       {/* Breadcrumb */}

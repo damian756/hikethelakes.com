@@ -7,7 +7,7 @@ import { WALKING_ITINERARIES, getItineraryById } from '@/lib/walking-itineraries
 import { FELLS } from '@/lib/fells';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
-import { BASE_URL, pageMetadata } from '@/lib/metadata';
+import { BASE_URL, SITE_NAME, SITE_ORGANIZATION, pageMetadata } from '@/lib/metadata';
 
 export async function generateStaticParams() {
   return WALKING_ITINERARIES.map((it) => ({ slug: it.id }));
@@ -59,10 +59,13 @@ export default async function ItineraryDetailPage({
         description: itinerary.description,
         url: pageUrl,
         mainEntityOfPage: pageUrl,
-        datePublished: '2024-06-01',
-        dateModified: '2025-03-01',
-        author: { '@id': 'https://www.churchtownmedia.co.uk/about#founder' },
-        publisher: { '@id': `${BASE_URL}/#organization` },
+        // From git: the circuits were added on 9 Mar 2026 (2110f1f) and last changed
+        // on 11 Nov 2026 (d275dfe: day-by-day fell links, no cost estimates). The page
+        // shows no byline, so the author is the site, not a person.
+        datePublished: '2026-03-09',
+        dateModified: '2026-11-11',
+        author: { '@type': 'Organization', '@id': `${BASE_URL}/#organization`, name: SITE_NAME, url: BASE_URL },
+        publisher: SITE_ORGANIZATION,
       },
       {
         '@type': 'BreadcrumbList',

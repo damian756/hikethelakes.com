@@ -5,7 +5,7 @@ import type { Metadata } from 'next';
 import { ChevronRight, Clock, ArrowRight } from 'lucide-react';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { BLOG_POSTS, BLOG_CATEGORIES, getPostsByCategory, getCategoryBySlug } from '@/lib/blog';
-import { pageMetadata } from '@/lib/metadata';
+import { BASE_URL, pageMetadata } from '@/lib/metadata';
 
 export function generateStaticParams() {
   return BLOG_CATEGORIES.map((c) => ({ locale: 'en', category: c.slug }));
@@ -39,8 +39,20 @@ export default async function CategoryPage({
 
   const posts = getPostsByCategory(category);
 
+  // The same trail as the visible breadcrumb below.
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: BASE_URL },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${BASE_URL}/blog` },
+      { '@type': 'ListItem', position: 3, name: cat.label, item: `${BASE_URL}/blog/category/${cat.slug}` },
+    ],
+  };
+
   return (
     <div className="min-h-screen bg-[#EAEDE8]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }} />
       {/* Breadcrumb */}
       <div className="bg-white border-b border-[#D2D8CF]">
         <div className="container mx-auto px-4 max-w-5xl py-3">

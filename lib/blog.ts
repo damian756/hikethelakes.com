@@ -20,6 +20,9 @@ export interface BlogPost {
   metaDescription?: string;
   categorySlug: string;
   date: string;
+  /** The day the title, excerpt or text last changed, same format as `date`. Feeds
+   * dateModified and the sitemap's lastmod; leave unset until the post is edited. */
+  updated?: string;
   readingTime: string;
   /** Path relative to /public, e.g. '/images/courses/hillside.jpg' */
   image?: string;
@@ -248,6 +251,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Three routes up England\'s highest mountain. Wasdale is the shortest. It is also the hardest. Here is what the distance figures do not tell you.',
     categorySlug: 'fell-guides',
     date: '24 Feb 2026',
+    updated: '11 Nov 2026', // wording edited in the Nov 2026 freshen-up (ff84631, 4ab1365)
     readingTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=800&q=80',
     content: [
@@ -320,6 +324,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'There are 214 of them. The question is not whether you can do them all, it is where to start. Not with Scafell Pike.',
     categorySlug: 'wainwrights',
     date: '19 Feb 2026',
+    updated: '11 Nov 2026', // wording edited in the Nov 2026 freshen-up (ff84631, 4ab1365)
     readingTime: '8 min read',
     image: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?auto=format&fit=crop&w=800&q=80',
     content: [
@@ -500,6 +505,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'The outdoor industry would like you to spend a lot of money. Some of it is worth spending. Here is what you need.',
     categorySlug: 'practical',
     date: '15 Jan 2026',
+    updated: '11 Nov 2026', // wording edited in the Nov 2026 freshen-up (ff84631, 4ab1365)
     readingTime: '9 min read',
     image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80',
     content: [
@@ -541,6 +547,7 @@ export const BLOG_POSTS: BlogPost[] = [
     excerpt: 'Your base determines which fells are realistic for a day walk. How the three main bases compare.',
     categorySlug: 'practical',
     date: '02 Jan 2026',
+    updated: '11 Nov 2026', // wording edited in the Nov 2026 freshen-up (ff84631, 4ab1365)
     readingTime: '7 min read',
     image: 'https://images.unsplash.com/photo-1494500764479-0c8f2919a3d8?auto=format&fit=crop&w=800&q=80',
     content: [
@@ -589,4 +596,9 @@ function toIso(dateStr: string): string {
 
 export function getIsoDate(post: BlogPost): string {
   return toIso(post.date);
+}
+
+/** The last day the post's text changed: `updated` if set, else the publication date. */
+export function getModifiedIsoDate(post: BlogPost): string {
+  return toIso(post.updated ?? post.date);
 }

@@ -13,6 +13,27 @@ const DEFAULT_IMAGE = {
 
 export { BASE_URL, SITE_NAME };
 
+/**
+ * The site's one Organization for JSON-LD, the same on every page that names it (the
+ * home page graph, and as publisher of posts and walking circuits). Churchtown Media
+ * Ltd publishes the site. The sister sites are linked in the footer, not listed as
+ * sameAs: they are not the same organisation.
+ */
+export const SITE_ORGANIZATION = {
+  '@type': 'Organization',
+  '@id': `${BASE_URL}/#organization`,
+  name: SITE_NAME,
+  url: BASE_URL,
+  logo: { '@type': 'ImageObject', url: `${BASE_URL}/icon-512.png`, width: 512, height: 512 },
+  parentOrganization: {
+    '@type': 'Organization',
+    '@id': 'https://www.churchtownmedia.co.uk/#organization',
+    name: 'Churchtown Media',
+    url: 'https://www.churchtownmedia.co.uk',
+    sameAs: ['https://www.linkedin.com/company/churchtownmedia'],
+  },
+};
+
 /** A page's own address on the www host: its canonical, og:url and sitemap URL. */
 export function pageUrl(pagePath: string) {
   return pagePath === '/' || pagePath === '' ? BASE_URL : `${BASE_URL}${pagePath}`;

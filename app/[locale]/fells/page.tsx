@@ -37,7 +37,8 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
               '@type': 'ListItem',
               position: i + 1,
               item: {
-                '@type': 'TouristAttraction',
+                // The same types as the fell page's node with this @id.
+                '@type': ['TouristAttraction', 'Mountain'],
                 '@id': `${BASE_URL}/fells/${fell.slug}`,
                 name: fell.name,
                 url: `${BASE_URL}/fells/${fell.slug}`,

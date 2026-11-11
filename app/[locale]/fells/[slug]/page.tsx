@@ -80,7 +80,15 @@ export default async function FellPage({
                 name: fell.name,
                 description: fell.summitDescription,
                 url: `${BASE_URL}/fells/${slug}`,
-                elevation: `${fell.height}m`,
+                // schema.org has no `elevation` on Mountain (only on GeoCoordinates), so the
+                // height goes in additionalProperty, and in geo where coordinates are published.
+                additionalProperty: {
+                  '@type': 'PropertyValue',
+                  name: 'Height',
+                  value: fell.height,
+                  unitCode: 'MTR',
+                  unitText: 'm',
+                },
                 // Coordinates only where they agree with the grid reference (lib/fells.ts).
                 ...(hasCheckedGeo(fell) && {
                   geo: {

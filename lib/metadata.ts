@@ -3,11 +3,11 @@ import type { Metadata } from 'next';
 const BASE_URL = 'https://www.hikethelakes.com';
 const SITE_NAME = 'Hike The Lakes';
 
-// public/og-default.jpg (a PNG, 1376 x 768): the share image for pages without their own photo.
+// public/og-default.jpg (JPEG, 1200 x 630): the share image for pages without their own photo.
 const DEFAULT_IMAGE = {
   url: `${BASE_URL}/og-default.jpg`,
-  width: 1376,
-  height: 768,
+  width: 1200,
+  height: 630,
   alt: 'Hike The Lakes: Lake District fell guides',
 };
 

@@ -64,8 +64,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: [
         {
           url: `${BASE_URL}/og-default.jpg`,
-          width: 1376,
-          height: 768,
+          width: 1200,
+          height: 630,
           alt: 'Hike The Lakes: Lake District fell guides',
         },
       ],

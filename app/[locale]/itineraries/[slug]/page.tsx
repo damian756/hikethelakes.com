@@ -141,7 +141,9 @@ export default async function ItineraryDetailPage({
             </section>
 
             <section>
-              <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">Fells in Order</h2>
+              <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">
+                {itinerary.fells.length === itinerary.days ? t('dayByDayTitle') : t('fellOrderLabel')}
+              </h2>
               <div className="space-y-3">
                 {itinerary.fells.map((fellSlug, i) => (
                   <Link
@@ -153,6 +155,7 @@ export default async function ItineraryDetailPage({
                       {i + 1}
                     </span>
                     <span className="font-medium text-[#0E1C14] group-hover:text-[#1A4A30] transition-colors">
+                      {itinerary.fells.length === itinerary.days && <span className="text-[#3C4E42]/60 font-normal">{t('dayN', { n: i + 1 })}: </span>}
                       {FELL_NAMES[fellSlug] ?? fellSlug}
                     </span>
                     <ChevronRight size={13} className="ml-auto text-[#3C4E42]/40 group-hover:text-[#1A4A30] transition-colors" />
@@ -170,6 +173,19 @@ export default async function ItineraryDetailPage({
                     <span className="font-semibold">{t('whereToStayLabel')}</span>
                   </div>
                   <p className="text-[#3C4E42]/70 text-sm leading-relaxed">{itinerary.accommodation}</p>
+                  {itinerary.places && (
+                    <p className="text-sm mt-3">
+                      <span className="text-[#3C4E42]/60">{t('onThisSite')} </span>
+                      {itinerary.places.map((pl, i) => (
+                        <span key={pl.href}>
+                          {i > 0 && ', '}
+                          <Link href={`${prefix}${pl.href}`} className="text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors">
+                            {pl.name}
+                          </Link>
+                        </span>
+                      ))}
+                    </p>
+                  )}
                 </div>
                 <div className="bg-white border border-[#D2D8CF] rounded-xl p-5">
                   <div className="flex items-center gap-2 text-[#1A4A30] mb-2">
@@ -183,11 +199,6 @@ export default async function ItineraryDetailPage({
           </div>
 
           <div className="space-y-6">
-            <div className="bg-[#1A4A30] rounded-xl p-6 text-white sticky top-6">
-              <h3 className="font-display text-lg font-bold mb-2">{t('estimatedCostLabel')}</h3>
-              <p className="text-white/70 text-sm">{itinerary.estimatedCost}</p>
-            </div>
-
             <div>
               <h3 className="font-semibold text-[#0E1C14] mb-3 uppercase tracking-wider text-xs">{t('allItinerariesTitle')}</h3>
               <div className="space-y-2">

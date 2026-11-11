@@ -80,7 +80,9 @@ export default async function ItinerariesPage({ params }: { params: Promise<{ lo
 
                   <div className="grid sm:grid-cols-3 gap-4 mb-6">
                     <div className="sm:col-span-1">
-                      <div className="text-xs font-semibold text-[#3C4E42]/50 uppercase tracking-wider mb-2">{t('fellOrderLabel')}</div>
+                      <div className="text-xs font-semibold text-[#3C4E42]/50 uppercase tracking-wider mb-2">
+                        {it.fells.length === it.days ? t('dayByDayTitle') : t('fellOrderLabel')}
+                      </div>
                       <div className="space-y-1.5">
                         {it.fells.map((slug, i) => (
                           <div key={slug} className="flex items-center gap-2">
@@ -91,6 +93,7 @@ export default async function ItinerariesPage({ params }: { params: Promise<{ lo
                               href={`${prefix}/fells/${slug}`}
                               className="text-sm text-[#1A4A30] font-medium hover:text-[#9E762A] transition-colors"
                             >
+                              {it.fells.length === it.days && <span className="text-[#3C4E42]/60 font-normal">{t('dayN', { n: i + 1 })}: </span>}
                               {FELL_NAMES[slug] ?? slug}
                             </Link>
                           </div>
@@ -103,6 +106,19 @@ export default async function ItinerariesPage({ params }: { params: Promise<{ lo
                         <Bed size={12} /> {t('whereToStayLabel')}
                       </div>
                       <p className="text-sm text-[#3C4E42]/70 leading-relaxed">{it.accommodation}</p>
+                      {it.places && (
+                        <p className="text-sm mt-2">
+                          <span className="text-[#3C4E42]/60">{t('onThisSite')} </span>
+                          {it.places.map((pl, i) => (
+                            <span key={pl.href}>
+                              {i > 0 && ', '}
+                              <Link href={`${prefix}${pl.href}`} className="text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors">
+                                {pl.name}
+                              </Link>
+                            </span>
+                          ))}
+                        </p>
+                      )}
                     </div>
 
                     <div>
@@ -113,11 +129,7 @@ export default async function ItinerariesPage({ params }: { params: Promise<{ lo
                     </div>
                   </div>
 
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-[#EAEDE8] rounded-xl p-4">
-                    <div>
-                      <div className="text-xs text-[#3C4E42]/50 uppercase tracking-wider mb-0.5">{t('estimatedCostLabel')}</div>
-                      <div className="font-bold text-[#0E1C14]">{it.estimatedCost}</div>
-                    </div>
+                  <div className="flex justify-end">
                     <div className="flex gap-2 shrink-0">
                       <Link
                         href={`${prefix}/itineraries/${it.id}`}

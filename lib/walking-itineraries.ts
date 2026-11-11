@@ -9,7 +9,8 @@ export interface WalkingItinerary {
   fells: string[];
   accommodation: string;
   dining: string;
-  estimatedCost: string;
+  /** Named places in this itinerary that have a card on /accommodation. */
+  places?: { name: string; href: string }[];
 }
 
 export const WALKING_ITINERARIES: WalkingItinerary[] = [
@@ -24,7 +25,7 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['scafell-pike', 'great-gable', 'harrison-stickle'],
     accommodation: 'Ambleside or Langdale. Plenty of B&Bs, and the Old Dungeon Ghyll hotel at the head of Great Langdale.',
     dining: 'Old Dungeon Ghyll, Sticklebarn, Wainwrights Inn.',
-    estimatedCost: '£150–£200pp (accommodation + food)',
+    places: [{ name: 'Old Dungeon Ghyll', href: '/accommodation#old-dungeon-ghyll-langdale' }],
   },
   {
     id: 'helvellyn-circuit',
@@ -37,7 +38,6 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['helvellyn', 'fairfield', 'high-street'],
     accommodation: 'Glenridding or Patterdale. Good range of B&Bs and the Travellers Rest inn.',
     dining: 'Travellers Rest, Glenridding Hotel, Patterdale Hotel.',
-    estimatedCost: '£140–£180pp',
   },
   {
     id: 'northern-intro',
@@ -50,7 +50,6 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['skiddaw', 'blencathra', 'catbells'],
     accommodation: 'Keswick. Wide choice of B&Bs and hostels. Good transport links.',
     dining: 'The Dog and Gun, The Old Keswickian.',
-    estimatedCost: '£100–£150pp',
   },
   {
     id: 'western-circuit',
@@ -63,7 +62,7 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['coniston-old-man', 'wetherlam', 'red-pike-buttermere', 'dale-head'],
     accommodation: 'Coniston and Buttermere. The Black Bull in Coniston, Bridge Hotel in Buttermere.',
     dining: 'Black Bull Coniston, Bridge Hotel Buttermere, Kirkstile Inn.',
-    estimatedCost: '£200–£280pp',
+    places: [{ name: 'Bridge Hotel, Buttermere', href: '/accommodation#bridge-hotel-buttermere' }],
   },
   {
     id: 'family-friendly',
@@ -76,7 +75,6 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['catbells'],
     accommodation: 'Keswick or Portinscale. Family-friendly B&Bs and self-catering.',
     dining: 'Cafe in the Park, The Lakes Bar and Bistro.',
-    estimatedCost: '£80–£120pp',
   },
   {
     id: 'two-day-standard',
@@ -89,7 +87,6 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['helvellyn', 'catbells'],
     accommodation: 'Glenridding or Keswick. B&Bs and inns with good walker facilities.',
     dining: 'Travellers Rest, The Dog and Gun.',
-    estimatedCost: '£120–£160pp',
   },
   {
     id: 'two-day-premium',
@@ -102,7 +99,6 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['scafell-pike', 'great-gable'],
     accommodation: 'Wasdale Head Inn or Borrowdale.',
     dining: 'Wasdale Head Inn, Honister Slate Mine cafe, Borrowdale Hotel.',
-    estimatedCost: '£180–£240pp',
   },
   {
     id: 'four-day-standard',
@@ -115,7 +111,7 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['scafell-pike', 'helvellyn', 'skiddaw', 'catbells'],
     accommodation: 'Ambleside, Keswick, Glenridding. Standard B&Bs with good transport links.',
     dining: 'Old Dungeon Ghyll, Travellers Rest, The Dog and Gun.',
-    estimatedCost: '£160–£220pp',
+    places: [{ name: 'Old Dungeon Ghyll', href: '/accommodation#old-dungeon-ghyll-langdale' }],
   },
   {
     id: 'four-day-value',
@@ -128,7 +124,7 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['catbells', 'blencathra', 'fairfield', 'coniston-old-man'],
     accommodation: 'Keswick YHA or budget B&Bs. Good bus links for day trips.',
     dining: 'The Dog and Gun, Kirkstile Inn, Black Bull Coniston.',
-    estimatedCost: '£100–£150pp',
+    places: [{ name: 'YHA Keswick', href: '/accommodation#yha-keswick' }],
   },
 ];
 

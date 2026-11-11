@@ -145,7 +145,11 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
 
             <div className="grid md:grid-cols-2 gap-6">
               {area.options.map((opt) => (
-                <div key={opt.name} className="bg-white border border-[#D2D8CF] rounded-xl overflow-hidden shadow-sm">
+                <div
+                  key={opt.name}
+                  id={opt.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}
+                  className="bg-white border border-[#D2D8CF] rounded-xl overflow-hidden shadow-sm scroll-mt-24"
+                >
                   <div className="p-6">
                     <div className="flex items-start justify-between gap-3 mb-3">
                       <div>

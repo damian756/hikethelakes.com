@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
 import { Mountain, Wind, MapPin, Calendar, ChevronRight, Flag, Bed, Users } from 'lucide-react';
@@ -94,16 +93,18 @@ export default async function HomePage({
           HERO
       ═══════════════════════════════════════════ */}
       <section className="relative bg-[#0E1C14] overflow-hidden">
+        {/* Catbells Northern Ascent by David Iliff (Wikimedia Commons), CC BY-SA 3.0; resized
+            to 2400 px wide (docs/freshen-2026-11/sources/hero-catbells-credit.txt). */}
         <Image
-          src={HERO_IMAGE_URL}
+          src="/images/hero-catbells.webp"
           alt={th('heroImageAlt')}
           fill
           priority
-          className="object-cover object-center"
+          className="object-cover object-[60%_center]"
           sizes="100vw"
-          quality={85}
+          quality={70}
         />
-        <div className="absolute inset-0 bg-[#0E1C14]/50" />
+        <div className="absolute inset-0 bg-[#0E1C14]/60" />
         <div
           className="absolute inset-0 opacity-20"
           style={{
@@ -151,23 +152,45 @@ export default async function HomePage({
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="px-4 py-2">
                 <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">21</div>
-                <div className="text-white/50 text-xs mt-1">Route Guides</div>
+                <div className="text-white/75 text-xs mt-1">Route Guides</div>
               </div>
               <div className="px-4 py-2">
                 <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">214</div>
-                <div className="text-white/50 text-xs mt-1">Wainwrights</div>
+                <div className="text-white/75 text-xs mt-1">Wainwrights</div>
               </div>
               <div className="px-4 py-2">
                 <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">978m</div>
-                <div className="text-white/50 text-xs mt-1">Scafell Pike</div>
+                <div className="text-white/75 text-xs mt-1">Scafell Pike</div>
               </div>
               <div className="px-4 py-2">
                 <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">16</div>
-                <div className="text-white/50 text-xs mt-1">Lakes</div>
+                <div className="text-white/75 text-xs mt-1">Lakes</div>
               </div>
             </div>
           </div>
         </div>
+
+        {/* Credit required by the photo's licence, next to the photo */}
+        <p className="relative container mx-auto px-4 max-w-7xl pb-3 text-right text-[11px] text-white/75">
+          Photo by{' '}
+          <a
+            href="https://commons.wikimedia.org/wiki/File:Catbells_Northern_Ascent,_Lake_District_-_June_2009.jpg"
+            target="_blank"
+            rel="noopener"
+            className="underline underline-offset-2 hover:text-white"
+          >
+            DAVID ILIFF
+          </a>
+          . License:{' '}
+          <a
+            href="https://creativecommons.org/licenses/by-sa/3.0/"
+            target="_blank"
+            rel="noopener license"
+            className="underline underline-offset-2 hover:text-white"
+          >
+            CC BY-SA 3.0
+          </a>
+        </p>
       </section>
 
       {/* ═══════════════════════════════════════════

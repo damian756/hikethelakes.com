@@ -1,0 +1,18 @@
+Home page hero photograph: credits and licence (11 Nov 2026)
+
+File in this repo: public/images/hero-catbells.webp (2400 x 994 px, WebP quality 82, 378 KB)
+Derived from: "Catbells Northern Ascent, Lake District - June 2009.jpg"
+Source page: https://commons.wikimedia.org/wiki/File:Catbells_Northern_Ascent,_Lake_District_-_June_2009.jpg
+Original: 9835 x 4074 px, 11,836,028 bytes, SHA-1 5bcfddb1c04ca6f668e75e7932b0fc6baa195f90, downloaded once from upload.wikimedia.org on 11 Nov 2026
+Author: David Iliff (Wikimedia Commons user Diliff), own work, taken 25 June 2009
+Licence: Creative Commons Attribution-Share Alike 3.0 Unported (CC BY-SA 3.0), https://creativecommons.org/licenses/by-sa/3.0/
+Author's requested attribution (from the file page): "Photo by DAVID ILIFF. License: https://creativecommons.org/licenses/by-sa/3.0/", preferably in a prominent location near the image.
+
+Changes made: resized from 9835 px to 2400 px wide and saved as WebP. No other edit. The derived file stays under CC BY-SA 3.0.
+On the page: next/image serves it (AVIF/WebP, quality 70) under a 60% dark overlay, cropped by object-cover.
+
+Credit shown on the home page, at the bottom right of the hero:
+  Photo by DAVID ILIFF. License: CC BY-SA 3.0
+  "DAVID ILIFF" links to the Commons file page; "CC BY-SA 3.0" links to https://creativecommons.org/licenses/by-sa/3.0/
+
+Alt text: "Walkers on the path up the grassy northern ridge of Catbells, with green fells and valleys either side under a cloudy sky"

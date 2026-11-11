@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server';
 import FellConditionsTracker from '@/components/FellConditionsTracker';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
-import { buildAlternates } from '@/lib/metadata';
+import { pageMetadata } from '@/lib/metadata';
 import { getLakesWeather } from '@/lib/weather';
 import { CONDITIONS_DATA } from '@/lib/conditions-data';
 import AdSlot from '@/components/AdSlot';
@@ -11,11 +11,11 @@ import AdSlot from '@/components/AdSlot';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const tm = await getTranslations({ locale, namespace: 'meta' });
-  return {
+  return pageMetadata({
+    path: '/conditions',
     title: tm('conditionsTitle'),
     description: tm('conditionsDesc'),
-    alternates: buildAlternates('/conditions'),
-  };
+  });
 }
 
 export default async function ConditionsPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -4,17 +4,17 @@ import { FELLS, hasRouteGuide } from '@/lib/fells';
 import { gridToEN } from '@/lib/fell-context';
 import FellLogTable, { type FellLogRow } from '@/components/FellLogTable';
 import type { Metadata } from 'next';
-import { BASE_URL, buildAlternates } from '@/lib/metadata';
+import { BASE_URL, pageMetadata } from '@/lib/metadata';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const tm = await getTranslations({ locale, namespace: 'meta' });
-  return {
+  return pageMetadata({
+    path: '/fell-log',
     title: tm('fellLogTitle'),
     description: tm('fellLogDesc'),
-    alternates: buildAlternates('/fell-log'),
-  };
+  });
 }
 
 export default async function FellLogPage({ params }: { params: Promise<{ locale: string }> }) {

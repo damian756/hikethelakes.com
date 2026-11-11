@@ -3,7 +3,7 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
-import { buildAlternates } from '@/lib/metadata';
+import { pageMetadata } from '@/lib/metadata';
 import ContactForm from '@/components/ContactForm';
 
 export async function generateMetadata({
@@ -13,11 +13,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const tm = await getTranslations({ locale, namespace: 'meta' });
-  return {
+  // /contact?type=… keeps this canonical: the clean URL.
+  return pageMetadata({
+    path: '/contact',
     title: tm('contactTitle'),
     description: tm('contactDesc'),
-    alternates: buildAlternates('/contact'),
-  };
+  });
 }
 
 export default async function ContactPage({ params }: { params: Promise<{ locale: string }> }) {

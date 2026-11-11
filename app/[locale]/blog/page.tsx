@@ -6,20 +6,15 @@ import { ChevronRight } from 'lucide-react';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { BLOG_POSTS, BLOG_CATEGORIES, DAMIAN } from '@/lib/blog';
 import BlogSearch from './BlogSearch';
+import { pageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: '/blog',
   title: 'Lake District Fell Walking Blog | Routes, Conditions & Tips | HikeTheLakes',
   description:
     'Fell walking guides, route tips and practical advice for the Lake District: Scafell Pike, Helvellyn, Skiddaw and more. By Damian Roche.',
-  alternates: { canonical: 'https://www.hikethelakes.com/blog' },
-  openGraph: {
-    title: 'Lake District Fell Blog | HikeTheLakes.com',
-    description: 'Fell walking guides, route tips and practical advice for the Lake District.',
-    url: 'https://www.hikethelakes.com/blog',
-    type: 'website',
-    siteName: 'HikeTheLakes.com',
-  },
-};
+  shareTitle: 'Lake District Fell Walking Blog',
+});
 
 export function generateStaticParams() {
   return [{ locale: 'en' }];

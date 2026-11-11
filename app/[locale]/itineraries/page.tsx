@@ -7,16 +7,16 @@ import WalkingPlanner from '@/components/WalkingPlanner';
 import { WALKING_ITINERARIES } from '@/lib/walking-itineraries';
 import { FELLS } from '@/lib/fells';
 import type { Metadata } from 'next';
-import { buildAlternates } from '@/lib/metadata';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const tm = await getTranslations({ locale, namespace: 'meta' });
-  return {
+  return pageMetadata({
+    path: '/itineraries',
     title: tm('itinerariesTitle'),
     description: tm('itinerariesDesc'),
-    alternates: buildAlternates('/itineraries'),
-  };
+  });
 }
 
 const FELL_NAMES: Record<string, string> = Object.fromEntries(

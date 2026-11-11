@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { Mountain, Wind, MapPin, Calendar, ChevronRight, Flag, Bed, Users } from 'lucide-react';
 import { getFeaturedFells } from '@/lib/fells';
 import type { Metadata } from 'next';
-import { BASE_URL, buildAlternates } from '@/lib/metadata';
+import { BASE_URL, pageMetadata } from '@/lib/metadata';
 import AdSlot from '@/components/AdSlot';
 
 export async function generateMetadata({
@@ -15,11 +15,12 @@ export async function generateMetadata({
   const { locale } = await params;
   const tm = await getTranslations({ locale, namespace: 'meta' });
 
-  return {
+  return pageMetadata({
+    path: '/',
     title: { absolute: `${tm('homeTitle')} | Hike The Lakes` },
     description: tm('homeDesc'),
-    alternates: buildAlternates('/'),
-  };
+    shareTitle: tm('homeTitle'),
+  });
 }
 
 export default async function HomePage({

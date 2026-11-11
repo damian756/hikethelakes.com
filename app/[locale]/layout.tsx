@@ -47,8 +47,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     authors: [{ name: 'Hike The Lakes', url: BASE_URL }],
     creator: 'Hike The Lakes',
     publisher: 'Hike The Lakes',
+    // No canonical or og:url here: each page sets its own (lib/metadata.ts pageMetadata).
+    // Before, a page that set none (the 404s) inherited the home page's.
     alternates: {
-      canonical: BASE_URL,
       types: {
         "application/rss+xml": `${BASE_URL}/feed`,
       },
@@ -56,7 +57,6 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     openGraph: {
       type: 'website',
       locale: ogLocale,
-      url: BASE_URL,
       siteName: 'Hike The Lakes',
       title: 'Hike The Lakes | Lake District Fell Guides',
       description:
@@ -64,9 +64,9 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       images: [
         {
           url: `${BASE_URL}/og-default.jpg`,
-          width: 1200,
-          height: 630,
-          alt: 'Hike The Lakes. Lake District fells',
+          width: 1376,
+          height: 768,
+          alt: 'Hike The Lakes: Lake District fell guides',
         },
       ],
     },

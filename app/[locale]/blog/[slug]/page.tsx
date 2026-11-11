@@ -6,8 +6,7 @@ import type { Metadata } from 'next';
 import { ChevronRight, Clock, ArrowLeft } from 'lucide-react';
 import { BLOG_POSTS, DAMIAN, getPostBySlug, getCategoryBySlug, getIsoDate, type ContentBlock } from '@/lib/blog';
 import AdSlot from '@/components/AdSlot';
-
-const BASE_URL = 'https://www.hikethelakes.com';
+import { BASE_URL, pageMetadata } from '@/lib/metadata';
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ locale: 'en', slug: p.slug }));
@@ -23,28 +22,19 @@ export async function generateMetadata({
   const post = getPostBySlug(slug);
   if (!post) return {};
   const cat = getCategoryBySlug(post.categorySlug);
-  return {
+  return pageMetadata({
+    path: `/blog/${slug}`,
     title: `${post.title} | Hike The Lakes`,
     description: post.excerpt,
-    alternates: { canonical: `${BASE_URL}/blog/${slug}` },
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      url: `${BASE_URL}/blog/${slug}`,
-      type: 'article',
-      siteName: 'HikeTheLakes.com',
+    shareTitle: post.title,
+    image: post.image ? { url: post.image, alt: post.imageAlt ?? post.title } : undefined,
+    article: {
       publishedTime: getIsoDate(post),
-      authors: [DAMIAN.name],
+      modifiedTime: getIsoDate(post),
+      authors: [post.sponsoredBy ? post.sponsoredBy.name : DAMIAN.name],
       section: cat?.label,
-      images: [{ url: post.image ?? `${BASE_URL}/og-default.jpg`, alt: post.imageAlt ?? post.title }],
     },
-    twitter: {
-      card: 'summary_large_image',
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image ?? `${BASE_URL}/og-default.jpg`],
-    },
-  };
+  });
 }
 
 // Posts mention internal pages as plain text ("hikethelakes.com/conditions"). Turn those into links.

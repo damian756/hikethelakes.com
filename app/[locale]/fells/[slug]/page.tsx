@@ -5,7 +5,7 @@ import { getTranslations } from 'next-intl/server';
 import { MapPin, ChevronRight, Mountain, Clock, TrendingUp, Utensils } from 'lucide-react';
 import { FELLS, getFell, hasCheckedGeo, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
-import { BASE_URL, buildAlternates } from '@/lib/metadata';
+import { BASE_URL, pageMetadata } from '@/lib/metadata';
 import { BLOG_POSTS } from '@/lib/blog';
 import AdSlot from '@/components/AdSlot';
 import { bookLabel, nearestFellsInGroup, nearestGuideTown, relatedWildlifePages } from '@/lib/fell-context';
@@ -30,17 +30,7 @@ export async function generateMetadata({
         .map((o) => o.fell.name)
         .join(', ')}.`;
 
-  return {
-    title,
-    description,
-    alternates: buildAlternates(`/fells/${slug}`),
-    openGraph: {
-      title,
-      description,
-      url: `${BASE_URL}/fells/${slug}`,
-      type: 'website',
-    },
-  };
+  return pageMetadata({ path: `/fells/${slug}`, title, description });
 }
 
 export default async function FellPage({

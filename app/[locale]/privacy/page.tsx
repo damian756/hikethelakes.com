@@ -3,14 +3,14 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
-import { buildAlternates } from '@/lib/metadata';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  return {
+  return pageMetadata({
+    path: '/privacy',
     title: 'Privacy Policy | HikeTheLakes',
-    robots: { index: false, follow: false },
-    alternates: buildAlternates('/privacy'),
-  };
+    noindex: true,
+  });
 }
 
 export default async function PrivacyPage({ params }: { params: Promise<{ locale: string }> }) {

@@ -5,17 +5,17 @@ import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { Check } from 'lucide-react';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
-import { buildAlternates } from '@/lib/metadata';
+import { pageMetadata } from '@/lib/metadata';
 import { AD_OPTION_IDS, describeSpace } from '@/lib/ad-slots';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'advertisePage' });
-  return {
+  return pageMetadata({
+    path: '/advertise',
     title: t('metaTitle'),
     description: t('metaDesc'),
-    alternates: buildAlternates('/advertise'),
-  };
+  });
 }
 
 // The advertising menu (Damian, 11 Nov 2026). Prices are plus VAT; paid by invoice

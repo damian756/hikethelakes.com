@@ -7,7 +7,7 @@ import { WALKING_ITINERARIES, getItineraryById } from '@/lib/walking-itineraries
 import { FELLS } from '@/lib/fells';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
-import { BASE_URL, buildAlternates } from '@/lib/metadata';
+import { BASE_URL, pageMetadata } from '@/lib/metadata';
 
 export async function generateStaticParams() {
   return WALKING_ITINERARIES.map((it) => ({ slug: it.id }));
@@ -25,17 +25,7 @@ export async function generateMetadata({
   const title = `${itinerary.title} | Lake District Walking Circuit`;
   const description = itinerary.description;
 
-  return {
-    title,
-    description,
-    alternates: buildAlternates(`/itineraries/${slug}`),
-    openGraph: {
-      title,
-      description,
-      url: `${BASE_URL}/itineraries/${slug}`,
-      type: 'website',
-    },
-  };
+  return pageMetadata({ path: `/itineraries/${slug}`, title, description });
 }
 
 const FELL_NAMES: Record<string, string> = Object.fromEntries(

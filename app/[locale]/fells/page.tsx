@@ -5,16 +5,16 @@ import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { ChevronRight } from 'lucide-react';
 import { FELLS, hasCheckedGeo, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
-import { BASE_URL, buildAlternates } from '@/lib/metadata';
+import { BASE_URL, pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const tm = await getTranslations({ locale, namespace: 'meta' });
-  return {
+  return pageMetadata({
+    path: '/fells',
     title: tm('fellsTitle'),
     description: tm('fellsDesc'),
-    alternates: buildAlternates('/fells'),
-  };
+  });
 }
 
 export default async function FellsPage({ params }: { params: Promise<{ locale: string }> }) {

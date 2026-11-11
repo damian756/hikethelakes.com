@@ -2,14 +2,14 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
-import { buildAlternates } from '@/lib/metadata';
+import { pageMetadata } from '@/lib/metadata';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
-  return {
+  return pageMetadata({
+    path: '/terms',
     title: 'Terms of Use | HikeTheLakes',
-    robots: { index: false, follow: false },
-    alternates: buildAlternates('/terms'),
-  };
+    noindex: true,
+  });
 }
 
 export default async function TermsPage({ params }: { params: Promise<{ locale: string }> }) {

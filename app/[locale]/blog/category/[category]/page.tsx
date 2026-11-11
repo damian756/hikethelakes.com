@@ -5,6 +5,7 @@ import type { Metadata } from 'next';
 import { ChevronRight, Clock, ArrowRight } from 'lucide-react';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { BLOG_POSTS, BLOG_CATEGORIES, getPostsByCategory, getCategoryBySlug } from '@/lib/blog';
+import { pageMetadata } from '@/lib/metadata';
 
 export function generateStaticParams() {
   return BLOG_CATEGORIES.map((c) => ({ locale: 'en', category: c.slug }));
@@ -18,11 +19,11 @@ export async function generateMetadata({
   const { category } = await params;
   const cat = getCategoryBySlug(category);
   if (!cat) return {};
-  return {
+  return pageMetadata({
+    path: `/blog/category/${category}`,
     title: `${cat.label} | HikeTheLakes Blog`,
     description: cat.description,
-    alternates: { canonical: `https://www.hikethelakes.com/blog/category/${category}` },
-  };
+  });
 }
 
 export default async function CategoryPage({

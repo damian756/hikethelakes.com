@@ -3,17 +3,17 @@ import Image from 'next/image';
 import { Bed, MapPin, ExternalLink, CheckCircle2, Clock } from 'lucide-react';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
-import { buildAlternates } from '@/lib/metadata';
+import { pageMetadata } from '@/lib/metadata';
 import { getTranslations } from 'next-intl/server';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const tm = await getTranslations({ locale, namespace: 'meta' });
-  return {
+  return pageMetadata({
+    path: '/accommodation',
     title: tm('accommodationTitle'),
     description: tm('accommodationDesc'),
-    alternates: buildAlternates('/accommodation'),
-  };
+  });
 }
 
 // Areas to base yourself, and a few named places. Named places say only what

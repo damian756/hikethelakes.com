@@ -70,9 +70,6 @@ export default async function ItinerariesPage({ params }: { params: Promise<{ lo
                     </div>
                     <div className="text-right shrink-0">
                       <div className="font-bold text-[#0E1C14]">{it.days} {it.days === 1 ? t('dayLabel') : t('daysLabel')}</div>
-                      <div className="text-[#3C4E42]/50 text-sm capitalize">
-                        {it.budget === 'premium' ? t('budgetPremium') : it.budget === 'standard' ? t('budgetStandard') : t('budgetValue')}
-                      </div>
                     </div>
                   </div>
 

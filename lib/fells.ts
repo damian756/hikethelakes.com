@@ -179,8 +179,8 @@ export const FELLS: Fell[] = [
     name: "Crinkle Crags",
     height: 859,
     osGridRef: "NY 248 048",
-    latitude: 54.4332,
-    longitude: -3.1758,
+    latitude: 54.4335,
+    longitude: -3.1600,
     wainwrightBook: 4,
     wainwrightVolume: "The Southern Fells",
     area: "southern",
@@ -267,8 +267,8 @@ export const FELLS: Fell[] = [
     name: "Fairfield",
     height: 873,
     osGridRef: "NY 358 117",
-    latitude: 54.4878,
-    longitude: -2.9966,
+    latitude: 54.4970,
+    longitude: -2.9920,
     wainwrightBook: 1,
     wainwrightVolume: "The Eastern Fells",
     area: "eastern",
@@ -333,8 +333,8 @@ export const FELLS: Fell[] = [
     name: "Grisedale Pike",
     height: 791,
     osGridRef: "NY 198 225",
-    latitude: 54.5932,
-    longitude: -3.2188,
+    latitude: 54.5918,
+    longitude: -3.2419,
     wainwrightBook: 6,
     wainwrightVolume: "The North Western Fells",
     area: "north-western",
@@ -377,8 +377,8 @@ export const FELLS: Fell[] = [
     name: "Red Pike (Buttermere)",
     height: 755,
     osGridRef: "NY 160 154",
-    latitude: 54.5216,
-    longitude: -3.2466,
+    latitude: 54.5273,
+    longitude: -3.2987,
     wainwrightBook: 7,
     wainwrightVolume: "The Western Fells",
     area: "western",
@@ -421,8 +421,8 @@ export const FELLS: Fell[] = [
     name: "Wetherlam",
     height: 763,
     osGridRef: "NY 288 011",
-    latitude: 54.3982,
-    longitude: -3.0966,
+    latitude: 54.4008,
+    longitude: -3.0975,
     wainwrightBook: 4,
     wainwrightVolume: "The Southern Fells",
     area: "southern",
@@ -443,8 +443,8 @@ export const FELLS: Fell[] = [
     name: "Ill Bell",
     height: 757,
     osGridRef: "NY 436 077",
-    latitude: 54.4358,
-    longitude: -2.8683,
+    latitude: 54.4620,
+    longitude: -2.8708,
     wainwrightBook: 2,
     wainwrightVolume: "The Far Eastern Fells",
     area: "far-eastern",
@@ -4768,7 +4768,12 @@ export function getFeaturedFells(): Fell[] {
  * OSGB36 to WGS84 conversion). Only these publish coordinates in JSON-LD; the
  * others were up to 4.6 km out (Haystacks), and the placeholder fells' were made up.
  */
-const CHECKED_GEO = new Set(['scafell-pike', 'helvellyn', 'blencathra', 'great-gable', 'coniston-old-man']);
+const CHECKED_GEO = new Set([
+  'scafell-pike', 'helvellyn', 'blencathra', 'great-gable', 'coniston-old-man',
+  // Grid refs corrected to the Database of British and Irish Hills (Nov 2026);
+  // latitude and longitude recomputed from them with the same conversion.
+  'crinkle-crags', 'fairfield', 'grisedale-pike', 'red-pike-buttermere', 'wetherlam', 'ill-bell',
+]);
 
 export function hasCheckedGeo(fell: Fell): boolean {
   return CHECKED_GEO.has(fell.slug);

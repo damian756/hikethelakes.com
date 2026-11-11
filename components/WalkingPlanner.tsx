@@ -7,7 +7,6 @@ import { WALKING_ITINERARIES } from '@/lib/walking-itineraries';
 import { FELLS } from '@/lib/fells';
 
 type Days = 2 | 3 | 4;
-type Budget = 'value' | 'standard' | 'premium';
 
 const FELL_NAMES: Record<string, string> = Object.fromEntries(
   FELLS.map((f) => [f.slug, f.name])
@@ -17,14 +16,7 @@ export default function WalkingPlanner({ locale }: { locale: string }) {
   const prefix = locale === 'en' ? '' : `/${locale}`;
 
   const [days, setDays] = useState<Days>(3);
-  const [budget, setBudget] = useState<Budget>('standard');
-
-  const filtered = WALKING_ITINERARIES.filter(
-    (it) => it.days === days && it.budget === budget
-  );
-  const fallback = WALKING_ITINERARIES.filter((it) => it.days === days);
-
-  const results = filtered.length > 0 ? filtered : fallback;
+  const results = WALKING_ITINERARIES.filter((it) => it.days === days);
 
   return (
     <div className="space-y-8">
@@ -43,22 +35,6 @@ export default function WalkingPlanner({ locale }: { locale: string }) {
                   }`}
                 >
                   {d}
-                </button>
-              ))}
-            </div>
-          </div>
-          <div>
-            <label className="block text-xs font-semibold text-[#3C4E42]/60 uppercase tracking-wider mb-2">Budget</label>
-            <div className="flex gap-2">
-              {(['value', 'standard', 'premium'] as Budget[]).map((b) => (
-                <button
-                  key={b}
-                  onClick={() => setBudget(b)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                    budget === b ? 'bg-[#0E1C14] text-white' : 'bg-[#EAEDE8] text-[#3C4E42] hover:bg-[#D2D8CF]'
-                  }`}
-                >
-                  {b === 'value' ? '£' : b === 'standard' ? '££' : '£££'}
                 </button>
               ))}
             </div>

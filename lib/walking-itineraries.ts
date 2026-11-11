@@ -111,7 +111,6 @@ export const WALKING_ITINERARIES: WalkingItinerary[] = [
     fells: ['scafell-pike', 'helvellyn', 'skiddaw', 'catbells'],
     accommodation: 'Ambleside, Keswick, Glenridding. Standard B&Bs with good transport links.',
     dining: 'Old Dungeon Ghyll, Travellers Rest, The Dog and Gun.',
-    places: [{ name: 'Old Dungeon Ghyll', href: '/accommodation#old-dungeon-ghyll-langdale' }],
   },
   {
     id: 'four-day-value',

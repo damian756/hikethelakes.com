@@ -122,9 +122,6 @@ export default async function ItineraryDetailPage({
             <span className="text-[#9E762A] text-xs font-semibold uppercase tracking-widest">
               {itinerary.days} {itinerary.days === 1 ? t('dayLabel') : t('daysLabel')}
             </span>
-            <span className="text-[#3C4E42]/60 text-xs">
-              {itinerary.budget === 'premium' ? t('budgetPremium') : itinerary.budget === 'standard' ? t('budgetStandard') : t('budgetValue')}
-            </span>
             <span className="text-[#3C4E42]/60 text-xs capitalize">{itinerary.difficulty}</span>
           </div>
           <h1 className="font-display text-4xl md:text-5xl font-bold text-white mb-3">{itinerary.title}</h1>
@@ -213,7 +210,7 @@ export default async function ItineraryDetailPage({
                         {it.title}
                       </div>
                       <div className="text-[#3C4E42]/50 text-xs">
-                        {it.days} {it.days === 1 ? t('dayLabel') : t('daysLabel')} · {it.budget === 'premium' ? t('budgetPremium') : it.budget === 'standard' ? t('budgetStandard') : t('budgetValue')}
+                        {it.days} {it.days === 1 ? t('dayLabel') : t('daysLabel')}
                       </div>
                     </div>
                     <ChevronRight size={13} className="text-[#3C4E42]/30 group-hover:text-[#1A4A30] transition-colors" />

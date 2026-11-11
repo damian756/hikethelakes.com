@@ -306,7 +306,7 @@ export default async function FellPage({
                   <Mountain size={20} className="text-[#9E762A] shrink-0" />
                   <div>
                     <span className="font-semibold text-[#0E1C14]">{f.name}</span>
-                    <span className="text-[#3C4E42]/60 text-sm ml-2">{f.height}m · {t('kmAway', { km })}</span>
+                    <span className="text-[#3C4E42]/60 text-sm ml-2 whitespace-nowrap">{f.height}m · {t('kmAway', { km })}</span>
                   </div>
                   <ChevronRight size={14} className="text-[#3C4E42]/40 ml-auto" />
                 </Link>

@@ -2,6 +2,8 @@
 
 Internal report. The work was done on 11 Nov 2026 on `main`. Screenshots are in `docs/freshen-2026-11/screens/` and the sources in `docs/freshen-2026-11/sources/`, all fetched on 11 Nov 2026. The playbook is `C:\Projects\lakes-guide\docs\GUIDE-SITES-PLAYBOOK-2026-11.md` (section 9 covers the Lakes sites).
 
+**Standing rule (Damian, 11 Nov 2026): traffic first.** In his words: "their only goal is to drive traffic, we dont need to focus much on conversion, but just raw numbers. Having high traffic is what will sell the advert space locally". Every choice is judged by visits from search: pages that can rank stay indexable and in the sitemap; titles and descriptions say the fell or place and what the page answers; a live title's main phrase is never traded for a tidier one; anything that blocks crawling or indexing is fixed; related pages link to each other, across the three sites where useful; pages stay fast; no conversion work beyond stage B. Section 17 ranks what to do next.
+
 ## Commits
 
 **Stage 1** (live 17:04 UTC): `566a62e`, the contact form.
@@ -51,6 +53,15 @@ Internal report. The work was done on 11 Nov 2026 on `main`. Screenshots are in 
 - This report, updated.
 
 **Privacy and terms, last** (approved by Damian, "go with your suggestions"): "Privacy and terms: say what the site loads; no affiliate sections", "Privacy: contact form line; NEXT_LOCALE 'may' be set", and "Privacy: fuller Ahrefs Web Analytics sentence". Every sentence on the privacy page is true of the code in the same push.
+
+**Server region:** `56d843b`, `vercel.json` regions `lhr1`.
+
+**SEO pass (section 16)**, on top of `56d843b`; none needs to go before the privacy commits:
+- `0db93b9`: one canonical per page; og:url and share tags match it; no hreflang.
+- `5727580`: titles and descriptions.
+- `88839c3`: schema.
+- `8a9437d`: sitemap lastmod.
+- This report: sections 16 and 17, and the traffic rule above.
 
 ## Stage 1: contact form, no email address
 
@@ -467,3 +478,58 @@ The page also carries the founding offer word for word ("For the first ten adver
 - **Size:** 10 guides a batch, one batch a fortnight, about 3 hours a guide from official sources (route and distances from OS Maps; start and parking from the National Trust and the National Park; hazards from AdventureSmart and mountain rescue; winter notes from Weatherline). About 30 hours a batch.
 - **First ten:** the most viewed placeholder pages in the old PageView log (the counts are small, so this is a starting order, not a ranking): Shipman Knotts, Sergeant's Crag, Lank Rigg, High Spy, Angletarn Pikes, Carrock Fell, Skiddaw Little Man, High Raise (High Street), Harter Fell (Eskdale), Mungrisdale Common.
 - **Later batches:** ordered by Ahrefs or Search Console data once there is enough of it, the most searched first.
+
+## 16. SEO pass (11 Nov 2026, night)
+
+**How it was checked:** a script fetched the sitemap from a served build on 3113 (`DATABASE_URL` empty), then every URL in it plus the query-string, `/en`, other-locale and 404 variants, and recorded status, redirect, robots meta, canonical, og:url, title, description, H1 and every JSON-LD block. Live pages were read with a few GETs only.
+
+**Found and fixed:**
+
+| Area | Found | Now |
+|---|---|---|
+| Site name in titles | The layout template adds " \| Hike The Lakes", and 238 pages added it again: "Barf \| Hike The Lakes \| Hike The Lakes", every post, /fells, /fell-log, /advertise, /contact, the blog, its categories, privacy and terms | Once on every page (`5727580`) |
+| Fell titles | The fell's name only | Name first (unchanged, it is the part that may rank), then what the page answers: "Scafell Pike Walk: Routes, Distance and Time" (21 guides); "Barf: Height, Grid Reference and Nearest Fells" (193) |
+| Descriptions | Guide fells: the summit text cut at 160 characters mid-word. Four posts, /advertise, /conditions and /itineraries ran to 165 to 210 characters; /itineraries promised "accommodation and dining recommendations" | Guide fells list their routes with distance and time; the rest trimmed (posts through a new `metaDescription`), each true of its page |
+| /advertise | "Advertise on Hike The Lakes \| Hike The Lakes" | "Lake District Advertising \| Hike The Lakes". H1, URL and canonical unchanged; the description names only what the page offers |
+| Share tags | 14 pages had the home page's og:url and og:title; 238 had the home page's twitter:title; 224 (fells, circuits, blog index) had no og:image | Every page sets its own, og:url equal to its canonical (`0db93b9`, `lib/metadata.ts` `pageMetadata`) |
+| 404 pages | Canonical to the home page (inherited from the layout) | No canonical |
+| hreflang | en, en-US, en-AU, en-GB and x-default, all to the same URL, on 233 pages and 231 sitemap entries | None. The site serves English at one URL per page (`i18n/routing.ts` already said "No hreflang tags") |
+| Privacy, terms | noindex, with a canonical to themselves | Still noindex, no canonical; wording untouched |
+| Organization | sameAs listed The Lakes Guide, The Lakes Wildlife, TheLakes.network and Churchtown Media (sameAs means "the same organisation"); the logo was the share photo; posts named Churchtown Media as publisher, the home page Hike The Lakes; the home page also carried a Person with a different jobTitle from the posts' | One Organization everywhere it appears: Hike The Lakes, the 512 px icon as logo, parent Churchtown Media (`88839c3`) |
+| Article dates | Walking circuits: datePublished 2024-06-01 and dateModified 2025-03-01, both invented (the repo starts on 9 Mar 2026). Posts: dateModified always equal to datePublished | Circuits 2026-03-09 and 2026-11-11 from git, author the site (no byline on the page). Posts: a new `updated` field, set to 11 Nov 2026 on the four older posts whose title or text changed tonight |
+| Breadcrumbs | Shown on posts and category pages with no BreadcrumbList | Added, matching the visible trail |
+| Fell schema | `elevation` on a Mountain (schema.org has it only on GeoCoordinates) | Height as additionalProperty, and in geo where coordinates are published |
+| Sitemap lastmod | One hand-set date for 236 URLs | Per page: posts' own dates, the blog index and categories their newest post's, the other pages one git-read date each with the commits noted (`8a9437d`) |
+
+**Checked and right:**
+- **Advertising:** /advertise returns 200, index, follow, canonical https://www.hikethelakes.com/advertise; `?space=…` (known or unknown) keeps the clean canonical.
+- **Canonicals:** all 249 sitemap URLs have exactly one canonical, absolute, on www, pointing at themselves; `/contact?type=…` keeps the clean one; `/en` and `/en/<page>` redirect (307) to the unprefixed URL; `/de/fells` and other locales 404 and are listed nowhere.
+- **Schema:** every block on every page parses. WebSite and Organization are defined once, on the home page, and posts and circuits name the same Organization as publisher; Article and BreadcrumbList on 12 posts and 9 circuits; TouristAttraction and Mountain with BreadcrumbList on 214 fells; ItemList on /fells; Dataset on /fell-log. No AggregateRating, Review, LocalBusiness or SearchAction. Every site `@id` and URL is on www. The 11 fells that publish coordinates are within 60 m of their grid reference (recomputed OSGB36 to WGS84 tonight); the others publish none.
+- **Titles:** no duplicate title or description across the 249 URLs (script). No em dash in any served page, head or JSON-LD. No stale "2025" or Southport leftovers: the only hits are Damian's bio, a 2025 rescue statistic and a first-person line in the tarn fishing post.
+- **Sitemap and robots:** https://www.hikethelakes.com/sitemap.xml, 249 URLs (8 main pages, 214 fells, 9 circuits, the blog, 5 categories, 12 posts), every one 200 with no redirect, index, follow and a self canonical; tonight's /advertise and two posts are in. robots.txt says `Sitemap: https://www.hikethelakes.com/sitemap.xml` and blocks only /api/.
+
+**Left for Damian:**
+1. `hikethelakes.com` without www redirects with a 307 at the Vercel domain, before the app's own 308. A permanent redirect is the usual choice for search; it is a Vercel domain setting, not changed here.
+2. Two live post titles run past 60 characters ("Reading the Fell Forecast: MWIS, Met Office, and What to Actually Trust", "Tarn Fishing in the Lake District: Still Water Is a Different Game"). Left: they are live and match the H1.
+3. The circuit names "Two-Day Premium", "Four-Day Value" and the two "Standard" circuits are left from the removed price tiers and name no fell. Titles and URLs left as live; see section 17.
+4. `og-default.jpg` is a 1.7 MB PNG with a .jpg name. Shares work; a real JPEG would be far smaller.
+
+**Checks:** tsc 0 errors; eslint 0 errors on the changed files, the same 13 warnings as before; `next build` passes with `DATABASE_URL` empty; `npm run test:contact` 10/10; `node --test tests/*.test.mjs` 26/26; no em dash in any added line. Nothing visible on the pages changed, so no screenshots.
+
+**To submit in Search Console:** the sitemap above. New tonight: /advertise, /blog/helvellyn-fell-top-report-weatherline, /blog/how-to-call-mountain-rescue-lake-district. Substantially changed: all 214 fell pages, all 9 circuits, /, /fells, /fell-log, /conditions, /itineraries, /accommodation, /contact, /blog, and four older posts (/blog/scafell-pike-wasdale-honest-account, /blog/how-to-start-the-wainwrights, /blog/fell-kit-list-what-actually-works, /blog/where-to-stay-fell-walking-keswick-ambleside-wasdale).
+
+## 17. Traffic: what to do next
+
+Ranked by likely visits gained. The only evidence is the old PageView log (section 8: 22 visits from search engines in the last 30 days; section 15: which placeholder fells were viewed most). Ahrefs and Search Console were not read, so beyond that the order is reasoning, and no visit numbers are estimated.
+
+1. **Fell guide batches: the 193 placeholder fells.** The largest set by far. A placeholder page can now match "<fell> height" or "<fell> grid reference"; a written guide also matches "<fell> walk" and "<fell> route", which is what walkers type. Start with the ten in section 15 (Shipman Knotts, Sergeant's Crag, Lank Rigg, High Spy, Angletarn Pikes, Carrock Fell, Skiddaw Little Man, High Raise (High Street), Harter Fell (Eskdale), Mungrisdale Common). At ten a fortnight the set takes about 40 weeks. Each fell page now has its own title, so after a month Search Console impressions per page will show which names people search; order later batches by that. When a guide is written, its title becomes "<fell> Walk: Routes, Distance and Time" by itself.
+2. **Search terms the site does not cover yet** (reasoning):
+   - The ridge rounds walkers search by name: Fairfield Horseshoe, Kentmere Horseshoe, Coledale Horseshoe, Newlands Round. They appear in fell notes and circuits but have no page of their own.
+   - The six posts in section 11: wild camping, Miles without Stiles, the completers' register, dogs on the fells, Fix the Fells, fell walks by bus.
+   - Parking for the big fells ("Scafell Pike parking", "Helvellyn car park"): the guide pages hold the start points and postcodes but no section a parking search would match.
+3. **Pages one edit away from ranking:**
+   - /fell-log is the full list of the 214 Wainwrights, but neither its title nor its H1 says "list of Wainwrights", the phrase people search. Adding it after the live main phrase ("Lake District Fell Log") keeps what may rank.
+   - The circuit titles (section 16, item 3) name no fell; putting the fells from each subtitle into the title would match searches.
+   - The 21 guide pages have no photo of their fell, so they miss image search. Credited photos, as for the Catbells hero, one per guide.
+   - Cross-site links: fell pages link to five Lakes Guide towns and to Lakes Wildlife's Ullswater page. Extend to Borrowdale, Wasdale, Langdale, Glenridding and Patterdale, and to more Wildlife reserves, as those pages exist on the other sites.
+4. **Posts a month: two**, sourced as now, each aimed at one search term, seasonal ones a month ahead (winter topics by early December). More than two would take writing time from the fell batches, which cover more search terms per hour.

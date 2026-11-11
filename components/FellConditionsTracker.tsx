@@ -22,8 +22,8 @@ const FORECASTS = [
   },
   {
     name: 'Weatherline',
-    href: 'https://lakedistrict.gov.uk/explore/plan-your-visit/lake-district-weather/',
-    desc: 'Lake District National Park. In winter, a daily report from the summit of Helvellyn.',
+    href: 'https://www.lakedistrict.gov.uk/explore/plan-your-visit/lake-district-weather/weatherline/',
+    desc: 'Lake District National Park. From December to April, a daily report from the summit of Helvellyn.',
   },
 ];
 
@@ -54,7 +54,7 @@ export default function FellConditionsTracker({ conditions, weather }: FellCondi
         </div>
       </div>
 
-      {/* Wind now (valley level) */}
+      {/* Wind now: one Open-Meteo model point, about 543 m (lib/weather.ts) */}
       {weather && (
         <div className="bg-[#4A7D9A]/8 border border-[#4A7D9A]/20 rounded-xl px-5 py-4 flex flex-wrap gap-6">
           <div>
@@ -68,7 +68,7 @@ export default function FellConditionsTracker({ conditions, weather }: FellCondi
           <div className="border-l border-[#4A7D9A]/20 pl-6 max-w-md">
             <div className="text-[#4A7D9A] text-xs uppercase tracking-wider mb-1 font-semibold">Source</div>
             <div className="text-sm text-[#3C4E42]/70">
-              Open-Meteo model, 10 metres above the ground, refreshed every 30 minutes. Wind on the summits is often much stronger.
+              Open-Meteo model for one point about 4 km west of Grasmere, around 540 m up, refreshed every 30 minutes. Wind on the summits is often much stronger.
             </div>
           </div>
         </div>

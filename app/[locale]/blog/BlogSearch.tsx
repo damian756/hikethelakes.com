@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, Clock, ArrowRight, X } from 'lucide-react';
 import type { BlogPost, BlogCategory } from '@/lib/blog';
 
@@ -84,12 +85,13 @@ export default function BlogSearch({ posts, categories, postCountByCategory }: P
                 className="group bg-white rounded-2xl border border-[#D2D8CF] hover:border-[#9E762A]/40 hover:shadow-md transition-all flex flex-col overflow-hidden"
               >
                 {post.image && (
-                  <div className="aspect-[16/9] overflow-hidden">
-                    <img
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <Image
                       src={post.image}
                       alt={post.imageAlt ?? post.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 480px"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 )}

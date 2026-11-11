@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { MapPin, ChevronRight, Mountain, Clock, TrendingUp, Utensils } from 'lucide-react';
-import { FELLS, getFell, hasRouteGuide } from '@/lib/fells';
+import { FELLS, getFell, hasCheckedGeo, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
 
@@ -67,12 +67,15 @@ export default async function FellPage({
                 description: fell.summitDescription,
                 url: `${BASE_URL}/fells/${slug}`,
                 elevation: `${fell.height}m`,
-                geo: {
-                  '@type': 'GeoCoordinates',
-                  latitude: fell.latitude,
-                  longitude: fell.longitude,
-                  elevation: fell.height,
-                },
+                // Coordinates only where they agree with the grid reference (lib/fells.ts).
+                ...(hasCheckedGeo(fell) && {
+                  geo: {
+                    '@type': 'GeoCoordinates',
+                    latitude: fell.latitude,
+                    longitude: fell.longitude,
+                    elevation: fell.height,
+                  },
+                }),
                 ...(fell.image && {
                   image: {
                     '@type': 'ImageObject',

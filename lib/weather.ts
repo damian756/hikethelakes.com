@@ -1,4 +1,4 @@
-// Open-Meteo free API — no key required
+// Open-Meteo free API: no key required
 // https://open-meteo.com/
 
 export interface WeatherData {
@@ -12,7 +12,8 @@ function degreesToCompass(deg: number): string {
   return dirs[Math.round(deg / 22.5) % 16];
 }
 
-// Lake District centre (Grasmere area)
+// One model point in the central fells, about 4 km west of Grasmere village.
+// Open-Meteo gives its elevation as about 543 m: neither a valley nor a summit reading.
 const LAT = 54.4609;
 const LON = -3.0886;
 

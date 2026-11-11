@@ -51,7 +51,7 @@ export const FELLS: Fell[] = [
     wainwrightVolume: "The Southern Fells",
     area: "southern",
     difficulty: "strenuous",
-    summitDescription: "At 978 metres, Scafell Pike is the highest point in England, and it earns that status. The final approach from Lingmell Col is a boulder-field slog that goes on longer than you expect. The summit itself is a wide, cairn-strewn plateau of dark volcanic rock, disorienting in mist. In clear conditions the view is extraordinary: the Coniston Fells to the south-east, the Gable group to the north, the Isle of Man visible on a good day, and a sense of scale that makes most other summits feel modest.\n\nThe summit cairn is a proper structure, not just a pile of stones. The OS triangulation pillar has been removed but the cairn is unmistakeable. A war memorial plaque sits here too. On a Saturday in July there might be a hundred people on the summit at once. On a November weekday you might have it entirely to yourself. Both experiences are the same mountain.\n\nThe descent demands respect. The boulder field that looks manageable going up becomes treacherous in wet conditions or fading light. More rescues happen on the descent than the ascent. Plan accordingly.",
+    summitDescription: "At 978 metres, Scafell Pike is the highest point in England, and it earns that status. The final approach from Lingmell Col is a boulder-field slog that goes on longer than you expect. The summit itself is a wide, cairn-strewn plateau of dark volcanic rock, disorienting in mist. In clear conditions the view is extraordinary: the Coniston Fells to the south-east, the Gable group to the north, the Isle of Man visible on a good day, and a sense of scale that makes most other summits feel modest.\n\nThe summit cairn is a proper structure, not just a pile of stones. A war memorial plaque sits here too. On a Saturday in July there might be a hundred people on the summit at once. On a November weekday you might have it entirely to yourself. Both experiences are the same mountain.\n\nThe descent demands respect. The boulder field that looks manageable going up becomes treacherous in wet conditions or fading light. More rescues happen on the descent than the ascent. Plan accordingly.",
     walkingDescription: "The Wasdale Head route is the most direct and most brutal. Park at the NT car park at Wasdale Head (CA20 1EX, charged). The path follows Brown Tongue steeply up to Hollow Stones beneath the crags of Scafell, then climbs via the Lingmell Col. Total ascent is around 920 metres over 5.6 miles. Most fit walkers allow 5 to 6 hours for the round trip. The path is well-worn but the terrain is relentless rock and stone from the halfway point upward.\n\nThe Langdale approach via Esk Hause is longer but arguably more rewarding: you move through wild country before hitting the summit plateau. Park at Old Dungeon Ghyll (LA22 9JU, National Trust). The route ascends Rossett Gill, crosses the high col at Esk Hause, and then climbs the summit via the Great Moss or via Great End. Allow 7 to 8 hours and plan your route carefully, as Esk Hause is a complex junction and disorients people in mist.\n\nA third serious option is the Corridor Route from Sty Head, which approaches the summit from the north via a narrow path cut into the hillside. It is spectacular, feels committing, and is the best way to avoid the crowd when coming from Wasdale.",
     routes: [
       { name: "Wasdale Head", distance: "5.6 miles", ascent: "900m", time: "5–6 hours", difficulty: "strenuous", startPostcode: "CA20 1EX", startDescription: "Wasdale Head NT car park" },
@@ -80,7 +80,7 @@ export const FELLS: Fell[] = [
       { name: "Striding Edge from Glenridding", distance: "8 miles", ascent: "850m", time: "6–7 hours", difficulty: "challenging", startPostcode: "CA11 0PD", startDescription: "Glenridding car park" },
       { name: "Thirlmere western approach", distance: "9 miles", ascent: "900m", time: "6–7 hours", difficulty: "moderate", startPostcode: "CA12 4TW", startDescription: "Wythburn church car park" },
     ],
-    tips: "Striding Edge in mist is not a joke. I have done it a dozen times and it is always the conditions that decide the day. Check the Mountain Weather Information Service (mwis.org.uk) the morning you plan to go, not the day before. If there is ice on the ridge between November and April, the stakes are serious. The Travellers Rest (CA11 0JQ) on the A591 south of Grasmere is worth knowing about for food and a pint on the return. Glenridding car park charges and can fill by 9am on summer weekends; the overflow is along the main road.",
+    tips: "Striding Edge in mist is not a joke: it is the conditions that decide the day. Check the Mountain Weather Information Service (mwis.org.uk) the morning you plan to go, not the day before. If there is ice on the ridge between November and April, the stakes are serious. Glenridding car park charges and can fill by 9am on summer weekends; the overflow is along the main road.",
     nearbyTarns: ["Red Tarn", "Browncove Tarns"],
     nearbySummits: ["Catstycam", "Nethermost Pike", "Dollywagon Pike"],
     nearbyDining: [{ name: "Travellers Rest", type: "Pub", distance: "1 mile" }],
@@ -4760,6 +4760,18 @@ export function getFell(slug: string): Fell | undefined {
 
 export function getFeaturedFells(): Fell[] {
   return FELLS.filter((f) => f.featured);
+}
+
+/**
+ * The written-guide fells whose stored latitude and longitude agree with their
+ * OS grid reference to within about 200 m (checked 11 Nov 2026 with a standard
+ * OSGB36 to WGS84 conversion). Only these publish coordinates in JSON-LD; the
+ * others were up to 4.6 km out (Haystacks), and the placeholder fells' were made up.
+ */
+const CHECKED_GEO = new Set(['scafell-pike', 'helvellyn', 'blencathra', 'great-gable', 'coniston-old-man']);
+
+export function hasCheckedGeo(fell: Fell): boolean {
+  return CHECKED_GEO.has(fell.slug);
 }
 
 /**

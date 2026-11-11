@@ -1,5 +1,5 @@
 // General route notes for popular fells, shown on /conditions with the current
-// valley wind from Open-Meteo. These are NOT daily conditions and the page says so.
+// Open-Meteo wind for one point about 543 m up in the central fells (lib/weather.ts). These are NOT daily conditions and the page says so.
 // (Until Nov 2026 this file held fixed "good" and "clear" statuses written in
 // March 2026, which the page showed under today's date as the day's conditions.)
 

@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import { ChevronRight } from 'lucide-react';
-import { FELLS } from '@/lib/fells';
+import { FELLS, hasCheckedGeo, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
 
@@ -41,11 +41,14 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
                 '@id': `${BASE_URL}/fells/${fell.slug}`,
                 name: fell.name,
                 url: `${BASE_URL}/fells/${fell.slug}`,
-                geo: {
-                  '@type': 'GeoCoordinates',
-                  latitude: fell.latitude,
-                  longitude: fell.longitude,
-                },
+                // Coordinates only where they agree with the grid reference (lib/fells.ts).
+                ...(hasCheckedGeo(fell) && {
+                  geo: {
+                    '@type': 'GeoCoordinates',
+                    latitude: fell.latitude,
+                    longitude: fell.longitude,
+                  },
+                }),
               },
             })),
           }),
@@ -103,7 +106,7 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
                 </h2>
                 <p className="text-sm text-[#3C4E42]/70 mb-3">{fell.wainwrightVolume}</p>
                 <span className="inline-flex items-center gap-1.5 text-[#1A4A30] font-semibold text-sm">
-                  {t('viewGuide')} <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                  {hasRouteGuide(fell) ? t('viewGuide') : t('viewFellPage')} <ChevronRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </div>
             </Link>

@@ -2,8 +2,8 @@ import Image from 'next/image';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import Link from 'next/link';
 import { getTranslations } from 'next-intl/server';
-import { Mountain, Wind, MapPin, Calendar, ChevronRight, Star, Flag, Trophy, Clock, Users } from 'lucide-react';
-import { FELLS, getFeaturedFells } from '@/lib/fells';
+import { Mountain, Wind, MapPin, Calendar, ChevronRight, Flag, Bed, Users } from 'lucide-react';
+import { getFeaturedFells } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
 
@@ -47,7 +47,7 @@ export default async function HomePage({
                 '@id': `${BASE_URL}/#website`,
                 url: BASE_URL,
                 name: 'Hike The Lakes',
-                description: 'The definitive guide to Lake District fells.',
+                description: 'Lake District fell guides: heights, grid references, route guides and walking circuits.',
                 publisher: { '@id': `${BASE_URL}/#organization` },
                 inLanguage: 'en-GB',
                 potentialAction: {
@@ -91,7 +91,7 @@ export default async function HomePage({
       />
 
       {/* ═══════════════════════════════════════════
-          HERO — NAVY LINKS LANDSCAPE
+          HERO
       ═══════════════════════════════════════════ */}
       <section className="relative bg-[#0E1C14] overflow-hidden">
         <Image
@@ -113,13 +113,9 @@ export default async function HomePage({
 
         <div className="relative container mx-auto px-4 max-w-7xl py-20 md:py-28">
           <div className="max-w-4xl mx-auto text-center">
-            {/* Badge */}
-            <div className="inline-flex items-center gap-2 bg-[#9E762A]/20 border border-[#9E762A]/40 rounded-full px-4 py-1.5 mb-8">
-              <Flag size={12} className="text-[#9E762A]" />
-              <span className="text-[#D4AE7A] text-xs font-semibold uppercase tracking-widest">
-                {th('heroBadge')}
-              </span>
-            </div>
+            <p className="text-[#D4AE7A] text-xs font-semibold uppercase tracking-widest mb-6">
+              {th('heroBadge')}
+            </p>
 
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-[1.08]">
               {t('heroTitle')}
@@ -154,8 +150,8 @@ export default async function HomePage({
           <div className="container mx-auto px-4 max-w-7xl py-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
               <div className="px-4 py-2">
-                <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">20</div>
-                <div className="text-white/50 text-xs mt-1">Fells Featured</div>
+                <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">21</div>
+                <div className="text-white/50 text-xs mt-1">Route Guides</div>
               </div>
               <div className="px-4 py-2">
                 <div className="font-display text-2xl md:text-3xl font-bold text-[#9E762A]">214</div>
@@ -267,8 +263,8 @@ export default async function HomePage({
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* Tool 1 — Course Conditions */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Tool 1: conditions */}
             <Link
               href={`${prefix}/conditions`}
               className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#9E762A]/40 hover:bg-white/10 transition-all card-hover"
@@ -288,7 +284,7 @@ export default async function HomePage({
               </span>
             </Link>
 
-            {/* Tool 2 — Golf Break Planner */}
+            {/* Tool 2: walking circuit planner */}
             <Link
               href={`${prefix}/itineraries`}
               className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#9E762A]/40 hover:bg-white/10 transition-all card-hover"
@@ -308,7 +304,7 @@ export default async function HomePage({
               </span>
             </Link>
 
-            {/* Tool 3 — Fell Log */}
+            {/* Tool 3: fell log */}
             <Link
               href={`${prefix}/fell-log`}
               className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#9E762A]/40 hover:bg-white/10 transition-all card-hover"
@@ -320,15 +316,15 @@ export default async function HomePage({
                 <Flag size={20} style={{ color: '#9E762A' }} />
               </div>
               <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-[#D4AE7A] transition-colors">
-                {th('tool3Title')}
+                {th('tool4Title')}
               </h3>
-              <p className="text-white/55 text-sm leading-relaxed mb-5">{th('tool3Desc')}</p>
+              <p className="text-white/55 text-sm leading-relaxed mb-5">{th('tool4Desc')}</p>
               <span className="text-[#9E762A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
-                {th('tool3Cta')} <ChevronRight size={14} />
+                {th('tool4Cta')} <ChevronRight size={14} />
               </span>
             </Link>
 
-            {/* Tool 4 — Accommodation */}
+            {/* Tool 4: where to stay */}
             <Link
               href={`${prefix}/accommodation`}
               className="group bg-white/6 border border-white/10 rounded-xl p-6 hover:border-[#9E762A]/40 hover:bg-white/10 transition-all card-hover"
@@ -337,14 +333,14 @@ export default async function HomePage({
                 className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
                 style={{ backgroundColor: '#9E762A25', border: '1px solid #9E762A40' }}
               >
-                <Trophy size={20} style={{ color: '#9E762A' }} />
+                <Bed size={20} style={{ color: '#9E762A' }} />
               </div>
               <h3 className="font-display text-lg font-bold text-white mb-2 group-hover:text-[#D4AE7A] transition-colors">
-                {th('tool4Title')}
+                {th('tool5Title')}
               </h3>
-              <p className="text-white/55 text-sm leading-relaxed mb-5">{th('tool4Desc')}</p>
+              <p className="text-white/55 text-sm leading-relaxed mb-5">{th('tool5Desc')}</p>
               <span className="text-[#9E762A] text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
-                {th('tool4Cta')} <ChevronRight size={14} />
+                {th('tool5Cta')} <ChevronRight size={14} />
               </span>
             </Link>
           </div>
@@ -352,42 +348,7 @@ export default async function HomePage({
       </section>
 
       {/* ═══════════════════════════════════════════
-          GOLF BREAK AFFILIATE CTA
-      ═══════════════════════════════════════════ */}
-      <section className="py-16 bg-[#EAEDE8] border-t border-[#D2D8CF]">
-        <div className="container mx-auto px-4 max-w-4xl text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-[#0E1C14] mb-4">
-            {th('affiliateCtaTitle')}
-          </h2>
-          <p className="text-[#3C4E42]/70 text-lg mb-8 max-w-2xl mx-auto">
-            {th('affiliateCtaDesc')}
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="https://www.booking.com/searchresults.html?ss=Lake+District"
-              target="_blank"
-              rel="noopener noreferrer sponsored"
-              className="inline-flex items-center justify-center gap-2 bg-[#1A4A30] text-white font-semibold px-8 py-4 rounded-lg hover:bg-[#2A6A45] transition-colors text-base"
-            >
-              <Trophy size={18} />
-              {th('affiliateCtaBtn1')}
-            </a>
-            <Link
-              href={`${prefix}/itineraries`}
-              className="inline-flex items-center justify-center gap-2 border-2 border-[#0E1C14] text-[#0E1C14] font-semibold px-8 py-4 rounded-lg hover:bg-[#0E1C14] hover:text-white transition-colors text-base"
-            >
-              <Calendar size={18} />
-              {th('affiliateCtaBtn2')}
-            </Link>
-          </div>
-          <p className="text-[#3C4E42]/40 text-xs mt-5">
-            {th('affiliateCtaDisclaimer')}
-          </p>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════════
-          EDITORIAL — WHY SEFTON COAST?
+          EDITORIAL: WHY THE LAKE DISTRICT
       ═══════════════════════════════════════════ */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-4 max-w-4xl">
@@ -411,14 +372,14 @@ export default async function HomePage({
             </div>
             <div className="bg-[#EAEDE8] rounded-xl p-6">
               <div className="w-10 h-10 bg-[#1A4A30]/10 rounded-lg flex items-center justify-center mb-4">
-                <Users size={20} className="text-[#1A4A30]" />
+                <Wind size={20} className="text-[#1A4A30]" />
               </div>
               <h3 className="font-semibold text-[#0E1C14] mb-2">{th('featureCard2Title')}</h3>
               <p className="text-[#3C4E42]/70 text-sm leading-relaxed">{th('featureCard2Text')}</p>
             </div>
             <div className="bg-[#EAEDE8] rounded-xl p-6">
               <div className="w-10 h-10 bg-[#1A4A30]/10 rounded-lg flex items-center justify-center mb-4">
-                <Star size={20} className="text-[#1A4A30]" />
+                <Users size={20} className="text-[#1A4A30]" />
               </div>
               <h3 className="font-semibold text-[#0E1C14] mb-2">{th('featureCard3Title')}</h3>
               <p className="text-[#3C4E42]/70 text-sm leading-relaxed">{th('featureCard3Text')}</p>

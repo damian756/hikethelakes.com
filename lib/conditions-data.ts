@@ -1,47 +1,41 @@
-// Fell conditions for Lake District weather and visibility.
-// Wind data fetched from Open-Meteo. Update conditions manually each morning.
-// Derived from FELLS; custom notes override scaffold for featured/popular fells.
+// General route notes for popular fells, shown on /conditions with the current
+// valley wind from Open-Meteo. These are NOT daily conditions and the page says so.
+// (Until Nov 2026 this file held fixed "good" and "clear" statuses written in
+// March 2026, which the page showed under today's date as the day's conditions.)
 
 import { FELLS } from './fells';
 
-export type Condition = 'clear' | 'good' | 'poor' | 'avoid';
-
-export interface FellConditionData {
+export interface FellNote {
   slug: string;
   name: string;
-  condition: Condition;
   notes: string;
 }
 
-const CUSTOM_CONDITIONS: Record<string, { condition: Condition; notes: string }> = {
-  'scafell-pike': { condition: 'good', notes: 'Path clear. Summit visibility good. Check forecast for cloud base.' },
-  helvellyn: { condition: 'good', notes: 'Striding Edge dry. Ridge walk recommended.' },
-  skiddaw: { condition: 'clear', notes: 'Tourist path in good condition. Summit views clear.' },
-  blencathra: { condition: 'good', notes: 'Sharp Edge requires experience. Halls Fell Ridge alternative.' },
-  'great-gable': { condition: 'good', notes: 'Path from Honister straightforward. Summit cairn visible.' },
-  catbells: { condition: 'clear', notes: 'Popular path. Busy at weekends. Good for families.' },
-  'coniston-old-man': { condition: 'good', notes: 'Path from Coniston village clear. Lake views from summit.' },
-  fairfield: { condition: 'good', notes: 'Fairfield horseshoe in good condition. Full day walk.' },
-  'high-street': { condition: 'good', notes: 'Roman road from Patterdale. Ridge clear.' },
-  'grisedale-pike': { condition: 'good', notes: 'Path from Braithwaite clear. Coledale round possible.' },
-  bowfell: { condition: 'good', notes: 'Three Tarns route clear. Rocky in places. Check cloud base.' },
-  'crinkle-crags': { condition: 'good', notes: 'Bad Step requires care. Ridge walk in good order.' },
-  'pike-o-stickle': { condition: 'good', notes: 'Langdale approach. Scramble near summit. Popular with climbers.' },
-  'harrison-stickle': { condition: 'good', notes: 'Langdale Pikes. Path clear. Often combined with Pike o Stickle.' },
-  'causey-pike': { condition: 'good', notes: 'Path from Braithwaite. Ridge clear. Coledale round possible.' },
-  'red-pike-buttermere': { condition: 'good', notes: 'High Stile ridge. Path clear. Steep descent to Buttermere.' },
-  'dale-head': { condition: 'good', notes: 'Path from Honister or Newlands. Summit cairn visible.' },
-  wetherlam: { condition: 'good', notes: 'Coniston approach. Path clear. Copper mines en route.' },
-  'ill-bell': { condition: 'good', notes: 'Kentmere horseshoe. Ridge walk in good condition.' },
-  'place-fell': { condition: 'good', notes: 'Patterdale start. Path clear. Views over Ullswater.' },
+const NOTES: Record<string, string> = {
+  'scafell-pike': 'The summit plateau is a navigation challenge in cloud. Check the forecast for the cloud base.',
+  helvellyn: 'Striding Edge and Swirral Edge are exposed scrambles. In winter conditions they become winter climbing routes needing an ice axe and crampons.',
+  skiddaw: 'Tourist path from the Latrigg car park. The upper mountain is exposed to the wind.',
+  blencathra: "Sharp Edge needs experience and becomes slippery and dangerous when wet, windy or icy. Hall's Fell Ridge is the alternative.",
+  'great-gable': 'Routes from Wasdale Head and Honister. The summit boulder field needs a compass in mist.',
+  catbells: 'Popular path. Busy at weekends. Good for families.',
+  'coniston-old-man': 'Path from Coniston village. Lake views from the summit.',
+  fairfield: 'The Fairfield Horseshoe from Ambleside is a full day walk.',
+  'high-street': 'The line of the Roman road runs along the ridge.',
+  'grisedale-pike': 'Path from Braithwaite. The Coledale round continues from the summit.',
+  bowfell: 'Three Tarns route. Rocky in places. Check the cloud base.',
+  'crinkle-crags': 'The Bad Step needs care and can be bypassed.',
+  'pike-o-stickle': 'Langdale approach. Scramble near the summit.',
+  'harrison-stickle': "Langdale Pikes. Often combined with Pike o'Stickle.",
+  'causey-pike': 'Short scramble to the summit. Start from Braithwaite or Stair.',
+  'red-pike-buttermere': 'High Stile ridge. Steep descent to Buttermere.',
+  'dale-head': 'Path from Honister or Newlands.',
+  wetherlam: 'Coniston approach. Old copper mine workings on the way.',
+  'ill-bell': 'Part of the Kentmere Horseshoe ridge walk.',
+  'place-fell': 'Patterdale start. Views over Ullswater.',
 };
 
-export const CONDITIONS_DATA: FellConditionData[] = FELLS.map((fell) => {
-  const custom = CUSTOM_CONDITIONS[fell.slug];
-  return {
-    slug: fell.slug,
-    name: fell.name,
-    condition: custom?.condition ?? 'good',
-    notes: custom?.notes ?? 'Check MWIS before you go.',
-  };
-});
+export const CONDITIONS_DATA: FellNote[] = FELLS.filter((fell) => NOTES[fell.slug]).map((fell) => ({
+  slug: fell.slug,
+  name: fell.name,
+  notes: NOTES[fell.slug],
+}));

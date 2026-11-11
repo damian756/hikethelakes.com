@@ -16,28 +16,38 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
-const ACCOMMODATION = [
+// Areas to base yourself, and a few named places. Named places say only what
+// their own websites said on 11 Nov 2026 (no prices, no rankings). No booking or
+// affiliate links: the company no longer uses them (Nov 2026).
+type Option = {
+  name: string;
+  type: string;
+  address: string;
+  desc: string;
+  /** What the place's own website lists. Named places only. */
+  offers?: string[];
+  /** The place's own website. Named places only. */
+  website?: string;
+};
+
+const ACCOMMODATION: { area: string; distanceFromCentre: string; options: Option[] }[] = [
   {
     area: 'Keswick',
-    distanceFromCentre: 'Central',
+    distanceFromCentre: 'Northern fells',
     options: [
       {
         name: 'Keswick B&Bs and Guesthouses',
         type: 'B&B',
         address: 'Keswick, CA12',
-        desc: 'Wide choice of B&Bs and guesthouses. Keswick is the main hub for northern fells. Good for Skiddaw, Blencathra, Catbells and the Coledale round. Book ahead in summer.',
-        approxRate: '£70–£150/night',
-        walkerFriendly: ['Boot drying', 'Early breakfast', 'Pack storage', 'Central location'],
-        bookingUrl: 'https://www.booking.com/searchresults.html?ss=Keswick',
+        desc: 'Wide choice of B&Bs and guesthouses. Keswick is the main base for the northern fells: Skiddaw, Blencathra, Catbells and the Coledale round. Book ahead in summer.',
       },
       {
         name: 'YHA Keswick',
         type: 'Hostel',
-        address: 'Station Road, Keswick',
-        desc: 'Budget option with good facilities. Popular with walkers and groups. Easy access to bus routes for the fells.',
-        approxRate: '£25–£45/night',
-        walkerFriendly: ['Drying room', 'Kitchen', 'Good value', 'Central'],
-        bookingUrl: 'https://www.yha.org.uk/hostel/keswick',
+        address: 'Station Road, Keswick, CA12 5LH',
+        desc: "Hostel overlooking the River Greta and Fitz Park, less than five minutes' walk from the town centre, with dormitories and private rooms. YHA says parking on Station Road is limited and points to free parking 400m away on Brundholme Road.",
+        offers: ['Café and licensed bar', 'Self-catering kitchen', 'Dormitories and private rooms'],
+        website: 'https://www.yha.org.uk/hostel/yha-keswick',
       },
     ],
   },
@@ -49,19 +59,15 @@ const ACCOMMODATION = [
         name: 'Ambleside Hotels and B&Bs',
         type: 'B&B / Hotel',
         address: 'Ambleside, LA22',
-        desc: 'Good base for the southern and central fells. Scafell Pike from Langdale, Fairfield horseshoe, the Langdale Pikes. Plenty of pubs and restaurants.',
-        approxRate: '£80–£180/night',
-        walkerFriendly: ['Boot storage', 'Early breakfast', 'Walking distance to pubs', 'Bus links'],
-        bookingUrl: 'https://www.booking.com/searchresults.html?ss=Ambleside&aid=123456',
+        desc: 'Base for the central and southern fells: Scafell Pike from Langdale, the Fairfield Horseshoe and the Langdale Pikes. Plenty of pubs and restaurants in the town.',
       },
       {
         name: 'Old Dungeon Ghyll, Langdale',
-        type: 'Inn',
-        address: 'Great Langdale, LA22 9JX',
-        desc: 'Classic walkers inn at the head of Langdale. Right under the Langdale Pikes. Book well ahead. Popular for Scafell Pike and Bowfell routes.',
-        approxRate: '£120–£200/night',
-        walkerFriendly: ['Boot room', 'Bar and restaurant', 'Trail start', 'Atmosphere'],
-        bookingUrl: 'https://www.odg.co.uk',
+        type: 'Hotel',
+        address: 'Great Langdale, LA22 9JY',
+        desc: "Hotel with a climbers' bar at the head of Great Langdale. Its website lists walks from the door to the Langdale Pikes, Jack's Rake, Bowfell and Crinkle Crags.",
+        offers: ["Climbers' Bar", 'Packed lunches', 'Walks from the door'],
+        website: 'https://www.odg.co.uk',
       },
     ],
   },
@@ -73,10 +79,7 @@ const ACCOMMODATION = [
         name: 'Glenridding and Patterdale B&Bs',
         type: 'B&B',
         address: 'Glenridding & Patterdale, CA11',
-        desc: 'Base for Helvellyn, Fairfield, High Street. Striding Edge and Swirral Edge start from Helvellyn car park. Quieter than Keswick and Ambleside.',
-        approxRate: '£75–£160/night',
-        walkerFriendly: ['Boot drying', 'Early breakfast', 'Helvellyn access', 'Quiet'],
-        bookingUrl: 'https://www.booking.com/searchresults.html?ss=Glenridding',
+        desc: 'Base for Helvellyn, Fairfield and High Street. The Striding Edge and Swirral Edge routes start from Glenridding. Quieter than Keswick and Ambleside.',
       },
     ],
   },
@@ -86,12 +89,11 @@ const ACCOMMODATION = [
     options: [
       {
         name: 'Bridge Hotel, Buttermere',
-        type: 'Inn',
-        address: 'Buttermere, CA13 9UZ',
-        desc: 'Classic walkers inn. Red Pike, Dale Head, Haystacks. The valley is one of the quietest in the Lakes. Stunning scenery.',
-        approxRate: '£100–£180/night',
-        walkerFriendly: ['Boot room', 'Bar and food', 'Valley walks', 'Remote'],
-        bookingUrl: 'https://www.bridge-hotel.com',
+        type: 'Hotel',
+        address: 'Buttermere',
+        desc: 'Hotel in Buttermere village with 21 en-suite bedrooms and 6 self-catering apartments. Its website says the bedrooms have no televisions, no radios and no mobile phone signal, and that dogs are welcome.',
+        offers: ['En-suite rooms and self-catering apartments', 'The Bridge Inn bar', 'Dogs welcome'],
+        website: 'https://thebridgehotel.uk/',
       },
     ],
   },
@@ -113,7 +115,7 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
       <div className="bg-[#0E1C14] py-14 relative overflow-hidden">
         <Image
           src={HERO_IMAGE_URL}
-          alt="Lake District accommodation with mountain view"
+          alt="Snow-capped mountain peaks above a sea of cloud"
           fill
           priority
           className="object-cover object-center opacity-45"
@@ -153,18 +155,15 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
                           <span>{opt.address}</span>
                         </div>
                       </div>
-                      <div className="text-right shrink-0">
-                        <div className="text-[#1A4A30] font-semibold text-sm">{opt.approxRate}</div>
-                        <div className="text-[#3C4E42]/40 text-xs">{t('approxLabel')}</div>
-                      </div>
                     </div>
 
                     <p className="text-[#3C4E42]/70 text-sm leading-relaxed mb-4">{opt.desc}</p>
 
+                    {opt.offers && (
                     <div className="mb-4">
                       <div className="text-xs text-[#3C4E42]/50 uppercase tracking-wider mb-2">{t('walkerFeaturesLabel')}</div>
                       <ul className="space-y-1">
-                        {opt.walkerFriendly.map((f) => (
+                        {opt.offers.map((f) => (
                           <li key={f} className="flex items-center gap-2 text-sm text-[#3C4E42]/70">
                             <CheckCircle2 size={12} className="text-[#1A4A30] shrink-0" />
                             {f}
@@ -172,16 +171,18 @@ export default async function AccommodationPage({ params }: { params: Promise<{ 
                         ))}
                       </ul>
                     </div>
+                    )}
 
+                    {opt.website && (
                     <a
-                      href={opt.bookingUrl}
+                      href={opt.website}
                       target="_blank"
-                      rel="noopener noreferrer sponsored"
+                      rel="noopener noreferrer"
                       className="flex items-center justify-center gap-2 bg-[#1A4A30] text-white font-semibold px-4 py-2.5 rounded-lg hover:bg-[#2A6A45] transition-colors text-sm w-full"
                     >
-                      <Bed size={14} />
-                      {t('checkAvailabilityBtn')}
+                      {t('websiteBtn')}
                     </a>
+                    )}
                   </div>
                 </div>
               ))}

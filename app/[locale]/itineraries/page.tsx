@@ -125,15 +125,6 @@ export default async function ItinerariesPage({ params }: { params: Promise<{ lo
                       >
                         View details <ChevronRight size={14} />
                       </Link>
-                      <a
-                        href="https://www.booking.com/searchresults.html?ss=Lake+District"
-                        target="_blank"
-                        rel="noopener noreferrer sponsored"
-                        className="flex items-center gap-2 bg-[#1A4A30] text-white font-semibold px-5 py-2.5 rounded-lg hover:bg-[#2A6A45] transition-colors text-sm"
-                      >
-                        <Bed size={14} />
-                        {t('bookAccommodationBtn')}
-                      </a>
                     </div>
                   </div>
                 </div>

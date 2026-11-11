@@ -22,11 +22,6 @@ export default async function ConditionsPage({ params }: { params: Promise<{ loc
   const t = await getTranslations({ locale, namespace: 'conditionsPage' });
 
   const weather = await getLakesWeather();
-  const updatedDate = new Intl.DateTimeFormat('en-GB', {
-    day: 'numeric',
-    month: 'short',
-    year: 'numeric',
-  }).format(new Date());
 
   return (
     <div className="min-h-screen bg-[#EAEDE8]">
@@ -50,7 +45,6 @@ export default async function ConditionsPage({ params }: { params: Promise<{ loc
         <FellConditionsTracker
           conditions={CONDITIONS_DATA}
           weather={weather}
-          updatedDate={updatedDate}
         />
 
         <div className="mt-12 bg-white border border-[#D2D8CF] rounded-xl p-6">

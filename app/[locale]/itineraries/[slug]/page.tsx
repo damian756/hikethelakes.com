@@ -185,16 +185,7 @@ export default async function ItineraryDetailPage({
           <div className="space-y-6">
             <div className="bg-[#1A4A30] rounded-xl p-6 text-white sticky top-6">
               <h3 className="font-display text-lg font-bold mb-2">{t('estimatedCostLabel')}</h3>
-              <p className="text-white/70 text-sm mb-4">{itinerary.estimatedCost}</p>
-              <a
-                href="https://www.booking.com/searchresults.html?ss=Lake+District"
-                target="_blank"
-                rel="noopener noreferrer sponsored"
-                className="flex items-center justify-center gap-2 bg-[#9E762A] text-white font-semibold px-4 py-3 rounded-lg hover:bg-[#B8912A] transition-colors text-sm w-full"
-              >
-                <Bed size={15} />
-                {t('bookAccommodationBtn')}
-              </a>
+              <p className="text-white/70 text-sm">{itinerary.estimatedCost}</p>
             </div>
 
             <div>

@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
       template: '%s | Hike The Lakes',
     },
     description:
-      'The definitive guide to Lake District fells. Scafell Pike, Helvellyn, Skiddaw and more. Route guides, heights, grid references and walking circuits.',
+      'Lake District fell guides. Heights and grid references for the 214 Wainwrights, route guides for Scafell Pike, Helvellyn, Skiddaw and more, and walking circuits.',
     keywords:
       'Lake District fells, Wainwright fells, Scafell Pike, Helvellyn, Skiddaw, fell walking, Lake District walks',
     authors: [{ name: 'Hike The Lakes', url: BASE_URL }],

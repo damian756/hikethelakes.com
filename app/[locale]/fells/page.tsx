@@ -55,7 +55,7 @@ export default async function FellsPage({ params }: { params: Promise<{ locale: 
       <div className="bg-[#0E1C14] py-16 relative overflow-hidden">
         <Image
           src={HERO_IMAGE_URL}
-          alt="Lake District fells"
+          alt="Mountain peaks above a sea of cloud"
           fill
           priority
           className="object-cover object-center opacity-40"

@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { MapPin, ChevronRight, Mountain, Clock, TrendingUp, Utensils } from 'lucide-react';
-import { FELLS, getFell } from '@/lib/fells';
+import { FELLS, getFell, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
 
@@ -49,6 +49,8 @@ export default async function FellPage({
   const prefix = locale === 'en' ? '' : `/${locale}`;
   const otherFells = FELLS.filter((f) => f.slug !== slug);
   const t = await getTranslations({ locale, namespace: 'fellDetail' });
+  // 193 fells have only a generated placeholder entry: no route, time or difficulty is shown for them.
+  const hasGuide = hasRouteGuide(fell);
 
   return (
     <div className="min-h-screen bg-[#EAEDE8]">
@@ -130,14 +132,16 @@ export default async function FellPage({
             <span className="text-[#9E762A] text-xs font-semibold uppercase tracking-widest">
               {fell.wainwrightVolume}
             </span>
-            <span className={`text-xs font-bold px-3 py-1 rounded-full ${
-              fell.difficulty === 'strenuous' ? 'bg-red-900/40 text-red-300' :
-              fell.difficulty === 'challenging' ? 'bg-orange-900/40 text-orange-300' :
-              fell.difficulty === 'moderate' ? 'bg-blue-900/40 text-blue-300' :
-              'bg-green-900/40 text-green-300'
-            }`}>
-              {fell.difficulty.charAt(0).toUpperCase() + fell.difficulty.slice(1)}
-            </span>
+            {hasGuide && (
+              <span className={`text-xs font-bold px-3 py-1 rounded-full ${
+                fell.difficulty === 'strenuous' ? 'bg-red-900/40 text-red-300' :
+                fell.difficulty === 'challenging' ? 'bg-orange-900/40 text-orange-300' :
+                fell.difficulty === 'moderate' ? 'bg-blue-900/40 text-blue-300' :
+                'bg-green-900/40 text-green-300'
+              }`}>
+                {fell.difficulty.charAt(0).toUpperCase() + fell.difficulty.slice(1)}
+              </span>
+            )}
           </div>
           <h1 className="font-display text-3xl md:text-5xl font-bold text-white mb-3 leading-tight">
             {fell.name}
@@ -153,6 +157,8 @@ export default async function FellPage({
       <div className="container mx-auto px-4 max-w-7xl py-12">
         <div className="grid lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-10">
+            {hasGuide ? (
+            <>
             <section>
               <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('walkingTitle')}</h2>
               <p className="text-[#3C4E42]/80 leading-relaxed">{fell.walkingDescription}</p>
@@ -180,6 +186,16 @@ export default async function FellPage({
               <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('tipsTitle')}</h2>
               <p className="text-[#3C4E42]/80 leading-relaxed">{fell.tips}</p>
             </section>
+            </>
+            ) : (
+              <section>
+                <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('noGuideTitle')}</h2>
+                <p className="text-[#3C4E42]/80 leading-relaxed mb-4">{t('noGuideText', { name: fell.name })}</p>
+                <Link href={`${prefix}/fells`} className="inline-flex items-center gap-1 text-[#1A4A30] font-semibold hover:text-[#9E762A] transition-colors">
+                  {t('noGuideLink')} <ChevronRight size={14} />
+                </Link>
+              </section>
+            )}
           </div>
 
           <div className="space-y-20">
@@ -200,18 +216,10 @@ export default async function FellPage({
                 </div>
               </div>
               <a
-                href="https://www.booking.com/region/gb/lake-district.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 flex items-center justify-center gap-2 bg-[#9E762A] text-white font-semibold px-4 py-2.5 rounded-lg hover:bg-[#D4AE7A] transition-colors text-sm w-full"
-              >
-                {t('bookAccommodation')} ↗
-              </a>
-              <a
                 href="https://www.ordnancesurvey.co.uk/shop/os-maps-subscription"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 flex items-center justify-center gap-2 text-[#1A4A30] hover:text-[#0E1C14] font-medium text-sm w-full"
+                className="mt-4 flex items-center justify-center gap-2 text-[#1A4A30] hover:text-[#0E1C14] font-medium text-sm w-full"
               >
                 {t('osMaps')} ↗
               </a>

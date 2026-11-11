@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ChevronRight, Mountain } from 'lucide-react';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
-import { FELLS } from '@/lib/fells';
+import { FELLS, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
 import { getTranslations } from 'next-intl/server';
@@ -33,7 +33,7 @@ export default async function FellLogPage({ params }: { params: Promise<{ locale
             '@context': 'https://schema.org',
             '@type': 'Dataset',
             name: 'Lake District Fell Log',
-            description: 'Heights, grid references and difficulty for Lake District Wainwright fells.',
+            description: 'Heights and grid references for the 214 Lake District Wainwright fells.',
             url: `${BASE_URL}/fell-log`,
           }),
         }}
@@ -64,14 +64,15 @@ export default async function FellLogPage({ params }: { params: Promise<{ locale
                     {fell.name}
                   </h2>
                   <p className="text-[#3C4E42]/55 text-sm mt-1">
-                    {fell.height}m · {fell.osGridRef} · {fell.wainwrightVolume} · {fell.difficulty}
+                    {fell.height}m · {fell.osGridRef} · {fell.wainwrightVolume}
+                    {hasRouteGuide(fell) ? ` · ${fell.difficulty}` : ''}
                   </p>
                 </div>
                 <Link
                   href={`${prefix}/fells/${fell.slug}`}
                   className="hidden sm:flex items-center gap-1 text-[#1A4A30] text-sm font-semibold hover:text-[#9E762A] transition-colors shrink-0"
                 >
-                  {t('fullGuideLink')} <ChevronRight size={13} />
+                  {hasRouteGuide(fell) ? t('fullGuideLink') : t('fellPageLink')} <ChevronRight size={13} />
                 </Link>
               </div>
             </div>

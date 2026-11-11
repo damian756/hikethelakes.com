@@ -37,7 +37,7 @@ export type ContentBlock =
 export const DAMIAN: BlogAuthor = {
   name: 'Damian Roche',
   jobTitle: 'Founder, Churchtown Media & HikeTheLakes.com',
-  bio: "Damian has been walking the Lake District fells for decades. Ex-army, self-taught in SEO, and based in Southport. He's fished the tarns, walked Helvellyn more times than he can count, and built HikeTheLakes because he couldn't find a guide that was honest about conditions and effort. He founded Churchtown Media and runs the Lakes Network.",
+  bio: "Damian Roche founded Churchtown Media Ltd, which publishes HikeTheLakes.com. He served in the British Army with the Queen's Guards and has spent twenty years in information, publishing and search. He lives in Southport.",
   url: 'https://www.churchtownmedia.co.uk/about',
   schemaId: 'https://www.churchtownmedia.co.uk/about#founder',
 };
@@ -48,12 +48,12 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
   {
     slug: 'fell-guides',
     label: 'Fell Guides',
-    description: 'Route notes, conditions, and honest accounts of walking the Wainwright fells: what to expect, what to bring, and what the books do not tell you.',
+    description: 'Route notes and accounts of walking the Wainwright fells: what to expect and what to bring.',
   },
   {
     slug: 'wainwrights',
     label: 'Wainwrights',
-    description: 'The 214 fells, the bagging culture, the completionist obsession. Practical guides written by someone who has actually done the routes.',
+    description: 'The 214 fells Alfred Wainwright wrote about, and practical guides to walking them.',
   },
   {
     slug: 'conditions',
@@ -152,7 +152,7 @@ export const BLOG_POSTS: BlogPost[] = [
       ]},
       { type: 'h2', text: 'The Return' },
       { type: 'p', text: "Reverse the route. The descent off the boulder field is slower than the ascent for most people, and by this point legs are tired. Take your time through the rocks. The path down Brown Tongue feels long but is straightforward." },
-      { type: 'p', text: "The car park will be busier than when you left it. The Wasdale Head Inn will look extremely appealing. If you have not booked a table, the bar usually has space for drinks. It is a proper old Lakeland pub with no pretensions, which is exactly what you want at the end of a day like that." },
+      { type: 'p', text: "The car park will be busier than when you left it." },
     ],
   },
   {

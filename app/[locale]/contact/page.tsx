@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import type { Metadata } from 'next';
 import { getTranslations } from 'next-intl/server';
 import { HERO_IMAGE_URL } from '@/lib/site-constants';
@@ -62,7 +63,10 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
             <div className="prose text-[#3C4E42]/70 text-sm leading-relaxed space-y-3">
               <p>
                 <strong className="text-[#0E1C14]">{t('featuredListingsLabel')}</strong>{' '}
-                {t('featuredListingsText')}
+                {t('featuredListingsText')}{' '}
+                <Link href="/advertise" className="text-[#1A4A30] underline hover:text-[#9E762A] transition-colors">
+                  {t('advertiseLinkText')}
+                </Link>
               </p>
               <p>
                 <strong className="text-[#0E1C14]">{t('dataCorrectionsLabel')}</strong>{' '}

@@ -13,7 +13,10 @@
 //     until: '2027-03-31',               // optional, last day shown (UK date)
 //   }
 // Set it back to null when the booking ends. A sponsor whose `until` date has
-// passed shows as the empty "advertise here" card on its own.
+// passed shows as the empty "advertise here" card on its own. The pages with a
+// space are rendered on request (next build lists them as dynamic), so it drops
+// off the day after `until` without a redeploy. If a page is ever made static,
+// give it a revalidate so this still holds.
 //
 // Rules (Damian, 11 Nov 2026): at most one advert on any page; every advert is
 // labelled on the card; paid links carry rel="sponsored noopener". Area partners

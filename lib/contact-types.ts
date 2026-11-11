@@ -3,7 +3,6 @@
 export const ENQUIRY_TYPES = [
   "General enquiry",
   "Route or data correction",
-  "Featured listing",
   "Advertising",
   "Press or media",
 ] as const;

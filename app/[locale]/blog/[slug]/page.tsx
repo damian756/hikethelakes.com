@@ -35,6 +35,13 @@ export async function generateMetadata({
       publishedTime: getIsoDate(post),
       authors: [DAMIAN.name],
       section: cat?.label,
+      images: [{ url: post.image ?? `${BASE_URL}/og-default.jpg`, alt: post.imageAlt ?? post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image ?? `${BASE_URL}/og-default.jpg`],
     },
   };
 }
@@ -132,6 +139,7 @@ export default async function BlogPostPage({
     url: canonicalUrl,
     datePublished: isoDate,
     dateModified: isoDate,
+    ...(post.image && { image: post.image }),
     inLanguage: 'en-GB',
     author: {
       '@type': 'Person',

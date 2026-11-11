@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { FELLS } from '@/lib/fells';
 import { WALKING_ITINERARIES } from '@/lib/walking-itineraries';
-import { BLOG_POSTS, BLOG_CATEGORIES } from '@/lib/blog';
+import { BLOG_POSTS, BLOG_CATEGORIES, getIsoDate } from '@/lib/blog';
 import { locales } from '@/i18n/routing';
 
 const BASE_URL = 'https://www.hikethelakes.com';
@@ -14,9 +14,11 @@ const STATIC_PAGES = [
   '/fell-log',
   '/accommodation',
   '/contact',
-  '/privacy',
-  '/terms',
 ];
+// /privacy and /terms are noindex, so they are not listed.
+
+// When the site's pages last changed (Nov 2026 freshen-up). Update when content changes.
+const SITE_UPDATED = '2026-11-11';
 
 const FELL_PAGES = FELLS.map((f) => `/fells/${f.slug}`);
 const ITINERARY_PAGES = WALKING_ITINERARIES.map((it) => `/itineraries/${it.id}`);
@@ -42,7 +44,7 @@ function buildLanguages(page: string): Record<string, string> {
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
-  const now = new Date().toISOString();
+  const newestPost = BLOG_POSTS.map(getIsoDate).sort().at(-1) ?? SITE_UPDATED;
 
   for (const page of ALL_PAGES) {
     const isHome = page === '';
@@ -54,7 +56,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     entries.push({
       url: `${BASE_URL}${page}`,
-      lastModified: now,
+      lastModified: SITE_UPDATED,
       changeFrequency,
       priority,
       alternates: { languages },
@@ -64,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // ── Blog (English only — no locale alternates) ───────────────
   entries.push({
     url: `${BASE_URL}/blog`,
-    lastModified: now,
+    lastModified: newestPost,
     changeFrequency: 'weekly',
     priority: 0.75,
   });
@@ -72,7 +74,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const cat of BLOG_CATEGORIES) {
     entries.push({
       url: `${BASE_URL}/blog/category/${cat.slug}`,
-      lastModified: now,
+      lastModified:
+        BLOG_POSTS.filter((p) => p.categorySlug === cat.slug).map(getIsoDate).sort().at(-1) ?? SITE_UPDATED,
       changeFrequency: 'weekly',
       priority: 0.6,
     });
@@ -81,7 +84,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const post of BLOG_POSTS) {
     entries.push({
       url: `${BASE_URL}/blog/${post.slug}`,
-      lastModified: now,
+      lastModified: getIsoDate(post),
       changeFrequency: 'monthly',
       priority: 0.7,
     });

@@ -11,6 +11,7 @@ export default function proxy(request: NextRequest) {
   return intlMiddleware(request);
 }
 
+// /feed is a route handler outside [locale]; sent through next-intl it returned 404.
 export const config = {
-  matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+  matcher: ['/((?!api|_next|_vercel|feed|.*\\..*).*)'],
 };

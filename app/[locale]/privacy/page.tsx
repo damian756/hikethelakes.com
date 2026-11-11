@@ -34,8 +34,9 @@ export default async function PrivacyPage({ params }: { params: Promise<{ locale
           <p>{t('privacyIntro')}</p>
           <h2 className="font-display text-xl font-bold text-[#0E1C14]">{t('analyticsTitle')}</h2>
           <p>{t('analyticsDesc')}</p>
-          <h2 className="font-display text-xl font-bold text-[#0E1C14]">{t('affiliateLinksTitle')}</h2>
-          <p>{t('privacyAffiliateDesc')}</p>
+          <p>{t('pageCountDesc')}</p>
+          <h2 className="font-display text-xl font-bold text-[#0E1C14]">{t('cookiesTitle')}</h2>
+          <p>{t('cookiesDesc')}</p>
           <h2 className="font-display text-xl font-bold text-[#0E1C14]">{t('privacyContactTitle')}</h2>
           <p>
             {t.rich('privacyContactText', {

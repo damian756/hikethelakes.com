@@ -32,7 +32,25 @@ Internal report. The work was done on 11 Nov 2026 on `main`. Screenshots are in 
 
 **Dependency upgrade:** `07bf8fa`.
 
-**This report**, then the **privacy and terms commits, last**: `4a4a610` and `3a4e946`. They are held for Damian to read before they go live.
+**This report (first version):** `7e59e98`, pushed with everything above.
+
+**Approved follow-ups (section 13):**
+- `09a1fac`: `AGENTS.md` committed.
+- `d6c5cb7`: contact page says "contact properties directly", not Booking.com.
+- `799e7e8`: every fell page says what the site knows; Lakes Network links.
+- `d275dfe`: itineraries link each day to its fells; cost estimates removed.
+- `a3d2aae`: the fell log as one sortable table.
+- `4918e1c`: screenshots and sources.
+
+**Third-pass fixes, hero and advertising:**
+- `4db6adc`: third-pass review fixes (A1 to A6).
+- `ae69f7b`: the Catbells home hero (section 14).
+- `212a7e5`: advertising, stage B (section 10).
+- `f477fc4`: advertising screenshots.
+- `9d40d8d`: fourth-pass fixes: the contact page offers advertising, not featured listings.
+- This report, updated.
+
+**Privacy and terms, last** (approved by Damian, "go with your suggestions"): "Privacy and terms: say what the site loads; no affiliate sections", "Privacy: contact form line; NEXT_LOCALE 'may' be set", and "Privacy: fuller Ahrefs Web Analytics sentence". Every sentence on the privacy page is true of the code in the same push.
 
 ## Stage 1: contact form, no email address
 
@@ -232,7 +250,32 @@ New findings:
 
 The last round (`47ee206` to `07bf8fa`) was spot-checked by the coordinating session: the 13 books are correct in `lib/fells.ts`, and `npm audit --omit=dev` shows 2 moderate and 0 high.
 
+### Third pass (`7e59e98..4918e1c`)
+Nothing blocking. The fell-page text matched on 7 sampled pages; all 214 grid references are within 300 m and the heights within 2 m of the reference table; the six network link targets return 200; the fell log table has working sort buttons and fits at 390.
+
+| # | Severity | Finding | Done (`4db6adc`) |
+|---|---|---|---|
+| A1 | Should | "Where to stay and eat in {town}" on 46 fell pages promised more than The Lakes Guide's pages give | "{town} on The Lakes Guide" |
+| A2 | Note | Grasmere and Coniston are villages, not towns | "nearest town or village with a page on The Lakes Guide" |
+| A3 | Note | The four-day standard itinerary listed Old Dungeon Ghyll though its text names other bases | Link removed |
+| A4 | Note | "£ Value / ££ Standard / £££ Premium" labels with no costs behind them | Labels and budget filter removed |
+| A5 | Note | "away" wrapped alone at 1024 | Kept on one line |
+| A6 | Note | The six corrected fells kept their old latitude and longitude | Recomputed from the grid references |
+
+### Fourth pass (`4918e1c..f477fc4`)
+Nothing must be fixed. The six third-pass items are fixed (the recomputed coordinates are 1 to 6 m from their grid references). The hero matches the Commons original in size and SHA-1, the credit reads exactly as agreed, and the hero is lighter at every width. The advertising matches the approved menu, with "plus VAT" on every price, the founding offer word for word, no audience claims, at most one space per page, none on the no-advert pages, and every sponsor `null`. tsc 0; `test:contact` 10/10; `tests/*.test.mjs` 26/26.
+
+| Finding | Done |
+|---|---|
+| Should: `until` might only take effect at the next deploy if the pages were prebuilt | Checked: `next build` lists every page with a space as rendered on request, so an expired advert drops off the next day without a redeploy. The comment in `lib/ad-slots.ts` now says so, and says to add a `revalidate` if a page is ever made static (`9d40d8d`) |
+| Note: the contact page still offered "featured placement", and the form a "Featured listing" type | Now "Advertising", with a link to /advertise; the "Featured listing" type is gone (`9d40d8d`, `fix-contact-*`) |
+| Note: three itinerary titles keep "Standard", "Premium" and "Value" | Left: they now only name the circuits and carry no price. Damian may rename them |
+| Note: the only post space is on the Helvellyn fell top report, the post the winter package sells | Left as built (Damian, through the coordinating chat) |
+| Note: at 768 the nine featured fells leave Catbells alone on the last row | Left; it was there before this work |
+
 ## 5. Suggestions for Damian
+
+Decided on 11 Nov (through the coordinating chat): no `noindex` on placeholder pages ("keep pages indexed"); network cross-links, itinerary links and the sortable fell log are done (section 13); the Catbells photo replaces the Alpine hero on the home page (section 14); `AGENTS.md` is committed; the Booking.com line is gone. The first-person passages are unchanged until Damian decides. The list below is as first written.
 
 1. **Placeholder fells:**
    - **First person:** these passages make claims only Damian can confirm or cut. In `lib/blog.ts`: line 203 (Striding Edge, "I have done it a lot…"), 335 ("I have not done mine yet"), 416 ("I do not avoid the fells in winter…"), 447, 453, 459 and 476 (tarn fishing, "I fish the coast…", "the one I go back to most"), and 538 ("in my view better for it").
@@ -323,25 +366,52 @@ The GitHub "NPM audit" check failed on every push. `npm audit --omit=dev` showed
 
   In the last 30 days, 91% of rows were desktop, 237 were referred by the site itself, and 22 came from search engines. Much of it looks like crawlers, so human visits are probably in the low hundreds a month.
 
-## 9. Privacy and terms (the last two commits, held for Damian)
+## 9. Privacy and terms (the last three commits, approved by Damian)
 
 **Privacy page:**
 
 | Before | After |
 |---|---|
 | "Last updated: February 2026" | "Last updated: November 2026" |
-| The Plausible and Clarity sentence | "Ahrefs Web Analytics: page view statistics without cookies. It records the page, referrer, browser, device, language, screen size and approximate location (city level), and counts visitors with a daily pseudonymous identifier that is not kept across days." |
+| The Plausible and Clarity sentence | "Ahrefs Web Analytics: page view statistics without cookies. It records the page address (including any query string), the referring page, your browser, operating system and device, screen size and language, and when a link is clicked or a form is sent. It uses your IP address to work out your approximate location (city level) and a daily visitor ID that cannot be linked across days; the IP address itself is discarded, not stored." (Damian's wording, checked against Ahrefs' help page; it replaces the shorter first version) |
 | (none) | "Our own page count: … stores the page address, the date and the number, and nothing about you." |
 | (none) | A new Cookies section: "The site may set one cookie, NEXT_LOCALE, …, deleted when you close your browser." |
 | (none) | A new Contact form section: "If you use our contact form, we receive your name, email address and message by email, sent through our email provider Resend, and use them only to reply to you." |
 
 **Privacy and terms:** the affiliate sections are removed.
 
-## 10. Advertising today (for stage 3)
+## 10. Advertising (stage B, approved by Damian: "Yes, go with it")
 
-- There is no advertise page, no advert slot, no price and no featured card.
-- **Footer**, on every page: "Accommodation or activity provider? Partner with the Lakes Network", linking to the contact form.
-- **Contact page:** "Featured listings… can enquire about featured placement". The form offers the enquiry types "Featured listing" and "Advertising". Nothing on the site delivers either yet.
+**Before:** no advertise page, no spaces and no prices; the contact page offered "featured placement" that nothing delivered.
+
+**Now:** https://www.hikethelakes.com/advertise, every price plus VAT:
+
+| Option | Price |
+|---|---|
+| Area partner (one per Wainwright area: accommodation, food, outdoor shops, guiding; never another walking website) | £35 a month, 3 months minimum |
+| Conditions page sponsor | £35 a month, 3 months minimum |
+| Home page card | £39 a month, 3 months minimum |
+| Sponsored article | £99, one-off |
+| Winter fells package (Conditions sponsor plus the Helvellyn fell top report post) | £99, December to March |
+| Lakes network bundle | £99 a month, 3 months minimum |
+
+The page also carries the founding offer word for word ("For the first ten advertisers across the Lakes network sites: half price for your first three months, and your monthly price held for twelve months."), How it works (contact form, invoice, live once paid) and Where adverts never appear. No traffic or audience figures anywhere. `?space=<id>` names the space asked about; unknown values are not echoed.
+
+**Spaces** (at most one per page, all empty today, each linking to `/advertise?space=<id>#<option>`):
+- home card, after the featured fells;
+- one area partner card per Wainwright book, on every fell page in that book;
+- the /conditions sponsor;
+- one post space, on the Helvellyn fell top report post only.
+
+**No adverts on:** privacy, terms, contact, advertise, the 404, accommodation, itineraries, the mountain rescue post, the forecast guide, the tarn fishing post, or posts that name businesses or brands.
+
+**To put an advert live** (after the invoice is paid): set `sponsor` on the slot in `lib/ad-slots.ts` (name, url, up to 30 words, optional image and `until` date) and deploy. Filled cards are labelled Advertisement (home) or Sponsor, and links carry `rel="sponsored noopener"`. A sponsored article's byline is "Sponsored by X" with no author box. `tests/ads.test.mjs` (7 tests) fails if a sponsor is committed, a price lacks "plus VAT" or a space lands on a no-advert page.
+
+**Links:** the footer's "Partner with the Lakes Network" goes to /advertise, and the contact page's Advertising line links there too.
+
+**Price recheck:** look at the prices again in three months (mid-February 2027), against what has sold and how much of the founding offer has been used.
+
+**Screenshots:** `ads-advertise-*`, `ads-empty-{home-card,area,conditions,post}-*`, `ads-filled-area-example-*` (a temporary example, set back to `null` before commit), `fix-contact-*`.
 
 ## 11. Keeping it fresh
 
@@ -363,6 +433,16 @@ The GitHub "NPM audit" check failed on every push. `npm audit --omit=dev` showed
 
 ## 12. Checks run
 
+**Final round (`9d40d8d` and the privacy commits):**
+- **tsc:** 0 errors.
+- **eslint:** 0 errors on the changed files (4 warnings, all there before).
+- **`next build`:** passes with `DATABASE_URL` empty; every `[locale]` page is listed as rendered on request.
+- **Tests:** `npm run test:contact` 10/10; `node --test tests/*.test.mjs` 26/26 (including the 7 advertising tests).
+- **Served build on 3113:** /contact, /advertise, /privacy and /fells/helvellyn return 200; the contact form offers General enquiry, Route or data correction, Advertising, Press or media.
+- **Em dashes:** none in changed customer-facing strings.
+
+**Earlier rounds:**
+
 - **tsc:** 0 errors (baseline 0).
 - **eslint:** 0 errors and 19 warnings (baseline 0 and 22).
 - **`next build`:** passes.
@@ -370,3 +450,20 @@ The GitHub "NPM audit" check failed on every push. `npm audit --omit=dev` showed
 - **Em dashes:** none in customer-facing strings in changed files.
 - **Dev server:** run on 3113 with `DATABASE_URL` empty; Ahrefs was blocked and `/api/count` stubbed in Playwright.
 - **Screenshots:** at 1440, 1024, 768 and 390, checked as tiles, with no overflow.
+
+## 13. Approved follow-ups (11 Nov evening)
+
+1. **Placeholder fell pages, no `noindex`** (Damian). All 193 get an About section and meta description from `lib/fells.ts`: Wainwright book and number, height, grid reference, and the three nearest fells in the same book with straight-line distances. "No guide yet" stays and nothing is invented. Heights and grid references were checked against the Database of British and Irish Hills table; six written guides had grid references 300 m to 2.9 km out (Ill Bell worst) and were corrected.
+2. **Network links:** each fell page links to The Lakes Guide's nearest town or village page (Keswick, Ambleside, Grasmere, Coniston, Windermere) within 8 km, and to The Lakes Wildlife's Ullswater page for the fells it names or within 3 km of its access points. Map in `lib/fell-context.ts`.
+3. **Itineraries:** "Day 1: Scafell Pike" style links to the fell pages; named places link to their accommodation cards; the per-person cost estimates are gone (no official source).
+4. **Fell log:** one compact table, sortable by fell, height, grid reference, area and book, with `aria-sort` and keyboard support; Area is hidden on phones.
+
+## 14. Home hero
+
+`public/images/hero-catbells.webp`, 2400 x 994, 378 KB, resized from the Commons original (9835 x 4074, 11.8 MB) with no crop or colour change: "Catbells Northern Ascent, Lake District, June 2009" by David Iliff, CC BY-SA 3.0. The credit sits bottom right on the photo, "Photo by DAVID ILIFF. License: CC BY-SA 3.0", the name linked to the Commons file page and the licence to https://creativecommons.org/licenses/by-sa/3.0/ (record: `docs/freshen-2026-11/sources/hero-catbells-credit.txt`). Alt: "Walkers on the path up the grassy northern ridge of Catbells, with green fells and valleys either side under a cloudy sky". Lighter than the Alpine photo it replaces at every width (1440: 101 to 69 KB; 390: 43 to 30 KB). Screenshots `hero-catbells-home-*`. The other pages keep the Alpine hero for now; the next real, credited photos should replace it there too.
+
+## 15. Planned work: fell guide batches (approved in principle, starts after this push)
+
+- **Size:** 10 guides a batch, one batch a fortnight, about 3 hours a guide from official sources (route and distances from OS Maps; start and parking from the National Trust and the National Park; hazards from AdventureSmart and mountain rescue; winter notes from Weatherline). About 30 hours a batch.
+- **First ten:** the most viewed placeholder pages in the old PageView log (the counts are small, so this is a starting order, not a ranking): Shipman Knotts, Sergeant's Crag, Lank Rigg, High Spy, Angletarn Pikes, Carrock Fell, Skiddaw Little Man, High Raise (High Street), Harter Fell (Eskdale), Mungrisdale Common.
+- **Later batches:** ordered by Ahrefs or Search Console data once there is enough of it, the most searched first.

@@ -5,6 +5,7 @@ import { HERO_IMAGE_URL } from '@/lib/site-constants';
 import type { Metadata } from 'next';
 import { ChevronRight, Clock, ArrowLeft } from 'lucide-react';
 import { BLOG_POSTS, DAMIAN, getPostBySlug, getCategoryBySlug, getIsoDate, type ContentBlock } from '@/lib/blog';
+import AdSlot from '@/components/AdSlot';
 
 const BASE_URL = 'https://www.hikethelakes.com';
 
@@ -141,17 +142,19 @@ export default async function BlogPostPage({
     dateModified: isoDate,
     ...(post.image && { image: post.image }),
     inLanguage: 'en-GB',
-    author: {
-      '@type': 'Person',
-      '@id': DAMIAN.schemaId,
-      name: DAMIAN.name,
-      jobTitle: DAMIAN.jobTitle,
-      url: DAMIAN.url,
-      sameAs: [
-        'https://www.linkedin.com/in/damian-roche-7ba8293a5/',
-        'https://find-and-update.company-information.service.gov.uk/company/16960442',
-      ],
-    },
+    author: post.sponsoredBy
+      ? { '@type': 'Organization', name: post.sponsoredBy.name, url: post.sponsoredBy.url }
+      : {
+          '@type': 'Person',
+          '@id': DAMIAN.schemaId,
+          name: DAMIAN.name,
+          jobTitle: DAMIAN.jobTitle,
+          url: DAMIAN.url,
+          sameAs: [
+            'https://www.linkedin.com/in/damian-roche-7ba8293a5/',
+            'https://find-and-update.company-information.service.gov.uk/company/16960442',
+          ],
+        },
     publisher: {
       '@type': 'Organization',
       '@id': 'https://www.churchtownmedia.co.uk/#organization',
@@ -202,7 +205,9 @@ export default async function BlogPostPage({
           priority
         />
         <div className="relative z-10 container mx-auto px-4 max-w-3xl">
-          {cat && (
+          {post.sponsoredBy ? (
+            <p className="text-[#9E762A] text-xs font-bold uppercase tracking-widest mb-3">Sponsored</p>
+          ) : cat && (
             <p className="text-[#9E762A] text-xs font-bold uppercase tracking-widest mb-3">
               {cat.label}
             </p>
@@ -213,7 +218,16 @@ export default async function BlogPostPage({
           <div className="flex flex-wrap items-center gap-4 text-white/50 text-sm">
             <span>{post.date}</span>
             <span className="flex items-center gap-1"><Clock size={13} /> {post.readingTime}</span>
-            <span>By {DAMIAN.name}</span>
+            {post.sponsoredBy ? (
+              <span>
+                Sponsored by{' '}
+                <a href={post.sponsoredBy.url} target="_blank" rel="sponsored noopener" className="underline underline-offset-2 hover:text-white">
+                  {post.sponsoredBy.name}
+                </a>
+              </span>
+            ) : (
+              <span>By {DAMIAN.name}</span>
+            )}
           </div>
         </div>
       </div>
@@ -231,7 +245,10 @@ export default async function BlogPostPage({
           {post.content.map((block, i) => renderBlock(block, i))}
         </div>
 
-        {/* Author box */}
+        {!post.sponsoredBy && <AdSlot id={`post-${post.slug}`} locale={locale} className="mt-12" />}
+
+        {/* Author box (not on sponsored articles) */}
+        {!post.sponsoredBy && (
         <div className="mt-14 pt-10 border-t border-[#D2D8CF]">
           <div className="bg-white rounded-2xl border border-[#D2D8CF] p-7 flex flex-col sm:flex-row gap-5 items-start">
             <div className="w-14 h-14 rounded-full bg-[#0E1C14] flex items-center justify-center flex-shrink-0">
@@ -252,6 +269,7 @@ export default async function BlogPostPage({
             </div>
           </div>
         </div>
+        )}
 
         {/* Back */}
         <div className="mt-8">

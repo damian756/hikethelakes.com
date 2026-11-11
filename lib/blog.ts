@@ -25,6 +25,8 @@ export interface BlogPost {
   imageAlt?: string;
   /** Fell slugs (lib/fells.ts) this post is about; the fell page links back to it. */
   relatedFells?: string[];
+  /** A paid, sponsored article: bylined "Sponsored by" the business, with no author box and no other advert. */
+  sponsoredBy?: { name: string; url: string };
   content: ContentBlock[];
 }
 

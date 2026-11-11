@@ -286,11 +286,13 @@ async function Footer({ locale }: { locale: string }) {
 
         <div className="border-t border-white/10 pt-5 pb-5 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm">
           <p className="text-white/50">
-            Accommodation or activity provider?{" "}
-            <span className="text-[#9E762A] font-semibold">Partner with the Lakes Network</span>
+            {tf('partnerLine')}{" "}
+            <Link href={`${prefix}/advertise`} className="text-[#9E762A] font-semibold hover:text-white transition">
+              {tf('partnerLink')}
+            </Link>
           </p>
           <Link href={`${prefix}/contact`} className="text-[#9E762A] hover:text-white transition font-medium text-sm">
-            Use the contact form →
+            {tf('partnerContact')} →
           </Link>
         </div>
 

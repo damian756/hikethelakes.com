@@ -6,6 +6,7 @@ import type { Metadata } from 'next';
 import { buildAlternates } from '@/lib/metadata';
 import { getLakesWeather } from '@/lib/weather';
 import { CONDITIONS_DATA } from '@/lib/conditions-data';
+import AdSlot from '@/components/AdSlot';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -46,6 +47,8 @@ export default async function ConditionsPage({ params }: { params: Promise<{ loc
           conditions={CONDITIONS_DATA}
           weather={weather}
         />
+
+        <AdSlot id="conditions" locale={locale} className="mt-12" />
 
         <div className="mt-12 bg-white border border-[#D2D8CF] rounded-xl p-6">
           <h2 className="font-display text-2xl font-bold text-[#0E1C14] mb-4">{t('aboutConditionsTitle')}</h2>

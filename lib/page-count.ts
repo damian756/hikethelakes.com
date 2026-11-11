@@ -34,6 +34,7 @@ export function cleanCountPath(raw: string): string | null {
 export const STATIC_PATHS: readonly string[] = [
   "/",
   "/accommodation",
+  "/advertise",
   "/blog",
   "/conditions",
   "/contact",

@@ -249,6 +249,108 @@
     "backHomeBtn": "Back to Home",
     "courseGuidesBtn": "Fell Guides"
   },
+  "advertisePage": {
+    "metaTitle": "Advertise on Hike The Lakes",
+    "metaDesc": "Advertising on Hike The Lakes: area partners on the fell pages, the Fell Conditions page, the home page card, sponsored articles and the Lakes network bundle. Prices plus VAT.",
+    "kicker": "Advertising",
+    "title": "Advertise on Hike The Lakes",
+    "intro": "Simple options at local prices. Every advert is labelled on the page, and paying for a space does not change what we write.",
+    "askedAbout": "You asked about: {space}",
+    "foundingTitle": "Founding advertisers",
+    "foundingText": "For the first ten advertisers across the Lakes network sites: half price for your first three months, and your monthly price held for twelve months.",
+    "askButton": "Ask about this",
+    "howTitle": "How it works",
+    "howText1": "Tell us which option you would like through the contact form, choosing Advertising as the enquiry type. We reply by email, agree the wording and photo with you, and send an invoice. Your advert goes live once it is paid.",
+    "howText2": "No checkout, and no contract beyond the minimum term.",
+    "neverTitle": "Where adverts never appear",
+    "neverText": "Not on the privacy, terms or contact pages, the accommodation page or the walking circuits, posts that name businesses, or the mountain rescue and other safety posts. Never inside a route guide's text. At most one advert on any page.",
+    "options": {
+      "area-partner": {
+        "name": "Area partner",
+        "price": "£35",
+        "per": "a month, plus VAT",
+        "note": "3 months minimum",
+        "fromLine": "from £35 a month plus VAT",
+        "points": [
+          "A card on every fell page in one of the seven Wainwright areas, from the Eastern Fells to the Western Fells",
+          "For accommodation, food, outdoor shops and guiding. Never another walking website",
+          "Labelled Sponsor, shown once on each page and never inside a route guide's text"
+        ]
+      },
+      "conditions-sponsor": {
+        "name": "Conditions page sponsor",
+        "price": "£35",
+        "per": "a month, plus VAT",
+        "note": "3 months minimum",
+        "fromLine": "from £35 a month plus VAT",
+        "points": [
+          "One card on the Fell Conditions page",
+          "Labelled Sponsor, shown once after the forecast links and fell notes"
+        ]
+      },
+      "home-card": {
+        "name": "Home page card",
+        "price": "£39",
+        "per": "a month, plus VAT",
+        "note": "3 months minimum",
+        "fromLine": "from £39 a month plus VAT",
+        "points": [
+          "One business on the Hike The Lakes home page, after the featured fells, labelled Advertisement",
+          "Your photo, a line about you and a link to your site",
+          "Change the photo and line once a month if you like"
+        ]
+      },
+      "sponsored-article": {
+        "name": "Sponsored article",
+        "price": "£99",
+        "per": "one-off, plus VAT",
+        "note": "one payment",
+        "fromLine": "£99 one-off plus VAT",
+        "points": [
+          "A useful post about something you run, for example a guided winter skills day",
+          "Written with you, checked for facts, labelled Sponsored at the top and bylined \"Sponsored by\" your business",
+          "Never presented as a review"
+        ]
+      },
+      "winter-package": {
+        "name": "Winter fells package",
+        "price": "£99",
+        "per": "for December to March, plus VAT",
+        "note": "one payment",
+        "fromLine": "£99 for December to March plus VAT",
+        "points": [
+          "Sponsor of the Fell Conditions page for the season",
+          "Plus the card at the end of our Helvellyn fell top report post"
+        ]
+      },
+      "network-bundle": {
+        "name": "Lakes network bundle",
+        "price": "£99",
+        "per": "a month, plus VAT",
+        "note": "3 months minimum",
+        "fromLine": "from £99 a month plus VAT",
+        "points": [
+          "A home page card on The Lakes Guide, Hike The Lakes and The Lakes Wildlife",
+          "Plus one guide, area or section sponsorship on each site",
+          "About £220 a month, plus VAT, if bought separately"
+        ]
+      }
+    }
+  },
+  "adSlot": {
+    "labelAdvert": "Advertisement",
+    "labelSponsor": "Sponsor",
+    "visit": "Visit {name}",
+    "button": "See advertising options",
+    "kickerHome": "Advertising space",
+    "bodyHome": "One business on the home page, after the featured fells, labelled as an advert, with a photo, a line about you and a link.",
+    "kickerArea": "Partner space",
+    "bodyArea": "Stay, eat or kit up near these fells: one accommodation, food, outdoor shop or guiding business on every fell page in this area, labelled as a sponsor.",
+    "kickerPage": "Sponsor this page",
+    "bodyPage": "Your business shown once on this page, labelled as a sponsor. Paying for a space does not change what we write.",
+    "kickerPost": "Sponsor this post",
+    "bodyPost": "Your business shown once at the end of this post, labelled as a sponsor. Paying for a space does not change what we write."
+  },
   "footer": {
     "tagline": "Lake District fell guides: heights and grid references for the 214 Wainwrights, route guides and walking circuits.",
     "builtBy": "Built by Churchtown Media",
@@ -266,6 +368,9 @@
     "navFellLog": "Fell Log",
     "navItineraries": "Walking Circuits",
     "navConditions": "Conditions",
-    "navAccommodation": "Accommodation"
+    "navAccommodation": "Accommodation",
+    "partnerLine": "Accommodation or activity provider?",
+    "partnerLink": "Advertise with the Lakes Network",
+    "partnerContact": "Use the contact form"
   }
 }

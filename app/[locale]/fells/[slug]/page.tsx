@@ -7,6 +7,7 @@ import { FELLS, getFell, hasCheckedGeo, hasRouteGuide } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
 import { BLOG_POSTS } from '@/lib/blog';
+import AdSlot from '@/components/AdSlot';
 import { bookLabel, nearestFellsInGroup, nearestGuideTown, relatedWildlifePages } from '@/lib/fell-context';
 
 export async function generateStaticParams() {
@@ -262,6 +263,8 @@ export default async function FellPage({
                 </ul>
               </section>
             )}
+
+            <AdSlot id={`area-${fell.wainwrightBook}`} locale={locale} />
           </div>
 
           <div className="space-y-20">

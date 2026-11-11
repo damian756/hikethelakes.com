@@ -14,6 +14,7 @@ const STATIC_PAGES = [
   '/fell-log',
   '/accommodation',
   '/contact',
+  '/advertise',
 ];
 // /privacy and /terms are noindex, so they are not listed.
 

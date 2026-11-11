@@ -5,6 +5,7 @@ import { Mountain, Wind, MapPin, Calendar, ChevronRight, Flag, Bed, Users } from
 import { getFeaturedFells } from '@/lib/fells';
 import type { Metadata } from 'next';
 import { BASE_URL, buildAlternates } from '@/lib/metadata';
+import AdSlot from '@/components/AdSlot';
 
 export async function generateMetadata({
   params,
@@ -261,6 +262,8 @@ export default async function HomePage({
               View All Fells <ChevronRight size={16} />
             </Link>
           </div>
+
+          <AdSlot id="home-card" locale={locale} className="mt-12" />
         </div>
       </section>
 

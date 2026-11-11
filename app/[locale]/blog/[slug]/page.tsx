@@ -39,6 +39,32 @@ export async function generateMetadata({
   };
 }
 
+// Posts mention internal pages as plain text ("hikethelakes.com/conditions"). Turn those into links.
+const SITE_PATH = /hikethelakes\.com(\/[a-z0-9\-/]*)?/g;
+
+function withLinks(text: string, onDark = false) {
+  const matches = [...text.matchAll(SITE_PATH)];
+  if (matches.length === 0) return text;
+  const linkClass = onDark
+    ? 'text-[#D4AE7A] underline underline-offset-2 hover:text-white'
+    : 'text-[#1A4A30] font-medium underline underline-offset-2 hover:text-[#9E762A]';
+  const parts: React.ReactNode[] = [];
+  let last = 0;
+  for (const m of matches) {
+    const start = m.index ?? 0;
+    if (start > last) parts.push(text.slice(last, start));
+    const href = (m[1] ?? '/').replace(/\/$/, '') || '/';
+    parts.push(
+      <Link key={start} href={href} className={linkClass}>
+        {m[0]}
+      </Link>,
+    );
+    last = start + m[0].length;
+  }
+  if (last < text.length) parts.push(text.slice(last));
+  return parts;
+}
+
 function renderBlock(block: ContentBlock, i: number) {
   switch (block.type) {
     case 'h2':
@@ -56,7 +82,7 @@ function renderBlock(block: ContentBlock, i: number) {
     case 'p':
       return (
         <p key={i} className="text-[#3C4E42]/80 leading-relaxed mb-5 text-[1.0625rem]">
-          {block.text}
+          {withLinks(block.text)}
         </p>
       );
     case 'ul':
@@ -65,7 +91,7 @@ function renderBlock(block: ContentBlock, i: number) {
           {block.items.map((item, j) => (
             <li key={j} className="flex gap-3 text-[#3C4E42]/80 text-[1.0625rem]">
               <span className="text-[#9E762A] font-bold flex-none mt-0.5">→</span>
-              <span>{item}</span>
+              <span>{withLinks(item)}</span>
             </li>
           ))}
         </ul>
@@ -73,7 +99,7 @@ function renderBlock(block: ContentBlock, i: number) {
     case 'callout':
       return (
         <div key={i} className="my-8 rounded-xl border border-[#9E762A]/30 bg-[#0E1C14] px-6 py-5">
-          <p className="text-white/80 text-sm leading-relaxed">{block.text}</p>
+          <p className="text-white/80 text-sm leading-relaxed">{withLinks(block.text, true)}</p>
         </div>
       );
     case 'hr':
@@ -162,7 +188,7 @@ export default async function BlogPostPage({
       <div className="bg-[#0E1C14] text-white py-12 relative overflow-hidden">
         <Image
           src={post.image || HERO_IMAGE_URL}
-          alt={post.title}
+          alt={post.imageAlt ?? post.title}
           fill
           className="object-cover opacity-20"
           priority

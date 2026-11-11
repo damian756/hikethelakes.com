@@ -21,6 +21,8 @@ export interface BlogPost {
   readingTime: string;
   /** Path relative to /public, e.g. '/images/courses/hillside.jpg' */
   image?: string;
+  /** Describes what the photo shows (it is a stock photo, not always the Lake District). */
+  imageAlt?: string;
   content: ContentBlock[];
 }
 
@@ -79,6 +81,113 @@ export function getCategoryBySlug(slug: string): BlogCategory | undefined {
 // ── Posts ─────────────────────────────────────────────────────────────────────
 
 export const BLOG_POSTS: BlogPost[] = [
+  // ── New posts, 11 Nov 2026 (sources listed in docs/freshen-2026-11/REPORT.md) ──
+  {
+    slug: 'helvellyn-fell-top-report-weatherline',
+    title: 'The Helvellyn Fell Top Report: Reading Weatherline in Winter',
+    excerpt: 'Each winter a National Park assessor walks up Helvellyn and reports what the summit is like that day. What the report covers, when it runs, and what its snow and wind words mean.',
+    categorySlug: 'conditions',
+    date: '11 Nov 2026',
+    readingTime: '6 min read',
+    image: 'https://images.unsplash.com/photo-1454496522488-7a8e488e8606?auto=format&fit=crop&w=800&q=80',
+    imageAlt: 'Snow-covered mountain peaks under a blue sky with white cloud',
+    content: [
+      { type: 'p', text: "A mountain forecast tells you what the weather is expected to do. In winter, the Lake District National Park Authority also tells you what one summit was actually like that day. Its Weatherline service records conditions on the top of Helvellyn, which the Authority describes as the Lake District's busiest mountain in winter." },
+      { type: 'p', text: "If you are planning a high fell walk between December and spring, read it before you set out. This guide covers what the report contains, when it runs, and the snow and wind terms it uses." },
+      { type: 'h2', text: 'What the Fell Top Report Is' },
+      { type: 'p', text: "The report is written by the Authority's Fell Top Assessors, who walk up Helvellyn, check conditions and take photos. The Authority says the report includes mountain conditions, photos and a description of the weather on Helvellyn that day." },
+      { type: 'p', text: "The assessors take readings for their ground conditions reports, including snow depth, wind speed and temperature. The report goes live once the assessor has come down from the fell and uploaded it, so it describes the summit as it was earlier that day." },
+      { type: 'p', text: "It appears on the Authority's Lake District weather page at lakedistrict.gov.uk, alongside the Met Office mountain forecast." },
+      { type: 'h2', text: 'When It Runs' },
+      { type: 'p', text: "The fell top report is a winter service. The Authority's page says Weatherline records winter conditions daily from December to April, and that the assessors' walks usually run from December to March. Expect the first reports in December and check the page in spring to see whether they are still coming in." },
+      { type: 'p', text: "The Met Office forecast on the same page runs all year. The Authority says it is written by Met Office forecasters in Aberdeen and is normally updated twice a day, at around 5 to 6pm and 3 to 4am." },
+      { type: 'h2', text: 'The Snow and Ice Words in the Report' },
+      { type: 'p', text: "The reports use some specialist terms. The Authority publishes a glossary; in short:" },
+      { type: 'ul', items: [
+        'Cornice: an overhanging ledge of snow on the lee side of a ridge or the edge of a summit plateau. Cornices can be very unstable, especially when new or thawing. Do not walk above them.',
+        'Graupel: small rounded pellets of snow, sometimes called soft hail. A layer of graupel between layers of snow can make the snowpack unstable.',
+        'Névé: snow that has thawed and frozen several times. It is firm and stable underfoot.',
+        'Rime ice: the white, often feathery crust that builds up on the windward side of objects such as rocks and cairns.',
+        'Spindrift: fine snow blown about by the wind, which can cut visibility badly.',
+        'Verglas: thin, clear ice formed when standing water freezes, the mountain version of black ice. It is treacherous, especially when hidden under loose powder snow.',
+        'Windslab: snow the wind has moved and dropped on lee slopes, where it can build up and be unstable.',
+        'Wind chill: the cooling effect of the wind on exposed skin. The Authority notes that it rises fastest at lower wind speeds, up to about 15 mph.',
+      ]},
+      { type: 'h2', text: 'What the Wind Speed Means on the Fells' },
+      { type: 'p', text: "The Authority's weather page also sets out what different wind speeds mean on the tops. Some points from its table:" },
+      { type: 'ul', items: [
+        '25 to 38 mph (strong): on most 900 metre summits, snow or rain falls horizontally. Wind chill at 0°C feels like minus 10°C.',
+        '39 to 46 mph (gale): blowing snow cuts visibility, and leaning into the wind doubles the effort of walking.',
+        '55 to 63 mph (storm force): walking is difficult and takes three times the normal effort. The Authority advises keeping to lower level walks.',
+        '64 to 72 mph (severe storm force): the advice is not to go onto the fells at all.',
+      ]},
+      { type: 'p', text: "Helvellyn is 950 metres high, third on the National Park Authority's list of the highest Lake District mountains. The Helvellyn guide at hikethelakes.com/fells/helvellyn covers the main routes." },
+      { type: 'callout', text: "If a report mentions cornices, windslab or verglas and you are not sure what that means for your route, keep to a lower walk. The Authority runs winter skills day courses on Helvellyn with its Fell Top Assessors, covering the basics of ice axe and crampons; it says the courses are available by the end of September each year." },
+      { type: 'h2', text: 'Using It With the Forecast' },
+      { type: 'p', text: "The fell top report tells you what the summit was like when the assessor was there. The forecasts tell you what is coming. Read both before a winter walk: the report for snow and ice underfoot, and the MWIS forecast for summit wind, cloud on the hills and the freezing level. How to read those forecasts is covered at hikethelakes.com/blog/reading-the-fell-forecast-mwis-guide." },
+      { type: 'p', text: "Snow is not rare. The Authority says snow typically falls from November to March and the valleys see around 20 days of snow a year. For what changes on the fells in winter, see hikethelakes.com/blog/winter-fell-walking-lake-district." },
+      { type: 'h2', text: 'Before You Set Out' },
+      { type: 'ul', items: [
+        "Read the latest fell top report and the mountain forecast on the National Park Authority's weather page.",
+        'Check MWIS and the Met Office mountain forecast: links are on hikethelakes.com/conditions',
+        'Look for the words that change the day: cornice, windslab, verglas, spindrift.',
+        'Check the wind figure against the table above, and choose a lower walk if it is gale force or more on the tops.',
+      ]},
+    ],
+  },
+  {
+    slug: 'how-to-call-mountain-rescue-lake-district',
+    title: 'How to Call Mountain Rescue in the Lake District',
+    excerpt: 'Dial 999 or 112, ask for Police, then Mountain Rescue. What to note before you call, how to make your phone last, how text to 999 works, and where walkers most often get into trouble.',
+    categorySlug: 'practical',
+    date: '11 Nov 2026',
+    readingTime: '6 min read',
+    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80',
+    imageAlt: 'Two walkers with large rucksacks on a rocky path below snow-capped mountains',
+    content: [
+      { type: 'p', text: "Mountain rescue in the Lake District is run by volunteers. The Lake District Search and Mountain Rescue Association, the umbrella body for rescue teams in Cumbria, says its 12 member teams cover the whole of the national park and the rest of the county. You do not ring a team directly. You go through 999." },
+      { type: 'h2', text: 'Before You Call: Note the Details' },
+      { type: 'p', text: "Mountain Rescue England and Wales asks you to note these details first, so you can give them in one go:" },
+      { type: 'ul', items: [
+        'Where you are',
+        'The name, gender and age of the injured person',
+        'What the injuries are',
+        'How many people are in your party',
+        'Your mobile number',
+      ]},
+      { type: 'h2', text: 'Making the Call' },
+      { type: 'ul', items: [
+        "Dial 999 or 112 and ask for 'Police', then 'Mountain Rescue'.",
+        'Give all the details you have noted.',
+        'Do not move from where you are until the rescue team has contacted you.',
+        'If you have to call 999 again, go through the whole procedure again.',
+      ]},
+      { type: 'h2', text: 'Make Your Phone Last' },
+      { type: 'p', text: "Mountain Rescue England and Wales points out that many accidents happen towards the end of the day, when both you and your phone are low on energy, and that signal on the hills can be hit and miss. Its advice: charge your phone fully before you set off, keep calls short to save the battery, and think about carrying a power bank on long days." },
+      { type: 'p', text: "It also asks walkers to carry a torch, charged before setting off, and a spare." },
+      { type: 'h2', text: 'Texting 999: emergencySMS' },
+      { type: 'p', text: "If you are deaf, hard of hearing or speech-impaired, you can contact 999 by text through the emergencySMS service run by Relay UK. You must register your phone first: do it now, not in an emergency." },
+      { type: 'ul', items: [
+        "Text the word 'register' to 999.",
+        "Read the automatic reply, then reply 'yes'.",
+        "Wait for the text confirming your phone is registered.",
+        'Register again if you change your mobile number.',
+      ]},
+      { type: 'p', text: "In an emergency, Mountain Rescue England and Wales says your text to 999 should include 'Police', what has happened and where you are. Its advice page also reminds walkers to register their phone with emergencySMS before setting off." },
+      { type: 'h2', text: 'Places Walkers Most Often Get Into Difficulty' },
+      { type: 'p', text: "AdventureSmart UK, the safety campaign the Lake District rescue teams point to, lists Lake District hotspots where people more often need help. Among them:" },
+      { type: 'ul', items: [
+        'Broad Stand, between Scafell and Scafell Pike: described as a scramble, but it needs proper rock climbing moves above large drops. More on the area at hikethelakes.com/fells/scafell-pike',
+        'Piers Gill, crossed by the Corridor Route below Scafell Pike: do not try to walk down the bed of the stream. AdventureSmart notes there is no mobile coverage around the gill.',
+        'The Wasdale Screes at the south end of Wast Water: people, often with dogs, underestimate the boulder field on the lakeshore path.',
+        'Sharp Edge on Blencathra: slippery and dangerous in wet, windy or winter conditions, and it can stay that way for several days after rain. See hikethelakes.com/blog/sharp-edge-blencathra-underrated-ridge',
+        'Striding Edge and Swirral Edge on Helvellyn: exposed scrambles that become serious winter climbing routes in winter. See hikethelakes.com/blog/striding-edge-what-no-one-tells-you',
+      ]},
+      { type: 'callout', text: "Before any fell walk: charge your phone, carry a torch and a spare, and check the mountain forecast (links on hikethelakes.com/conditions). If you are deaf, hard of hearing or speech-impaired, register for emergencySMS now, not on the hill." },
+      { type: 'h2', text: 'Who Pays' },
+      { type: 'p', text: "Mountain Rescue England and Wales describes the service as voluntary and free to the casualty. Across England and Wales there are 48 volunteer teams; in 2025 they received 3,968 calls for help and were deployed 3,175 times. The Lake District association says it is a registered charity funded by voluntary contributions." },
+    ],
+  },
   // ── Fell Guides ─────────────────────────────────────────────────────────────
   {
     slug: 'striding-edge-what-no-one-tells-you',

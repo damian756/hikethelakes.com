@@ -1,0 +1,88 @@
+https://help.ahrefs.com/en/articles/10247870-about-ahrefs-web-analytics
+
+About Ahrefs Web Analytics | Help Center - Ahrefs Copyright (c) 2023, Intercom, Inc. ( [email protected] ) with Reserved Font Name "Inter".
+This Font Software is licensed under the SIL Open Font License, Version 1.1. Copyright (c) 2023, Intercom, Inc. ( [email protected] ) with Reserved Font Name "Inter".
+This Font Software is licensed under the SIL Open Font License, Version 1.1. Skip to main content
+English Français Bahasa Indonesia 日本語 한국어 Português 简体中文 Español English
+English Français Bahasa Indonesia 日本語 한국어 Português 简体中文 Español English
+Search for articles...
+All Collections
+Web Analytics
+About Ahrefs Web Analytics
+About Ahrefs Web Analytics
+Learn about Ahrefs Web Analytics, a simple, privacy-friendly tool for monitoring website usage.
+Written by Andrey Kirillov
+October 12, 2026
+Table of contents
+Introduction
+Ahrefs Web Analytics is a free, simple and privacy-friendly tool for monitoring your website’s usage. It uses no cookies, stores no IP addresses with analytics data and does not track visitors across days.
+If you choose to install our tracker on your website, please be aware that you remain responsible for complying with your own obligations under the applicable Privacy regulations and the European Union General Data Protection Regulation (GDPR).
+To get started, you need an Ahrefs account and to add our script to your website.
+With a free account , you can add as many sites as you want and track up to 1 million page views per month per site . For websites with higher volumes, you’ll have the option to upgrade.
+If you have feedback or feature requests, submit them here or contact our support team via live chat or [email protected] .
+Script installation
+To start collecting data from your website, you need to install our script.
+For faster page load, we recommend the direct installation of the script into the <head> section of your website. We provide the snippet during the process of adding a new project to your dashboard. For projects already added, you can find the snippet in the project settings.
+If you prefer managing scripts with Google Tag Manager (GTM), you can use this method instead. The system will automatically detect GTM on your website and provide a corresponding script. Paste the snippet into the Custom HTML section of GTM, and click the “Recheck installation” button to verify the setup.
+What data we collect
+Ahrefs Web Analytics shows you aggregated traffic trends for your website without relying on cookies or persistent identifiers.
+We do not track individuals across their devices, websites, or apps. Each data point is limited to a single device, a single website, and a single day. As a result, it’s impossible to identify if the same person visits your site from multiple devices or visits other websites.
+Here’s the full list of what we collect and store about your website visitors.
+Page URL
+We collect and store page URLs, including URL parameters, to show which pages visitors view and how many times each page is viewed.
+Make sure your website does not include visitors’ personal information, such as names or email addresses, in page URLs or URL parameters. Ask your developer to use POST for forms so submitted information is not added to the URL.
+Referrer
+Referrers show the sources driving traffic to your website. Most browsers send the URL of the previous page as the referrer, which we process and store similarly to other URLs (see above).
+User agent
+We collect and store user agents data to derive information about the operating systems, devices, and browsers people use when visiting your website. We also use user agent data to calculate the number of unique visitors to your website (see below).
+Location (country and city)
+We identify the visitor’s location using their IP address. We do not track anything more granular than the city level. The raw IP addresses are discarded and never stored in our database or logs.
+Language
+We collect and store language-related data, specifically the Accept-Language HTTP header and browser language preferences. This data is used to report corresponding statistics.
+Screen size
+We collect and store the screen size of the visitor’s device.
+Daily visitor ID
+We generate a daily pseudonymous visitor ID to count unique visitors without storing their IP addresses. This ID does not allow us to track visitors across days. See How we count unique visitors below for details.
+Ahrefs Web Analytics also tracks common user interactions like page views, link clicks and form submissions automatically. ​ Learn more about tracked events
+How we count unique visitors
+When visitors access your website, their IP address is included in every HTTP request. We combine the IP address with user agent data and process it using a secure hash function with a random salt that is regenerated every 24 hours:
+hash(daily_salt + ip_address + user_agent)
+This creates a random string that allows us to calculate unique visitor numbers for each day without storing the original IP address.
+The raw IP addresses are never stored in our database or logs. The old salts are deleted every 24 hours, preventing any possibility of tracking a single user outside of the specific day.
+Metrics
+Here’s an example of the report you'll see in Ahrefs Web Analytics, displaying key metrics and trends.
+Unique visitors: The number of people who visited your website within a single day. We respect privacy and do not use cookies or persistent identifiers. If the same person visits from multiple devices or on different days, they are counted as separate visitors.
+Visits: A visit is a set of actions a user takes on your site within a single browsing session. It starts when a visitor lands on your page and continues until there is no activity for 30 minutes.
+Views: The total number of times a page was loaded by your visitors.
+Views per visit: The average number of page views per visit, including repeated views of the same page.
+Bounce rate: The percentage of visitors where users leave after viewing only one page. For example, if 100 people visit your site and 50 leave after one page, the bounce rate is 50%.
+Time on page: The average time users spend on a page. It’s calculated by measuring the time between viewing one page and moving to another. For example, if someone spends 2 minutes on the homepage before opening another page, the time on the homepage is 2 minutes. Time on the last page of a visit isn’t counted since no other page has been clicked.
+How we will use the data collected
+No competitor access
+Your data will not be accessible by your competitors. Under no circumstances will your competitors or any other unauthorized third parties gain access to your data.
+​
+Data studies
+From time to time, we may publish studies and reports based on anonymized and aggregated data.
+​
+Service improvement
+The aggregated data we collect will also be used to improve our services, such as enhancing traffic prediction and traffic estimation models.
+How is Web Analytics Priced?
+Up to 1M events/month – Free
+Up to 5M events/month – $99/month
+Up to 20M events/month – $299/month
+Up to 100M events/month – $999/month
+The above prices are in USD, per project. You may see different prices and currencies based on your location.
+How to purchase add-ons for Web Analytics
+Once you've exceeded 1 million events per month, a banner will pop up, prompting the option to purchase more events for your project:
+Related Articles
+What is Ahrefs?
+Troubleshooting common issues with GSC data in Ahrefs
+Troubleshooting “Ahrefs web analytics snippet isn’t found on your website”
+Funnels in Ahrefs Web Analytics
+About Bot Analytics
+Did this answer your question? Disappointed Reaction 😞 Neutral Reaction 😐 Smiley Reaction 😃
+Table of contents
+Ahrefs Academy
+Blog
+YouTube
+Pricing

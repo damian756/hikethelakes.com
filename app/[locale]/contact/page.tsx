@@ -16,7 +16,8 @@ export async function generateMetadata({
   // /contact?type=… keeps this canonical: the clean URL.
   return pageMetadata({
     path: '/contact',
-    title: tm('contactTitle'),
+    // "Contact Hike The Lakes" already names the site, so the layout template is skipped.
+    title: { absolute: tm('contactTitle') },
     description: tm('contactDesc'),
   });
 }

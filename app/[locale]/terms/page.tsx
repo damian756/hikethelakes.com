@@ -7,7 +7,7 @@ import { pageMetadata } from '@/lib/metadata';
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   return pageMetadata({
     path: '/terms',
-    title: 'Terms of Use | HikeTheLakes',
+    title: 'Terms of Use',
     noindex: true,
   });
 }

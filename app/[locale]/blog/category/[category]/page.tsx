@@ -21,7 +21,7 @@ export async function generateMetadata({
   if (!cat) return {};
   return pageMetadata({
     path: `/blog/category/${category}`,
-    title: `${cat.label} | HikeTheLakes Blog`,
+    title: `${cat.label} | Lake District Fell Walking Blog`,
     description: cat.description,
   });
 }

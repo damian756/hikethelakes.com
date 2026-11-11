@@ -10,7 +10,7 @@ import { pageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = pageMetadata({
   path: '/blog',
-  title: 'Lake District Fell Walking Blog | Routes, Conditions & Tips | HikeTheLakes',
+  title: 'Lake District Fell Walking Blog | Routes, Conditions & Tips',
   description:
     'Fell walking guides, route tips and practical advice for the Lake District: Scafell Pike, Helvellyn, Skiddaw and more. By Damian Roche.',
   shareTitle: 'Lake District Fell Walking Blog',

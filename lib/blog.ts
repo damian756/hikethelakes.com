@@ -16,6 +16,8 @@ export interface BlogPost {
   slug: string;
   title: string;
   excerpt: string;
+  /** For search results when the excerpt runs past about 160 characters. */
+  metaDescription?: string;
   categorySlug: string;
   date: string;
   readingTime: string;
@@ -91,6 +93,7 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedFells: ['helvellyn'],
     title: 'The Helvellyn Fell Top Report: Reading Weatherline in Winter',
     excerpt: 'Each winter a National Park assessor walks up Helvellyn and reports what the summit is like that day. What the report covers, when it runs, and what its snow and wind words mean.',
+    metaDescription: 'Each winter a National Park assessor walks up Helvellyn and reports on the summit that day. What the report covers, when it runs, and what its snow terms mean.',
     categorySlug: 'conditions',
     date: '11 Nov 2026',
     readingTime: '6 min read',
@@ -145,6 +148,7 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedFells: ['scafell-pike', 'helvellyn', 'blencathra'],
     title: 'How to Call Mountain Rescue in the Lake District',
     excerpt: 'Dial 999 or 112, ask for Police, then Mountain Rescue. What to note before you call, how to make your phone last, how text to 999 works, and the Lake District hotspots where walkers more often get into trouble.',
+    metaDescription: 'Dial 999 or 112, ask for Police, then Mountain Rescue. What to note before you call, how to make your phone last, and how text to 999 works.',
     categorySlug: 'practical',
     date: '11 Nov 2026',
     readingTime: '6 min read',
@@ -201,6 +205,7 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedFells: ['helvellyn'],
     title: 'Striding Edge: What No One Tells You Before You Go',
     excerpt: 'Striding Edge gets talked about like it is a near-death experience. It is not. But there are a few things the guidebooks gloss over that are worth knowing before you set off from Glenridding.',
+    metaDescription: 'Striding Edge is not the near-death experience it is made out to be, but a few things the guidebooks gloss over are worth knowing before you set off.',
     categorySlug: 'fell-guides',
     date: '03 Mar 2026',
     readingTime: '9 min read',
@@ -349,6 +354,7 @@ export const BLOG_POSTS: BlogPost[] = [
     relatedFells: ['high-street', 'ill-bell'],
     title: 'The Far Eastern Fells: Why Serious Baggers End Up Here',
     excerpt: 'Book Two is the quietest corner of the Wainwrights. High Street, Ill Bell, and a Roman road running across the top of England. If you have not been, you are missing something.',
+    metaDescription: 'Book Two is the quietest corner of the Wainwrights: High Street, Ill Bell, and a Roman road running across the top of England.',
     categorySlug: 'wainwrights',
     date: '05 Feb 2026',
     readingTime: '7 min read',

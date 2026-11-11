@@ -24,8 +24,8 @@ export async function generateMetadata({
   const cat = getCategoryBySlug(post.categorySlug);
   return pageMetadata({
     path: `/blog/${slug}`,
-    title: `${post.title} | Hike The Lakes`,
-    description: post.excerpt,
+    title: post.title,
+    description: post.metaDescription ?? post.excerpt,
     shareTitle: post.title,
     image: post.image ? { url: post.image, alt: post.imageAlt ?? post.title } : undefined,
     article: {

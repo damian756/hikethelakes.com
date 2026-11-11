@@ -23,12 +23,25 @@ export async function generateMetadata({
   const fell = getFell(slug);
   if (!fell) return {};
 
-  const title = `${fell.name} | Hike The Lakes`;
-  const description = hasRouteGuide(fell)
-    ? fell.summitDescription.slice(0, 160)
-    : `${fell.name} is a ${fell.height} m Wainwright fell in ${bookLabel(fell)}, at grid reference ${fell.osGridRef}. Nearest fells: ${nearestFellsInGroup(fell, FELLS, 2)
-        .map((o) => o.fell.name)
-        .join(', ')}.`;
+  // The fell's name first (the part that may already rank), then what the page answers:
+  // routes, distance and time for the written guides; height, grid reference and the
+  // nearest fells for the rest. The layout template adds the site name.
+  const guide = hasRouteGuide(fell);
+  const title = guide
+    ? `${fell.name} Walk: Routes, Distance and Time`
+    : `${fell.name}: Height, Grid Reference and Nearest Fells`;
+  let description: string;
+  if (guide) {
+    const routes = `${fell.name} (${fell.height} m) walking routes: ${fell.routes
+      .map((r) => `${r.name}, ${r.distance}, ${r.time}`)
+      .join('; ')}.`;
+    const withMore = `${routes} Start points, ascent and tips.`;
+    description = withMore.length <= 160 ? withMore : routes;
+  } else {
+    description = `${fell.name} is a ${fell.height} m Wainwright fell in ${bookLabel(fell)}, at grid reference ${fell.osGridRef}. Nearest fells: ${nearestFellsInGroup(fell, FELLS, 2)
+      .map((o) => o.fell.name)
+      .join(', ')}.`;
+  }
 
   return pageMetadata({ path: `/fells/${slug}`, title, description });
 }
